@@ -1,0 +1,37 @@
+# Python virtual environments
+.venv/
+venv/
+
+# Python cache
+__pycache__/
+*.py[cod]
+.pytest_cache/
+.mypy_cache/
+
+# macOS
+.DS_Store
+
+# VS Code local settings
+.vscode/
+
+# Environment variables and secrets
+.env
+.env.*
+!.env.example
+*.pem
+*.key
+
+# Student runtime data and uploaded personal files
+assets/runtime/
+references/data/student_profile.json
+
+# Temporary files
+*.log
+*.tmp
+*.swp
+
+# Old OpenCode logs and caches
+references/build/fetch_scholar_cache.json
+references/build/opencode_online_paper_cache.json
+references/build/opencode_plain_logs/
+references/build/opencode_plain_results/

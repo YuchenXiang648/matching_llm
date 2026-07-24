@@ -1,0 +1,20 @@
+[
+  {
+    "supervisor_id": "s1",
+    "name": "Kaan Aksit",
+    "homepage": "https://www.kaanaksit.com",
+    "summary": "Here is the summary paragraph:\n\nKaan Aksit's research focuses on merging artificial intelligence (AI), physics, and display technology to create more realistic and engaging immersive experiences. He explores how physical principles can inform AI models for tasks such as realistic rendering, haptic feedback, or motion tracking in virtual reality (VR) and augmented reality (AR). His work often employs high-performance computing, optimization algorithms, and machine learning techniques to develop innovative solutions that push the boundaries of immersive displays. As an academic advisor assistant, I would expect thesis projects under his supervision to involve topics such as AI-driven display technology, physics-informed rendering, or perceptual graphics for immersive experiences. Students working with him may have opportunities to explore cutting-edge technologies and methods in areas like VR/AR, computer-generated holography, and image processing."
+  },
+  {
+    "supervisor_id": "s2",
+    "name": "Timo Betcke",
+    "homepage": "https://timobetcke.me/bucket/A+bucket+full+of+stuff",
+    "summary": "Here's your summary:\n\nTimo Betcke is a researcher with expertise in numerical methods, particularly boundary element methods (BEM) and fast multipole methods (FMM). His work focuses on solving problems related to electromagnetic scattering, electrostatics, and quantum mechanics. He often employs GPU computing, Rust programming language, and high-performance software design using Python and Numba. As a supervisor, he might offer thesis projects that involve developing new algorithms or improving existing ones for BEM/FMM applications in areas like computational electromagnetism, molecular solvation, or atmospheric science. Students interested in these topics can expect to work on benchmark experiments, algorithm development, and performance optimization throughout the academic year."
+  },
+  {
+    "supervisor_id": "s3",
+    "name": "Nikos Nikolaou",
+    "homepage": "https://profiles.ucl.ac.uk/66936-nikos-nikolaou/about",
+    "summary": "Here's a concise paragraph summarizing Nikos Nikolaou's research focus and potential thesis projects:\n\nNikos Nikolaou is an expert in machine learning, particularly in medical imaging applications. His work focuses on developing uncertainty estimation methods for machine learning models to improve their interpretability and reliability. He has explored various approaches, including cost-sensitive boosting algorithms, deep learning for intrusion detection systems, and multimodal data fusion for survival prediction in cancer patients. As a thesis supervisor, he might offer projects that involve training and evaluating machine learning models on medical imaging tasks, such as developing uncertainty quantification methods or improving model interpretability using techniques like feature attribution or saliency maps. Students with experience in Python and machine learning, especially those interested in medical applications and/or imaging, would be well-suited for working under his guidance."
+  }
+]

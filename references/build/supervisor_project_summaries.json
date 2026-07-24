@@ -1,0 +1,1141 @@
+[
+  {
+    "supervisor_id": "s1",
+    "name": "Kaan Aksit",
+    "homepage": "https://www.kaanaksit.com",
+    "scholar_url": "https://scholar.google.com/citations?user=FhyBsnQAAAAJ&hl=en&oi=ao",
+    "summary": "Kaan Aksit supervises projects at the intersection of AI and physical principles, specifically focused on developing physically informed AI algorithms for immersive displays in VR/AR environments. Students will utilize machine learning, high-performance computing, and Python to create realistic rendering, haptic feedback, and motion tracking solutions. This interdisciplinary project is heavily coding-heavy and data-driven, targeting UCL Master's students with a background in machine learning. The research aims to contribute to cutting-edge advancements in immersive display technology through innovative optimization techniques.",
+    "project_titles": [
+      "Physically Informed Artificial Intelligence for Immersive Displays"
+    ],
+    "keywords": [
+      "AI",
+      "physics",
+      "immersive displays",
+      "VR",
+      "AR",
+      "machine learning",
+      "optimization",
+      "high-performance computing",
+      "immersive",
+      "displays",
+      "physically",
+      "informed"
+    ],
+    "project_style": [
+      "ML-heavy",
+      "interdisciplinary",
+      "coding-heavy",
+      "data-heavy"
+    ],
+    "preferred_background": [
+      "machine learning",
+      "Python"
+    ],
+    "source": "supervisors_input.csv project_text",
+    "summary_type": "project_text_summary"
+  },
+  {
+    "supervisor_id": "s2",
+    "name": "Timo Betcke",
+    "homepage": "https://timobetcke.me/bucket/A+bucket+full+of+stuff",
+    "scholar_url": "https://scholar.google.com/citations?user=HCAkiTYAAAAJ&hl=en&oi=ao",
+    "summary": "Timo Betcke supervises projects focused on GPU computing within the Rust programming language, a growing area for scientific computing and systems programming. Students will engage in coding-heavy, experimental work, primarily involving benchmarking and contributing to the development of Rust's GPU ecosystem. The projects will require a strong understanding of Rust and potentially systems programming concepts. Expect a significant time commitment throughout the academic year as you investigate performance and explore potential improvements within this emerging field.",
+    "project_titles": [
+      "GPU computing in Rust"
+    ],
+    "keywords": [
+      "Rust",
+      "GPU computing",
+      "benchmarking",
+      "scientific computing",
+      "ecosystem development",
+      "gpu",
+      "computing",
+      "programming",
+      "project",
+      "investigate",
+      "please",
+      "title"
+    ],
+    "project_style": [
+      "coding-heavy",
+      "experimental",
+      "software-engineering"
+    ],
+    "preferred_background": [
+      "Rust",
+      "systems programming"
+    ],
+    "source": "supervisors_input.csv project_text",
+    "summary_type": "project_text_summary"
+  },
+  {
+    "supervisor_id": "s3",
+    "name": "Nikos Nikolaou",
+    "homepage": "https://profiles.ucl.ac.uk/66936-nikos-nikolaou/about",
+    "scholar_url": "https://scholar.google.com/citations?user=R6b6Rp8AAAAJ&hl=en&oi=ao",
+    "summary": "Nikos Nikolaou's research focuses on advancing deep learning techniques and understanding model trustworthiness. Students can explore uncertainty estimation and interpretability in medical imaging using CNNs and ViTs, handling real-world data and investigating model biases. Alternatively, projects delve into alternative training methods beyond backpropagation, including local learning rules, feedback alignment, and the NoProp approach, alongside exploring network sparsity and connections to the Lottery Ticket Hypothesis. Both approaches are heavily reliant on Python and machine learning expertise, with a strong emphasis on coding and experimental design.",
+    "project_titles": [
+      "Uncertainty estimation & interpretability of machine learning models for medical imaging",
+      "Beyond backpropagation: exploring alternative ways of training deep learning models"
+    ],
+    "keywords": [
+      "medical imaging",
+      "uncertainty quantification",
+      "model interpretability",
+      "CNNs",
+      "ViTs",
+      "backpropagation",
+      "local learning rules",
+      "network sparsity",
+      "Lottery Ticket Hypothesis",
+      "learning",
+      "models",
+      "model"
+    ],
+    "project_style": [
+      "ML-heavy",
+      "data-heavy",
+      "experimental",
+      "coding-heavy",
+      "theory-heavy"
+    ],
+    "preferred_background": [
+      "Python",
+      "machine learning",
+      "deep learning frameworks"
+    ],
+    "source": "supervisors_input.csv project_text",
+    "summary_type": "project_text_summary"
+  },
+  {
+    "supervisor_id": "s4",
+    "name": "Guido Germano",
+    "homepage": "",
+    "scholar_url": "",
+    "summary": "This MSc project, supervised by Guido Germano, centers on revitalizing QMGA, a C++ molecular graphics program for visualizing large-scale convex-body fluid simulations using OpenGL. The project involves addressing compilation issues, migrating to GitHub, optimizing performance through OpenGL techniques, and exploring porting to macOS and Windows. A key alternative is a WebGL/JavaScript rewrite for universal accessibility, leveraging Professor Ritschel’s expertise. The work is coding-heavy, focusing on software engineering and performance optimization within the fields of molecular graphics, fluid dynamics, and potentially WebGL development. Candidates should have a background in computer graphics, programming, or molecular dynamics.",
+    "project_titles": [
+      "Large-scale molecular graphics of convex-body fluid"
+    ],
+    "keywords": [
+      "molecular graphics",
+      "OpenGL",
+      "WebGL",
+      "C++",
+      "simulation",
+      "performance optimization",
+      "convext bodies",
+      "fluid dynamics",
+      "program",
+      "has",
+      "graphics",
+      "molecular"
+    ],
+    "project_style": [
+      "coding-heavy",
+      "software-engineering",
+      "experimental",
+      "interdisciplinary"
+    ],
+    "preferred_background": [
+      "computer graphics",
+      "programming",
+      "molecular dynamics"
+    ],
+    "source": "supervisors_input.csv project_text",
+    "summary_type": "project_text_summary"
+  },
+  {
+    "supervisor_id": "s5",
+    "name": "Mose Giordano",
+    "homepage": "",
+    "scholar_url": "",
+    "summary": "Mose Giordano supervises projects focused on high-performance periodogram algorithms, specifically implementing a non-equispaced FFT approach to the Lomb-Scargle algorithm in Julia. Students will contribute to the JuliaAstro/LombScargle.jl package, engaging in coding, performance optimization, and algorithm comparison within the astronomy field. This project is coding-heavy and experimental, leveraging Julia for scientific computing and benefiting from a background in Julia or signal processing. The goal is to improve the performance of existing periodogram implementations.",
+    "project_titles": [
+      "Implementation of Lomb-Scargle algorithm in Julia"
+    ],
+    "keywords": [
+      "periodogram",
+      "Lomb-Scargle",
+      "FFT",
+      "Julia",
+      "astronomy",
+      "performance optimization",
+      "algorithm",
+      "supervisor",
+      "implementation",
+      "email",
+      "address",
+      "ucl.ac.uk"
+    ],
+    "project_style": [
+      "coding-heavy",
+      "experimental",
+      "software-engineering"
+    ],
+    "preferred_background": [
+      "Julia",
+      "signal processing"
+    ],
+    "source": "supervisors_input.csv project_text",
+    "summary_type": "project_text_summary"
+  },
+  {
+    "supervisor_id": "s6",
+    "name": "Peter Bentley",
+    "homepage": "",
+    "scholar_url": "",
+    "summary": "Peter Bentley's research focuses on leveraging machine learning for generative design and optimization challenges. Students will explore distributed generative design using techniques like GANs and evolutionary algorithms to create complex forms mimicking biological development, integrating learned information with iterative growth. Alternatively, projects will investigate using generative models (GANs, VAEs) to learn representations for optimization problems, particularly in constrained and multiobjective scenarios. Both approaches are heavily coding-heavy and ML-focused, requiring a strong background in Python and machine learning, with experience in evolutionary computation beneficial.",
+    "project_titles": [
+      "Deep Morphogenesis: Distributed Generative Design using Machine Learning",
+      "Evolving Latent Variables"
+    ],
+    "keywords": [
+      "generative design",
+      "machine learning",
+      "evolutionary computation",
+      "deep learning",
+      "GANs",
+      "VAEs",
+      "optimization",
+      "latent variables",
+      "neural networks",
+      "constrained optimization",
+      "multiobjective optimization",
+      "generative"
+    ],
+    "project_style": [
+      "ML-heavy",
+      "coding-heavy",
+      "experimental",
+      "interdisciplinary"
+    ],
+    "preferred_background": [
+      "Python",
+      "machine learning",
+      "evolutionary computation"
+    ],
+    "source": "supervisors_input.csv project_text",
+    "summary_type": "project_text_summary"
+  },
+  {
+    "supervisor_id": "s7",
+    "name": "Edina Rosta",
+    "homepage": "",
+    "scholar_url": "",
+    "summary": "Edina Rosta’s projects center on applying machine learning and computational methods to understand biomolecular systems. Students will explore techniques including autoencoders, reinforcement learning, and causal inference within molecular dynamics simulations and related datasets. Projects investigate protein dynamics, ligand unbinding, enzyme function prediction, and identifying mechanistic drivers of protein motion. A strong foundation in Python and machine learning is preferred, with projects often involving data-heavy analysis, coding, and theoretical development of models for unsupervised learning, feature engineering, and establishing causal relationships.",
+    "project_titles": [
+      "Design and Development of Autoencoders to Identify Latent Space for Protein Dynamics",
+      "Markov models with reinforcement learning for enhanced sampling simulations",
+      "Machine Learning–Driven Functional Classification of NTP-Processing Enzymes",
+      "Causal Inference and Mechanistic Discovery in Complex Time-Series Data"
+    ],
+    "keywords": [
+      "molecular dynamics",
+      "autoencoders",
+      "machine learning",
+      "protein dynamics",
+      "reinforcement learning",
+      "enzyme function",
+      "causal inference",
+      "time-series analysis",
+      "protein",
+      "data",
+      "causal",
+      "models"
+    ],
+    "project_style": [
+      "ML-heavy",
+      "coding-heavy"
+    ],
+    "preferred_background": [
+      "Python",
+      "machine learning"
+    ],
+    "source": "supervisors_input.csv project_text",
+    "summary_type": "project_text_summary"
+  },
+  {
+    "supervisor_id": "s8",
+    "name": "Kris Thielemans",
+    "homepage": "",
+    "scholar_url": "",
+    "summary": "Kris Thielemans supervises projects focused on advanced image reconstruction and analysis techniques within nuclear medicine. Students can explore utilizing deep learning (CNNs, U-Nets) for motion correction in PET imaging, denoising SPECT images, or evaluating scatter correction methods like PDF calculation using STIR. These projects are heavily reliant on coding (primarily in Python) and data analysis, requiring a strong background in machine learning. The work involves experimental design, simulation, and software engineering, aiming to improve quantitative accuracy and reliability in PET and SPECT imaging.",
+    "project_titles": [
+      "Partial Volume Correction in PET Imaging of the Lung",
+      "Using machine learning techniques to denoise SPECT images for quantitative accuracy",
+      "Evaluation of Energy Based Scatter Correction for PET"
+    ],
+    "keywords": [
+      "PET imaging",
+      "motion correction",
+      "CNN",
+      "U-Net",
+      "SPECT imaging",
+      "image denoising",
+      "scatter correction",
+      "PDF",
+      "deep learning",
+      "sensitivity estimation",
+      "pet",
+      "image"
+    ],
+    "project_style": [
+      "ML-heavy",
+      "coding-heavy",
+      "data-heavy",
+      "experimental"
+    ],
+    "preferred_background": [
+      "Python",
+      "machine learning"
+    ],
+    "source": "supervisors_input.csv project_text",
+    "summary_type": "project_text_summary"
+  },
+  {
+    "supervisor_id": "s9",
+    "name": "Michael Parkes",
+    "homepage": "",
+    "scholar_url": "",
+    "summary": "This project, supervised by Michael Parkes (s9), centers on developing Python programs using the Background Orientated Schlieren (BOS) method for 3D density analysis of materials. Students will process images from plenoptic cameras, generating velocity fields and 3D visualizations through image processing and 3D visualization techniques. The work involves implementing BOS algorithms, experimenting with background generation, and potentially analyzing data related to fluid mixing. A strong background in Python, image processing, and computer vision is preferred, with a coding-heavy, data-heavy, and experimental approach expected.",
+    "project_titles": [
+      "Analysing 3D Background Orientated Schlieren Images"
+    ],
+    "keywords": [
+      "BOS method",
+      "schlieren imaging",
+      "plenoptic camera",
+      "3D imaging",
+      "image processing",
+      "density analysis",
+      "velocity fields",
+      "images",
+      "bos",
+      "image",
+      "schlieren",
+      "supervisor"
+    ],
+    "project_style": [
+      "coding-heavy",
+      "data-heavy",
+      "experimental",
+      "software-engineering"
+    ],
+    "preferred_background": [
+      "Python",
+      "image processing",
+      "computer vision"
+    ],
+    "source": "supervisors_input.csv project_text",
+    "summary_type": "project_text_summary"
+  },
+  {
+    "supervisor_id": "s10",
+    "name": "Gopinathan Sankar",
+    "homepage": "",
+    "scholar_url": "",
+    "summary": "Gopinathan Sankar supervises projects focused on analyzing data generated through Synchrotron Radiation based X-ray techniques. Students will investigate data processing, interpretation, and potentially modeling, utilizing scientific data analysis methodologies. This project demands a strong understanding of data analysis and could benefit from experience with Python and relevant software. The work is data-heavy and interdisciplinary, exploring experimental techniques and potentially incorporating modeling approaches. Students should ideally have a background in data analysis and Python programming.",
+    "project_titles": [
+      "Project on the analysis of data from Synchrotron Radiation based X-ray techniques"
+    ],
+    "keywords": [
+      "X-ray techniques",
+      "Synchrotron Radiation",
+      "data analysis",
+      "scientific data",
+      "supervisor",
+      "email",
+      "address",
+      "tba",
+      "title",
+      "project",
+      "analysis",
+      "data"
+    ],
+    "project_style": [
+      "data-heavy",
+      "experimental",
+      "interdisciplinary"
+    ],
+    "preferred_background": [
+      "Python",
+      "data analysis"
+    ],
+    "source": "supervisors_input.csv project_text",
+    "summary_type": "project_text_summary"
+  },
+  {
+    "supervisor_id": "s11",
+    "name": "Ben Waugh",
+    "homepage": "",
+    "scholar_url": "",
+    "summary": "Ben Waugh supervises projects focused on enhancing physics software tools for data analysis and model testing. Students can contribute to improving the maintainability of a Java-based event display application (Atlantis), develop statistical comparisons within the YODA library using Eigen, or apply machine learning techniques to accelerate BSM theory testing in the Contur toolkit. These projects are coding-heavy, data-heavy, and interdisciplinary, leveraging Python, Java, and machine learning. Prior experience with statistical analysis, C++, and Eigen is beneficial. The goal is to refine existing tools and explore new methods for parameter scanning and identifying inconsistencies in particle physics.",
+    "project_titles": [
+      "Improving a Java application to visualise proton collisions at the LHC",
+      "Enhancing Statistical Comparisons in YODA Using Eigen",
+      "Applying machine learning techniques to test new theories in particle physics"
+    ],
+    "keywords": [
+      "Java",
+      "event display",
+      "statistical analysis",
+      "chi-squared",
+      "Eigen",
+      "machine learning",
+      "Contur",
+      "parameter scanning",
+      "BSM theories",
+      "supervisor",
+      "email",
+      "address"
+    ],
+    "project_style": [
+      "coding-heavy",
+      "ML-heavy",
+      "data-heavy",
+      "software-engineering",
+      "experimental",
+      "interdisciplinary"
+    ],
+    "preferred_background": [
+      "Python",
+      "machine learning",
+      "Java",
+      "statistical analysis",
+      "C++"
+    ],
+    "source": "supervisors_input.csv project_text",
+    "summary_type": "project_text_summary"
+  },
+  {
+    "supervisor_id": "s12",
+    "name": "Frank Smith",
+    "homepage": "",
+    "scholar_url": "",
+    "summary": "Frank Smith's research focuses on optimizing fluid flow dynamics within branching vessels, particularly in high-flow rate scenarios. This project utilizes computational fluid dynamics, modelling, and analysis to explore biomedical and industrial applications, investigating the impact of branching on flow rates. Students should possess a strong background in fluid dynamics, numerical methods, and ideally, proficiency in Python. The work will be coding-heavy and computationally intensive, requiring a blend of theoretical understanding and practical implementation to address complex flow challenges.",
+    "project_titles": [
+      "Investigate fluid flows through a branching vessel"
+    ],
+    "keywords": [
+      "fluid flow",
+      "branching vessel",
+      "high flow rates",
+      "computational fluid dynamics",
+      "biomedical applications",
+      "industrial applications",
+      "address",
+      "flow",
+      "fluid",
+      "through",
+      "branching",
+      "vessel"
+    ],
+    "project_style": [
+      "coding-heavy",
+      "theory-heavy",
+      "computational"
+    ],
+    "preferred_background": [
+      "fluid dynamics",
+      "numerical methods",
+      "Python"
+    ],
+    "source": "supervisors_input.csv project_text",
+    "summary_type": "project_text_summary"
+  },
+  {
+    "supervisor_id": "s13",
+    "name": "Anthony Lynas-Gray",
+    "homepage": "",
+    "scholar_url": "",
+    "summary": "Anthony Lynas-Gray's research focuses on determining the gravitational constant (G) through astrometric measurements utilizing data from the Square Kilometre Array (SKA). Students will develop Python-based programs to replicate predictions regarding gravitational light deflection by Solar System objects, incorporating error bars and employing techniques like Fourier transforms and time-frequency analysis. This project is coding-heavy, data-intensive, and interdisciplinary, ideally suited for students with a background in astrophysics, signal processing, or Python programming. The goal is to explore the feasibility of external observations in improving G’s current uncertainty.",
+    "project_titles": [
+      "Gravitational Constant from Light Deflections by Solar System Objects?"
+    ],
+    "keywords": [
+      "astrometry",
+      "gravitational constant",
+      "light deflection",
+      "SKA",
+      "error bars",
+      "Fourier transforms",
+      "time-frequency analysis",
+      "al.",
+      "light",
+      "supervisor",
+      "email",
+      "address"
+    ],
+    "project_style": [
+      "coding-heavy",
+      "data-heavy",
+      "experimental",
+      "interdisciplinary"
+    ],
+    "preferred_background": [
+      "Python",
+      "astrophysics",
+      "signal processing"
+    ],
+    "source": "supervisors_input.csv project_text",
+    "summary_type": "project_text_summary"
+  },
+  {
+    "supervisor_id": "s14",
+    "name": "Gabriel Facini",
+    "homepage": "",
+    "scholar_url": "",
+    "summary": "Gabriel Facini's projects center on applying Large Language Models (LLMs) and Retrieval-Augmented Generation (RAG) techniques within the ATLAS collaboration at CERN. Students will develop custom chatbots to synthesize information from diverse scientific resources, tackling the challenge of accessing vast physics datasets. These projects are ML-heavy, data-heavy, and incorporate software engineering, offering hands-on experience in NLP, AI, and fundamental physics. A strong background in Python and machine learning is preferred, focusing on building and deploying innovative solutions.",
+    "project_titles": [
+      "Large Language Models for Physicists"
+    ],
+    "keywords": [
+      "LLMs",
+      "RAG",
+      "chatbot",
+      "NLP",
+      "data synthesis",
+      "AI",
+      "physics",
+      "models",
+      "project",
+      "atlas",
+      "higgs",
+      "supervisor"
+    ],
+    "project_style": [
+      "ML-heavy",
+      "data-heavy",
+      "software-engineering"
+    ],
+    "preferred_background": [
+      "Python",
+      "machine learning"
+    ],
+    "source": "supervisors_input.csv project_text",
+    "summary_type": "project_text_summary"
+  },
+  {
+    "supervisor_id": "s15",
+    "name": "Kjell Erlandsson",
+    "homepage": "",
+    "scholar_url": "",
+    "summary": "Kjell Erlandsson's research focuses on leveraging Convolutional Neural Networks (CNNs) for motion correction in dynamic PET scans, specifically developing a novel ‘blind deconvolution’ approach to mitigate the impact of patient motion on metabolic process analysis. These projects are coding-heavy and data-intensive, requiring a strong background in Python or MATLAB and machine learning principles. Students will explore applying deep learning techniques to correct parametric images, with the goal of producing publishable results within the field of medical imaging and dynamic PET data analysis. Expect an experimental and ML-heavy environment.",
+    "project_titles": [
+      "Using Deep Learning to correct parametric images for motion in dynamic PET"
+    ],
+    "keywords": [
+      "PET",
+      "dynamic PET",
+      "CNN",
+      "motion correction",
+      "parametric images",
+      "deep learning",
+      "medical imaging",
+      "parametric",
+      "images",
+      "motion",
+      "supervisor",
+      "correct"
+    ],
+    "project_style": [
+      "ML-heavy",
+      "coding-heavy",
+      "data-heavy",
+      "experimental"
+    ],
+    "preferred_background": [
+      "Python",
+      "machine learning"
+    ],
+    "source": "supervisors_input.csv project_text",
+    "summary_type": "project_text_summary"
+  },
+  {
+    "supervisor_id": "s16",
+    "name": "Mark Buitelaar",
+    "homepage": "",
+    "scholar_url": "",
+    "summary": "Mark Buitelaar is seeking students to develop machine learning algorithms for tuning carbon nanotube double quantum dot devices. This project combines experimental data acquisition from a mK dilution refrigerator using reflectometry with machine learning techniques, building upon existing code. Students will explore optimizing device parameters through trial-and-error, leveraging Python and machine learning expertise. The work focuses on quantum physics, solid-state physics, and computer science, offering an interdisciplinary experience. Prior experience with machine learning and Python is highly preferred.",
+    "project_titles": [
+      "Tuning quantum dot qubits using machine learning techniques"
+    ],
+    "keywords": [
+      "quantum dots",
+      "machine learning",
+      "carbon nanotubes",
+      "quantum physics",
+      "data acquisition",
+      "reflectometry",
+      "quantum",
+      "dot",
+      "machine",
+      "learning",
+      "techniques",
+      "double"
+    ],
+    "project_style": [
+      "ML-heavy",
+      "data-heavy",
+      "experimental",
+      "interdisciplinary"
+    ],
+    "preferred_background": [
+      "machine learning",
+      "Python"
+    ],
+    "source": "supervisors_input.csv project_text",
+    "summary_type": "project_text_summary"
+  },
+  {
+    "supervisor_id": "s17",
+    "name": "Michel Tsamados",
+    "homepage": "",
+    "scholar_url": "",
+    "summary": "Michel Tsamados is seeking students to work on projects leveraging Generative Adversarial Networks (GANs) for super-resolution of microwave imagery, specifically from Sentinel-1 to Sentinel-2 resolution. This research aims to synthesize 'daylight' imagery from Sentinel-1 data, crucial for applications like safe ice travel for Inuit communities, particularly in challenging conditions. The work builds upon previous MSc research using ARISGAN and is heavily reliant on machine learning and data analysis, requiring a strong background in Python and machine learning principles. Projects will involve software engineering and experimental development.",
+    "project_titles": [
+      "Application of Generative Adversarial Networks (GANs) to Arctic Sea Ice Imagery"
+    ],
+    "keywords": [
+      "GANs",
+      "Super-resolution",
+      "Sentinel-1",
+      "Sentinel-2",
+      "Microwave Imagery",
+      "Arctic Sea Ice",
+      "resolution",
+      "imagery",
+      "project",
+      "optical",
+      "supervisor",
+      "work"
+    ],
+    "project_style": [
+      "ML-heavy",
+      "data-heavy",
+      "experimental",
+      "software-engineering"
+    ],
+    "preferred_background": [
+      "Python",
+      "machine learning"
+    ],
+    "source": "supervisors_input.csv project_text",
+    "summary_type": "project_text_summary"
+  },
+  {
+    "supervisor_id": "s18",
+    "name": "Marta Betcke",
+    "homepage": "",
+    "scholar_url": "",
+    "summary": "Marta Betcke's research cluster focuses on applying machine learning and neural networks to solve wave equations and inverse problems across diverse applications including medical imaging (photoacoustic and ultrasound tomography) and dynamical systems. Projects involve developing correction methods for wave equation solutions using pseudo-spectral methods, exploring neural operators and weakly convex neural networks for regularization, and investigating diffusion models as priors. A significant emphasis is placed on software engineering, particularly building image reconstruction platforms. This is a coding-heavy, ML-heavy project requiring a strong background in Python and machine learning, with a focus on experimental data analysis and parallelization.",
+    "project_titles": [
+      "Learning correction for long steps in pseudo-spectral methods for solution of wave equation",
+      "Learned parallel in time integration of dynamical systems",
+      "Neural operators for solution of oscillatory problems e.g. Helmholtz equation, Wave Equation, Westervelt equation",
+      "Weakly convex neural networks for regularisation of inverse problem",
+      "Diffusion models as priors for solution of inverse problems",
+      "Photoacoustic image reconstruction methods for novel high acquisition speed scanner",
+      "Image reconstruction platform for Ultrasound tomography"
+    ],
+    "keywords": [
+      "wave equation",
+      "neural networks",
+      "machine learning",
+      "inverse problems",
+      "regularization",
+      "image reconstruction",
+      "dynamical systems",
+      "parallelization",
+      "diffusion models",
+      "supervisor",
+      "email",
+      "address"
+    ],
+    "project_style": [
+      "ML-heavy",
+      "coding-heavy"
+    ],
+    "preferred_background": [
+      "Python",
+      "machine learning"
+    ],
+    "source": "supervisors_input.csv project_text",
+    "summary_type": "project_text_summary"
+  },
+  {
+    "supervisor_id": "s19",
+    "name": "Franca Fraternali",
+    "homepage": "",
+    "scholar_url": "",
+    "summary": "This supervisor, Franca Fraternali (s19), is seeking students to contribute to projects at the intersection of protein design and drug discovery. One project utilizes Transformer models for in-silico protein evolution, exploring sequence generation and biases, while the other integrates molecular dynamics simulations with machine learning to optimize compound affinity through free energy calculations and compound selection. Both projects are heavily reliant on coding (particularly in Python), machine learning techniques, and computational methods, requiring a strong understanding of molecular modelling. Students should be comfortable with data-heavy analysis and developing novel solutions within these areas.",
+    "project_titles": [
+      "Transformer guided in-silico evolution of Proteins",
+      "Hit-to-lead drug discovery via Free Energy calculations and ML"
+    ],
+    "keywords": [
+      "protein evolution",
+      "Transformer models",
+      "molecular dynamics",
+      "free energy",
+      "machine learning",
+      "drug discovery",
+      "sequence generation",
+      "embeddings",
+      "models",
+      "protein",
+      "supervisor",
+      "al."
+    ],
+    "project_style": [
+      "ML-heavy",
+      "coding-heavy"
+    ],
+    "preferred_background": [
+      "Python",
+      "machine learning",
+      "molecular modelling"
+    ],
+    "source": "supervisors_input.csv project_text",
+    "summary_type": "project_text_summary"
+  },
+  {
+    "supervisor_id": "s20",
+    "name": "Jamie Dean",
+    "homepage": "",
+    "scholar_url": "",
+    "summary": "Jamie Dean's projects focus on applying machine learning and data analysis techniques to investigate the impact of proton beam radiotherapy on paediatric brain tumours. Students will work with a multimodal dataset including spatial dose maps, histology, and molecular sequencing data from mice, performing data integration, cell segmentation using machine learning, and statistical analysis. The projects are ML-heavy, data-heavy, and experimental, requiring a strong background in Python and machine learning. Students will explore radiation sensitivity and underlying molecular mechanisms within different brain regions, contributing to a high-priority biomedical problem.",
+    "project_titles": [
+      "Machine Learning for Radiotherapy"
+    ],
+    "keywords": [
+      "radiotherapy",
+      "machine learning",
+      "data integration",
+      "cell segmentation",
+      "molecular sequencing",
+      "brain atlas",
+      "different",
+      "brain",
+      "regions",
+      "sensitive",
+      "cell",
+      "types"
+    ],
+    "project_style": [
+      "ML-heavy",
+      "data-heavy",
+      "experimental",
+      "interdisciplinary"
+    ],
+    "preferred_background": [
+      "Python",
+      "machine learning"
+    ],
+    "source": "supervisors_input.csv project_text",
+    "summary_type": "project_text_summary"
+  },
+  {
+    "supervisor_id": "s21",
+    "name": "Nora Yitong Qiu",
+    "homepage": "",
+    "scholar_url": "",
+    "summary": "Nora Yitong Qiu supervises projects at the intersection of historical research and data science. Students can explore improving OCR accuracy for premodern East Asian scripts like Manchu and Chinese calligraphy using machine learning techniques, addressing challenges of archival degradation. Alternatively, investigate social network analysis of Chinese elite formation utilizing the China Biographical Database to examine power structures and dynastic transitions. Both projects require a data-heavy approach, leveraging Python and machine learning skills. Students should have a background in coding and machine learning concepts to succeed.",
+    "project_titles": [
+      "Machine Learning and OCR in Historical Handwriting (East Asian Scripts)",
+      "Social Network Analysis of Chinese Elite Formation"
+    ],
+    "keywords": [
+      "OCR",
+      "machine learning",
+      "social network analysis",
+      "East Asian scripts",
+      "China Biographical Database",
+      "elite formation",
+      "supervisor",
+      "address",
+      "email",
+      "tba",
+      "how",
+      "elite"
+    ],
+    "project_style": [
+      "ML-heavy",
+      "data-heavy"
+    ],
+    "preferred_background": [
+      "Python",
+      "machine learning"
+    ],
+    "source": "supervisors_input.csv project_text",
+    "summary_type": "project_text_summary"
+  },
+  {
+    "supervisor_id": "s22",
+    "name": "Adam Gibson",
+    "homepage": "",
+    "scholar_url": "",
+    "summary": "Adam Gibson supervises projects focused on automating the collation of early modern printed books using AI. Students will develop image processing and machine learning algorithms to identify subtle variations between digitized page images, tackling challenges like distortion and artifacts. This data-heavy, coding-intensive project involves preprocessing, registration, variant detection, and classification, potentially utilizing supervised or unsupervised learning. A strong background in Python and machine learning is preferred, with a focus on developing user interfaces and applying these techniques within the broader field of digital humanities research. The primary project title is \"Collating variants in early modern printed books.\"",
+    "project_titles": [
+      "Collating variants in early modern printed books"
+    ],
+    "keywords": [
+      "collation",
+      "image processing",
+      "machine learning",
+      "OCR",
+      "variant detection",
+      "digital humanities",
+      "variants",
+      "early",
+      "modern",
+      "printed",
+      "supervisor",
+      "project"
+    ],
+    "project_style": [
+      "ML-heavy",
+      "data-heavy",
+      "experimental",
+      "coding-heavy"
+    ],
+    "preferred_background": [
+      "Python",
+      "machine learning"
+    ],
+    "source": "supervisors_input.csv project_text",
+    "summary_type": "project_text_summary"
+  },
+  {
+    "supervisor_id": "s23",
+    "name": "Jon Butterworth",
+    "homepage": "",
+    "scholar_url": "",
+    "summary": "Jon Butterworth's projects center on optimizing the Contur toolkit, a Python-based system used in particle physics to investigate Beyond the Standard Model theories. Students will engage in data-heavy software engineering tasks, focusing on performance tuning through code benchmarking, database query analysis, and potentially new techniques. This involves working with large LHC datasets, relational databases, and interactive interfaces, requiring proficiency in Python, SQL, UNIX, and Git. The goal is to accelerate parameter space exploration and identify inconsistent models within particle physics experiments.",
+    "project_titles": [
+      "Optimising the Contur toolkit for testing new theories in particle physics"
+    ],
+    "keywords": [
+      "particle physics",
+      "Contur toolkit",
+      "Beyond the Standard Model",
+      "parameter space",
+      "database optimization",
+      "performance tuning",
+      "predictions",
+      "contur",
+      "testing",
+      "database",
+      "model",
+      "new"
+    ],
+    "project_style": [
+      "data-heavy",
+      "software-engineering",
+      "experimental",
+      "interdisciplinary"
+    ],
+    "preferred_background": [
+      "Python",
+      "SQL",
+      "database technologies"
+    ],
+    "source": "supervisors_input.csv project_text",
+    "summary_type": "project_text_summary"
+  },
+  {
+    "supervisor_id": "s24",
+    "name": "Maxim Molodsov",
+    "homepage": "",
+    "scholar_url": "",
+    "summary": "Maxim Molodsov's research investigates the fundamental mechanisms of DNA compaction within cells, specifically focusing on how nucleosomes and loop extrusion, driven by condensin, contribute to this complex process. Utilizing molecular dynamics simulations with LAMMPS, the projects explore the interplay between these forces. Students with a strong background in biology, modeling experience, and proficiency in Python or machine learning are encouraged to apply. The work is theory-heavy and interdisciplinary, aiming to understand the integration of mechanistically driven processes in DNA organization. This project combines computational modeling with biological insights.",
+    "project_titles": [
+      "How do cells compact and reorganize DNA?"
+    ],
+    "keywords": [
+      "DNA compaction",
+      "nucleosomes",
+      "condensin",
+      "molecular dynamics",
+      "LAMMPS",
+      "dna",
+      "how",
+      "supervisor",
+      "mechanisms",
+      "molecular",
+      "cells",
+      "compact"
+    ],
+    "project_style": [
+      "theory-heavy",
+      "software-engineering",
+      "interdisciplinary"
+    ],
+    "preferred_background": [
+      "Python",
+      "machine learning"
+    ],
+    "source": "supervisors_input.csv project_text",
+    "summary_type": "project_text_summary"
+  },
+  {
+    "supervisor_id": "s25",
+    "name": "Jonathan Tennyson",
+    "homepage": "",
+    "scholar_url": "",
+    "summary": "Jonathan Tennyson's projects center on expanding the ExoMol database through data-heavy and ML-heavy software engineering efforts. Projects include constructing cooling functions, adding highly charged atomic line lists, determining exoplanet ages, and designing workflows for MARVEL calculations utilizing large language models (LLMs). These initiatives require proficiency in Python and machine learning, with a focus on data manipulation, database construction, and potentially data mining techniques. Students with a background in these areas are encouraged to apply.",
+    "project_titles": [
+      "Creating a database of cooling functions",
+      "Adding highly charged atomic line lists to the ExoMol database",
+      "Ages of the exoplanets",
+      "Designing a workflow for running MARVEL using data provided by large language models"
+    ],
+    "keywords": [
+      "cooling functions",
+      "atomic line lists",
+      "exoplanets",
+      "MARVEL",
+      "LLMs",
+      "database construction",
+      "data retrieval",
+      "machine learning",
+      "supervisor",
+      "data",
+      "project",
+      "email"
+    ],
+    "project_style": [
+      "data-heavy",
+      "ML-heavy",
+      "software-engineering",
+      "interdisciplinary"
+    ],
+    "preferred_background": [
+      "Python",
+      "machine learning",
+      "data mining"
+    ],
+    "source": "supervisors_input.csv project_text",
+    "summary_type": "project_text_summary"
+  },
+  {
+    "supervisor_id": "s26",
+    "name": "Nikos Konstantinidis",
+    "homepage": "",
+    "scholar_url": "",
+    "summary": "Nikos Konstantinidis's research focuses on leveraging large language models (LLMs) for evaluating MSci/MSc project reports, utilizing a rubric-based approach and a pre-graded corpus to quantify agreement between LLMs and human markers. The project investigates LLMs' ability to align with assessment criteria, improve inter-marker consistency, and ultimately serve as a supplementary evaluation tool. This ML-heavy, data-driven research requires a strong background in machine learning and Python programming, exploring criterion-level judgments and experimental methodologies within the field of assessment.",
+    "project_titles": [
+      "Investigating the use of large language models in assessing coursework"
+    ],
+    "keywords": [
+      "LLMs",
+      "assessment",
+      "rubric",
+      "marking",
+      "large language models",
+      "criterion-level judgments",
+      "inter-marker consistency",
+      "models",
+      "supervisor",
+      "large",
+      "language",
+      "email"
+    ],
+    "project_style": [
+      "ML-heavy",
+      "data-heavy",
+      "experimental"
+    ],
+    "preferred_background": [
+      "machine learning",
+      "Python"
+    ],
+    "source": "supervisors_input.csv project_text",
+    "summary_type": "project_text_summary"
+  },
+  {
+    "supervisor_id": "s27",
+    "name": "William Woof",
+    "homepage": "",
+    "scholar_url": "",
+    "summary": "William Woof's projects center around applying AI to medical imaging, particularly for rare eye diseases. Students can explore leveraging vision-language models and foundation models to augment datasets for conditions like Inherited Retinal Dystrophies, or investigate anomaly detection in retinal scans using GANs. These projects are deep unsupervised learning endeavors suitable for those with a strong background in Python, machine learning, and deep learning. The work is data-heavy and experimental, offering an interdisciplinary opportunity to apply AI to retinal imaging and potentially utilize the Eye2Gene algorithm.",
+    "project_titles": [
+      "Vision-language fusion for rare eye diseases",
+      "EyeNomaly"
+    ],
+    "keywords": [
+      "rare eye diseases",
+      "deep learning",
+      "anomaly detection",
+      "GAN",
+      "retinal imaging",
+      "Inherited Retinal Dystrophies",
+      "vision-language models",
+      "supervisor",
+      "email",
+      "address",
+      "ucl.ac.uk",
+      "models"
+    ],
+    "project_style": [
+      "ML-heavy",
+      "data-heavy"
+    ],
+    "preferred_background": [
+      "Python",
+      "machine learning",
+      "deep learning"
+    ],
+    "source": "supervisors_input.csv project_text",
+    "summary_type": "project_text_summary"
+  },
+  {
+    "supervisor_id": "s28",
+    "name": "Tony Lynas-Gray",
+    "homepage": "",
+    "scholar_url": "",
+    "summary": "Tony Lynas-Gray's projects center on advanced radiative transfer techniques and molecular opacity calculations, primarily utilizing Python and HPC skills. Students will develop programs to generate opacity tables using NEMESISPY and ExoMol data, optimize bin sizes for simulations, and investigate time correction for astronomical observations on the Moon, incorporating general relativity principles. These coding-heavy, data-rich projects require a strong foundation in Python and high-performance computing, focusing on software engineering and experimental approaches to complex astrophysical problems.",
+    "project_titles": [
+      "Molecular Opacities Computed at University College London Formatted for the NEMESISPY Planetary Spectrum Retrieval Code",
+      "An Opacity Distribution Function Representation for Molecular Opacities Computed at University College London",
+      "Clock-Rates on the Surface of the Moon"
+    ],
+    "keywords": [
+      "molecular opacity",
+      "radiative transfer",
+      "NEMESISPY",
+      "ExoMol",
+      "opacity distribution function",
+      "general relativity",
+      "time correction",
+      "astronomical observation",
+      "supervisor",
+      "email",
+      "address",
+      "ucl.ac.uk"
+    ],
+    "project_style": [
+      "coding-heavy",
+      "data-heavy",
+      "experimental",
+      "software-engineering"
+    ],
+    "preferred_background": [
+      "Python",
+      "high-performance computing"
+    ],
+    "source": "supervisors_input.csv project_text",
+    "summary_type": "project_text_summary"
+  },
+  {
+    "supervisor_id": "s29",
+    "name": "Sergey Yurchenko",
+    "homepage": "",
+    "scholar_url": "",
+    "summary": "Sergey Yurchenko is leading the \"Building the ExoMol Opacity App\" project, a software engineering effort focused on developing a web interface for exoplanetary atmospheric modelling using HPC resources. Students will design a system for users to request custom opacity calculations, managing data handling and integrating with HPC workflows. This project combines web development, large data handling, and spectral analysis, directly supporting the astronomy community’s needs. Prior experience with Python, HPC, and web development is preferred, making it ideal for students interested in data-heavy, experimental research within exoplanet science.",
+    "project_titles": [
+      "Building the ExoMol Opacity App: Web Interface for HPC-Driven Exoplanetary Spectroscopy"
+    ],
+    "keywords": [
+      "exoplanets",
+      "atmospheric modelling",
+      "HPC",
+      "web interface",
+      "data handling",
+      "spectral analysis",
+      "opacity",
+      "exomol",
+      "web",
+      "supervisor",
+      "data",
+      "app"
+    ],
+    "project_style": [
+      "software-engineering",
+      "data-heavy",
+      "experimental",
+      "interdisciplinary"
+    ],
+    "preferred_background": [
+      "Python",
+      "HPC",
+      "web development"
+    ],
+    "source": "supervisors_input.csv project_text",
+    "summary_type": "project_text_summary"
+  },
+  {
+    "supervisor_id": "s30",
+    "name": "Federico Galvanin",
+    "homepage": "",
+    "scholar_url": "",
+    "summary": "This project, supervised by Federico Galvanin, centers on developing a digital twin for liquid-liquid extraction (LLE) systems, specifically for optimizing precious metals recovery. Students will employ model-based design of experiments (MBDoE) and active learning, integrating data-driven and physics-based approaches – including segmented flow simulation – within a hybrid model. The work utilizes a joint system identification framework and leverages machine learning techniques for process simulation and scenario-based optimization. A strong background in machine learning and Python is preferred, focusing on an ML-heavy, data-heavy, and interdisciplinary software engineering project.",
+    "project_titles": [
+      "Application of model-based design of experiments to develop a digital twin for liquid-liquid extraction systems for precious metals recovery"
+    ],
+    "keywords": [
+      "digital twin",
+      "liquid-liquid extraction",
+      "MBDoE",
+      "segmented flow",
+      "mass transfer",
+      "system identification",
+      "active learning",
+      "process simulation",
+      "digital",
+      "model",
+      "flow",
+      "twin"
+    ],
+    "project_style": [
+      "ML-heavy",
+      "data-heavy",
+      "software-engineering",
+      "interdisciplinary"
+    ],
+    "preferred_background": [
+      "machine learning",
+      "Python"
+    ],
+    "source": "supervisors_input.csv project_text",
+    "summary_type": "project_text_summary"
+  },
+  {
+    "supervisor_id": "s31",
+    "name": "Siyin Liu",
+    "homepage": "",
+    "scholar_url": "",
+    "summary": "Siyin Liu's research focuses on applying deep learning, particularly Vision Transformers, to the field of ophthalmology, specifically investigating Fuchs Endothelial Corneal Dystrophy (FECD). This MSc project develops and validates automated image analysis pipelines using In-Vivo Confocal Microscopy (IVCM) data to discover digital biomarkers. Students will engage in data pre-processing, model training, and rigorous validation, leveraging Python and machine learning expertise. The work is data-heavy and coding-intensive, aiming to contribute to early disease detection and potential gene therapy development within the corneal disease space.",
+    "project_titles": [
+      "AI-Powered Discovery of Digital Biomarkers in Common Corneal Disease"
+    ],
+    "keywords": [
+      "deep learning",
+      "IVCM",
+      "digital biomarkers",
+      "FECD",
+      "corneal disease",
+      "image analysis",
+      "computer vision",
+      "corneal",
+      "endothelial",
+      "project",
+      "fuchs",
+      "dystrophy"
+    ],
+    "project_style": [
+      "ML-heavy",
+      "data-heavy",
+      "coding-heavy",
+      "experimental"
+    ],
+    "preferred_background": [
+      "Python",
+      "machine learning"
+    ],
+    "source": "supervisors_input.csv project_text",
+    "summary_type": "project_text_summary"
+  }
+]

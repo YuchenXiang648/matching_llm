@@ -1,0 +1,18 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Stage1SupervisorCard",
+  "type": "object",
+  "properties": {
+    "supervisor_id": {"type": "string"},
+    "name": {"type": "string"},
+    "title": {"type": "string"},
+    "department": {"type": "string"},
+    "homepage": {"type": "string"},
+    "research_areas": {"type": "array", "items": {"type": "string"}},
+    "summary": {"type": "string"},
+    "project_style": {"type": "array", "items": {"type": "string"}},
+    "preferred_background": {"type": "array", "items": {"type": "string"}},
+    "keywords": {"type": "array", "items": {"type": "string"}}
+  },
+  "required": ["name", "summary"]
+}

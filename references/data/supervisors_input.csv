@@ -1,0 +1,54 @@
+supervisor_id,name,scholar_url,homepage,project_text
+s1,Kaan Aksit,https://scholar.google.com/citations?user=FhyBsnQAAAAJ&hl=en&oi=ao,https://www.kaanaksit.com,"Title: Physically Informed Artificial Intelligence for Immersive Displays
+
+Work Summary:
+In the rapidly evolving world of immersive displays, there's a growing need to merge cutting-edge artificial intelligence (AI) techniques with physical principles to create more realistic and engaging experiences. This project offers an exciting opportunity for students in UCL's Master's program in Scientific and Data Intensive Computing to delve into the intersection of AI, physics, and display technology. By leveraging high-performance computing, optimization algorithms, and machine learning techniques, you will develop innovative solutions that push the boundaries of immersive displays. You'll explore how physical principles can inform and enhance AI models for tasks such as realistic rendering, haptic feedback, or motion tracking in virtual reality (VR) and augmented reality (AR). Through this project, you will gain hands-on experience in designing and implementing physically informed AI algorithms that drive the future of immersive displays. You'll have the chance to work with state-of-the-art hardware and software tools while collaborating with a dynamic team of researchers and industry professionals. By joining this project, you will not only contribute to groundbreaking research but also develop valuable skills in AI, high-performance computing, optimization, and data analysis that are highly sought after by both academia and industry. Don't miss out on the opportunity to make a lasting impact in the field of immersive displays—apply now for ""Physically Informed Artificial Intelligence for Immersive Displays""! For more please consider visiting https://kaanaksit.com and https://complightlab.com."
+
+
+s2,Timo Betcke,https://scholar.google.com/citations?user=HCAkiTYAAAAJ&hl=en&oi=ao,https://timobetcke.me/bucket/A+bucket+full+of+stuff,"Title: GPU computing in Rust
+
+Work Summary:
+Rust is a relatively new systems programming language that has growing popularity in Scientific Computing. Where Rust is still lacking though is good support for GPU acceleration. In this project we want to investigate available GPU computing toolkits for Rust, setup benchmark experiments and investigate how to evolve the Rust GPU computing ecosystem. If you are interested, please apply by the end of October at the latest by sending me your CV and a brief outline of previous programming experience. Please note that I expect the successful applicant to dedicate substantial time to the project throughout the whole academic year."
+
+
+s3,Nikos Nikolaou,https://scholar.google.com/citations?user=R6b6Rp8AAAAJ&hl=en&oi=ao,https://profiles.ucl.ac.uk/66936-nikos-nikolaou/about,"Title: Uncertainty estimation & interpretability of machine learning models for medical imaging
+
+Prerequisites:
+The student must have good knowledge of Python and experience with machine learning – ideally related to medical applications and/or imaging.
+
+Work Summary:
+The project will focus on training and evaluating machine learning models in the context of a medical imaging task (to be decided with the interested student). The primary objective will be to investigate the models' predictions using model evaluation and model interpretability methods to identify under what conditions the model predictions fail, to better understand biases in the models and/or the data and perhaps to uncover interesting features in the image that can be of clinical interest. We will mainly focus on assessing and improving the models' uncertainty quantification (how certain a model is about its predictions) and what effect doing so will have on interpretability. Depending on the student's interests, the project will lean more on the uncertainty quantification or the interpretability aspect.
+
+Scientific aims:
+The project will investigate machine learning models trained in a medical imaging task of interest to the student. The focus of the project will be on investigating the effect improving the model's uncertainty estimation will have on explaining the predictions of the models. Identifying what patterns the models associate with what predictions—especially in situations where such predictions are wrong—will help us understand the extent to which the models are trustworthy or the conditions in which the models fail. This in turn can help improve their performance, identify bias in training data and improve the adoption of automated medical imaging models in this setting. Improving the quality of a model's uncertainty quantification can directly help users balance costs and benefits of actions related to the model's prediction (e.g. of possible treatments). It can also potentially indirectly improve the model's interpretability, by capturing more relevant underlying features and their relationship with the target.
+
+Overview:
+The student will learn to handle real world imaging data with all its complications (need to align images, need for data augmentation and/or imputation, handling multiple data types and class imbalance). They will also learn to train state of the art machine learning models for medical imaging (CNNs or ViTs) using rigorous methodology to fine-tune and evaluate them. If time permits they will explore transfer learning or ensemble learning methods to further improve performance. Most importantly, they will learn about (1) model interpretability methods for deep neural networks and how to integrate them in their investigation to understand, improve and extract relevant domain knowledge from the models and (2) how to measure and improve the quality of uncertainty quantification of a model. Depending on the student's interests, the project will lean more on the uncertainty quantification or the interpretability aspect.
+
+-----
+Title: Beyond backpropagation: exploring alternative ways of training deep learning models
+
+Prerequisites:
+The student must have a strong mathematical and algorithmic background, good knowledge of Python and experience with deep learning frameworks (Pytorch, Tensorflow, Keras).
+
+Work Summary:
+Backpropagation has been the cornerstone of deep learning optimization for decades. However, it suffers from biological implausibility, high memory usage, and limitations in parallelism. This project proposes to explore alternative training paradigms that eliminate the need for global gradient propagation—namely, local learning rules, Hebbian updates, feedback alignment, target propagation, and emerging frameworks such as NoProp, which eliminates both forward and backward passes. Our goal is to implement and benchmark these methods on tasks like image classification and sequence modeling using standard architectures. We will evaluate them in terms of performance, scalability, computational cost, and generalization ability. Additionally, we aim to investigate how these alternative training methods intersect with network sparsity and pruning strategies inspired by the Lottery Ticket Hypothesis (LTH). Ultimately, this research could advance understanding of more efficient, scalable, and biologically inspired learning mechanisms and offer new perspectives on model training dynamics and network initialization.
+
+Key References:
+Local Learning Rules
+Bengio, Y., Lee, D. H., Bornschein, J., & Lin, Z. (2017). Towards Biologically Plausible Deep Learning. arXiv:1502.04156
+Nøkland, A. (2016). Direct Feedback Alignment Provides Learning in Deep Neural Networks. arXiv:1609.01596
+Hebbian Updates
+Gerstner, W., Kempter, R., van Hemmen, J. L., & Wagner, H. (1996). A neuronal learning rule for sub-millisecond temporal coding. Nature
+Pehlevan, C., & Chklovskii, D. B. (2019). Optimization theory of Hebbian/anti-Hebbian networks for PCA and whitening. NeurIPS
+Feedback Alignment
+Lillicrap, T. P., Cownden, D., Tweed, D. B., & Akerman, C. J. (2016). Random synaptic feedback weights support error backpropagation for deep learning. Nature Communications
+Murray, J. M. (2019). Local online learning in recurrent networks with random feedback. eLife
+Target Propagation
+Lee, D. H., Zhang, S., Fischer, A., & Bengio, Y. (2015). Difference Target Propagation. ECML PKDD
+Bartunov, S., Santoro, A., Richards, B. A., Marris, L., Hinton, G., & Lillicrap, T. (2018). Assessing the Scalability of Biologically-Motivated Deep Learning Algorithms. NeurIPS
+NoProp Approach
+Li, Q., Teh, Y. W., & Pascanu, R. (2025). NoProp: Training Neural Networks without Back-propagation or Forward-propagation. arXiv:2503.24322
+Lottery Ticket Hypothesis (LTH)
+Frankle, J., & Carbin, M. (2019). The Lottery Ticket Hypothesis: Finding Sparse, Trainable Neural Networks. ICLR
+Frankle, J., Dziugaite, G. K., Roy, D. M., & Carbin, M. (2020). Linear Mode Connectivity and the Lottery Ticket Hypothesis. ICML"

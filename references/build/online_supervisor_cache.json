@@ -1,0 +1,32 @@
+{
+  "michael parkes": {
+    "supervisor_name": "Michael Parkes",
+    "searched_at": "2026-06-19T10:35:39.805273+00:00",
+    "model": "ollama (cll0)/gemma4:26b",
+    "profile": {
+      "supervisor_name": "Michael Parkes",
+      "identity_verified": true,
+      "summary": "Michael Parkes is a researcher at UCL whose work focuses on developing computational methods for Background Oriented Schlieren (BOS) imaging. His research involves processing various image formats and using plenoptic/light-field cameras to create 3D understandings of chemical and physical changes in materials through density-sensitive imaging.",
+      "research_areas": [
+        "Background Oriented Schlieren (BOS)",
+        "Plenoptic/Light Field Imaging",
+        "3D Density-Sensitive Imaging"
+      ],
+      "recent_work": [
+        {
+          "title": "Analysing 3D Background Orientated Schlieren Images",
+          "year": "not specified",
+          "description": "A project focused on developing software to process images (JPEG, TIF, PNG) and video frames using the BOS method and plenoptic cameras to visualize density changes in 3D.",
+          "url": "https://profiles.ucl.ac.uk/3287-michael-parkes"
+        }
+      ],
+      "sources": [
+        {
+          "title": "Michael Parkes - UCL Profile",
+          "url": "https://profiles.ucl.ac.uk/3287-michael-parkes",
+          "source_type": "official UCL page"
+        }
+      ]
+    }
+  }
+}

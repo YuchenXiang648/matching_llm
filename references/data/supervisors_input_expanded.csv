@@ -1,0 +1,1668 @@
+supervisor_id,name,scholar_url,homepage,project_text
+s1,Kaan Aksit,https://scholar.google.com/citations?user=FhyBsnQAAAAJ&hl=en&oi=ao,https://www.kaanaksit.com,"""Title: Physically Informed Artificial Intelligence for Immersive Displays
+
+Work Summary:
+In the rapidly evolving world of immersive displays, there's a growing need to merge cutting-edge artificial intelligence (AI) techniques with physical principles to create more realistic and engaging experiences. This project offers an exciting opportunity for students in UCL's Master's program in Scientific and Data Intensive Computing to delve into the intersection of AI, physics, and display technology. By leveraging high-performance computing, optimization algorithms, and machine learning techniques, you will develop innovative solutions that push the boundaries of immersive displays. You'll explore how physical principles can inform and enhance AI models for tasks such as realistic rendering, haptic feedback, or motion tracking in virtual reality (VR) and augmented reality (AR). Through this project, you will gain hands-on experience in designing and implementing physically informed AI algorithms that drive the future of immersive displays. You'll have the chance to work with state-of-the-art hardware and software tools while collaborating with a dynamic team of researchers and industry professionals. By joining this project, you will not only contribute to groundbreaking research but also develop valuable skills in AI, high-performance computing, optimization, and data analysis that are highly sought after by both academia and industry. Don't miss out on the opportunity to make a lasting impact in the field of immersive displays—apply now for ""Physically Informed Artificial Intelligence for Immersive Displays""! For more please consider visiting https://kaanaksit.com and https://complightlab.com."""
+s2,Timo Betcke,https://scholar.google.com/citations?user=HCAkiTYAAAAJ&hl=en&oi=ao,https://timobetcke.me/bucket/A+bucket+full+of+stuff,"""Title: GPU computing in Rust
+
+Work Summary:
+Rust is a relatively new systems programming language that has growing popularity in Scientific Computing. Where Rust is still lacking though is good support for GPU acceleration. In this project we want to investigate available GPU computing toolkits for Rust, setup benchmark experiments and investigate how to evolve the Rust GPU computing ecosystem. If you are interested, please apply by the end of October at the latest by sending me your CV and a brief outline of previous programming experience. Please note that I expect the successful applicant to dedicate substantial time to the project throughout the whole academic year."""
+s3,Nikos Nikolaou,https://scholar.google.com/citations?user=R6b6Rp8AAAAJ&hl=en&oi=ao,https://profiles.ucl.ac.uk/66936-nikos-nikolaou/about,"""Title: Uncertainty estimation & interpretability of machine learning models for medical imaging
+
+Prerequisites:
+The student must have good knowledge of Python and experience with machine learning – ideally related to medical applications and/or imaging.
+
+Work Summary:
+The project will focus on training and evaluating machine learning models in the context of a medical imaging task (to be decided with the interested student). The primary objective will be to investigate the models' predictions using model evaluation and model interpretability methods to identify under what conditions the model predictions fail, to better understand biases in the models and/or the data and perhaps to uncover interesting features in the image that can be of clinical interest. We will mainly focus on assessing and improving the models' uncertainty quantification (how certain a model is about its predictions) and what effect doing so will have on interpretability. Depending on the student's interests, the project will lean more on the uncertainty quantification or the interpretability aspect.
+
+Scientific aims:
+The project will investigate machine learning models trained in a medical imaging task of interest to the student. The focus of the project will be on investigating the effect improving the model's uncertainty estimation will have on explaining the predictions of the models. Identifying what patterns the models associate with what predictions—especially in situations where such predictions are wrong—will help us understand the extent to which the models are trustworthy or the conditions in which the models fail. This in turn can help improve their performance, identify bias in training data and improve the adoption of automated medical imaging models in this setting. Improving the quality of a model's uncertainty quantification can directly help users balance costs and benefits of actions related to the model's prediction (e.g. of possible treatments). It can also potentially indirectly improve the model's interpretability, by capturing more relevant underlying features and their relationship with the target.
+
+Overview:
+The student will learn to handle real world imaging data with all its complications (need to align images, need for data augmentation and/or imputation, handling multiple data types and class imbalance). They will also learn to train state of the art machine learning models for medical imaging (CNNs or ViTs) using rigorous methodology to fine-tune and evaluate them. If time permits they will explore transfer learning or ensemble learning methods to further improve performance. Most importantly, they will learn about (1) model interpretability methods for deep neural networks and how to integrate them in their investigation to understand, improve and extract relevant domain knowledge from the models and (2) how to measure and improve the quality of uncertainty quantification of a model. Depending on the student's interests, the project will lean more on the uncertainty quantification or the interpretability aspect.
+
+-----
+Title: Beyond backpropagation: exploring alternative ways of training deep learning models
+
+Prerequisites:
+The student must have a strong mathematical and algorithmic background, good knowledge of Python and experience with deep learning frameworks (Pytorch, Tensorflow, Keras).
+
+Work Summary:
+Backpropagation has been the cornerstone of deep learning optimization for decades. However, it suffers from biological implausibility, high memory usage, and limitations in parallelism. This project proposes to explore alternative training paradigms that eliminate the need for global gradient propagation—namely, local learning rules, Hebbian updates, feedback alignment, target propagation, and emerging frameworks such as NoProp, which eliminates both forward and backward passes. Our goal is to implement and benchmark these methods on tasks like image classification and sequence modeling using standard architectures. We will evaluate them in terms of performance, scalability, computational cost, and generalization ability. Additionally, we aim to investigate how these alternative training methods intersect with network sparsity and pruning strategies inspired by the Lottery Ticket Hypothesis (LTH). Ultimately, this research could advance understanding of more efficient, scalable, and biologically inspired learning mechanisms and offer new perspectives on model training dynamics and network initialization.
+
+Key References:
+Local Learning Rules
+Bengio, Y., Lee, D. H., Bornschein, J., & Lin, Z. (2017). Towards Biologically Plausible Deep Learning. arXiv:1502.04156
+Nøkland, A. (2016). Direct Feedback Alignment Provides Learning in Deep Neural Networks. arXiv:1609.01596
+Hebbian Updates
+Gerstner, W., Kempter, R., van Hemmen, J. L., & Wagner, H. (1996). A neuronal learning rule for sub-millisecond temporal coding. Nature
+Pehlevan, C., & Chklovskii, D. B. (2019). Optimization theory of Hebbian/anti-Hebbian networks for PCA and whitening. NeurIPS
+Feedback Alignment
+Lillicrap, T. P., Cownden, D., Tweed, D. B., & Akerman, C. J. (2016). Random synaptic feedback weights support error backpropagation for deep learning. Nature Communications
+Murray, J. M. (2019). Local online learning in recurrent networks with random feedback. eLife
+Target Propagation
+Lee, D. H., Zhang, S., Fischer, A., & Bengio, Y. (2015). Difference Target Propagation. ECML PKDD
+Bartunov, S., Santoro, A., Richards, B. A., Marris, L., Hinton, G., & Lillicrap, T. (2018). Assessing the Scalability of Biologically-Motivated Deep Learning Algorithms. NeurIPS
+NoProp Approach
+Li, Q., Teh, Y. W., & Pascanu, R. (2025). NoProp: Training Neural Networks without Back-propagation or Forward-propagation. arXiv:2503.24322
+Lottery Ticket Hypothesis (LTH)
+Frankle, J., & Carbin, M. (2019). The Lottery Ticket Hypothesis: Finding Sparse, Trainable Neural Networks. ICLR
+Frankle, J., Dziugaite, G. K., Roy, D. M., & Carbin, M. (2020). Linear Mode Connectivity and the Lottery Ticket Hypothesis. ICML"""
+s4,Guido Germano,https://scholar.google.com/citations?user=8zCKUmoAAAAJ&hl=en&oi=ao,,"Title: Large-scale molecular graphics of convex-body fluid
+
+Supervisor 1 email address: g.germano@ucl.ac.uk
+
+Supervisor 2 name: TBA
+
+Supervisor 2 email address: TBA
+
+Work Summary:
+1. Update all the library calls and the makefile so that QMGA compiles on Linux.
+2. Move the distribution to GitHub.
+3. Modify the source code to exploit the most recent developments of OpenGL in order to improve the
+program’s performance e.g. along the lines described in Section 4 of the paper (occlusion queries, backface
+culling, the use of vertex buffer objects, etc.).
+4. Port the final result to macOS and Windows.
+5. Additionally or alternatively to using OpenGL, rewrite the program basing it on WebGL and thus JavaScript
+so that it works always and everywhere, and is as fast as with C++ without worrying any more about builds,
+libraries, compilers and compatibility. This is based on the advice of Professor Tobias Ritschel, UCL, who is the
+module leader of COMP0027 Computer Graphics and has been using WebGL for all his teaching since 2015;
+see http://vecg.cs.ucl.ac.uk/ . This evolution would be released with the new name WebMGA.
+Obviously the most interesting parts are 3 and 5, but 1, 2 and 4 would be useful too along the way.
+
+Scientific aims:
+Improve the performance of QMGA.
+
+Overview:
+==== WebMGA: Large-scale molecular graphics of convex-body fluids ====
+QMGA is a molecular graphics program written in C++ and based on the OpenGL, QT and Glut libraries. It is
+available open source for Linux on http://qmga.sourceforge.net , where you can also find the PDF of a
+paper (https://pubs.acs.org/doi/10.1021/ct700192z) which describes it and has been published in the Journal of
+Chemical Theory and Computation (impact factor = 5.011). In October 2020, this paper has been cited 62
+times on Google Scholar, 48 times on Web of Science and 48 times on Scopus.
+In the interactive, rendered representation of large ensembles of convex bodies performance is crucial
+because typical sizes arising in state-of-the-art coarse-grained molecular dynamics simulations of e.g. liquid
+crystals on massively parallel computers increase from year to year, from a few thousands 20 years ago to 100
+000 when the program was first published and millions nowadays. In its niche, this program is still without
+rivals for features, interactivity and speed. Although it has been open source since 2008, unfortunately the
+hope has not been fulfilled that the development of the code is picked up by a community; instead, users write
+me asking for help because it does not compile any more straight away. Therefore developments (after some
+unavoidable maintenance) are proposed as this MSc project:
+1. Update all the library calls and the makefile so that QMGA compiles on Linux.
+2. Move the distribution to GitHub.
+3. Modify the source code to exploit the most recent developments of OpenGL in order to improve the
+program’s performance e.g. along the lines described in Section 4 of the paper (occlusion queries, backface
+culling, the use of vertex buffer objects, etc.).
+4. Port the final result to macOS and Windows.
+5. Additionally or alternatively to using OpenGL, rewrite the program basing it on WebGL and thus JavaScript
+so that it works always and everywhere, and is as fast as with C++ without worrying any more about builds,
+libraries, compilers and compatibility. This is based on the advice of Professor Tobias Ritschel, UCL, who is the
+module leader of COMP0027 Computer Graphics and has been using WebGL for all his teaching since 2015;
+see http://vecg.cs.ucl.ac.uk/ . This evolution would be released with the new name WebMGA.
+Obviously the most interesting parts are 3 and 5, but 1, 2 and 4 would be useful too along the way."
+s5,Mose Giordano,,https://giordano.github.io/aboutme/,"Title: Implementation of Lomb-Scargle algorithm in Julia
+
+Supervisor 1 email address: m.giordano@ucl.ac.uk
+
+Supervisor 2 name: David Perez-Suarez
+
+Supervisor 2 email address: d.perez-suarez@ucl.ac.uk
+
+Pre-Requisites:
+The Lomb-Scargle periodogram is a technique commonly used in Astronomy to detect the period of a periodic,
+possibly unevenly sampled, signal (e.g. light curves of variable stars). Dr Giordano is the author
+of https://github.com/JuliaAstro/LombScargle.jl, an open-source package which collects some
+implementations of the Lomb-Scargle periodogram in Julia, a high-level programming language for scientific
+computing. There is another algorithm, based on the non-equispaced fast Fourier transform, which is
+supposed to deliver better performance than the other algorithms implemented in LombScargle.jl. The goal of
+this project is to write a high-performance implementation of this algorithm in Julia, contributing to the
+LombScargle.jl package, and compare its performance with the other algorithms. An overview of the work to
+do is available at https://github.com/JuliaAstro/LombScargle.jl/issues/8."
+s6,Peter Bentley,https://scholar.google.com/citations?user=5O519TYAAAAJ&hl=en&oi=ao,,"Title: Deep Morphogenesis: Distributed Generative Design using Machine Learning
+
+Supervisor 1 email address: p.bentley@cs.ucl.ac.uk
+
+Supervisor 2 name: Soo Ling LIM
+
+Supervisor 2 email address: s.lim@cs.ucl.ac.uk
+
+Pre-Requisites:
+Some experience of machine learning and/or evolutionary computation useful. Python programming essential.
+
+Work Summary:
+The work will involve becoming familiar with the existing state of the art, and then building from it with the aim
+of learning more about how ML can enhance generative design and our ability to use computers to generate
+novel complex forms that perform a specific function. At least one new model that can generate a complex
+form will be attempted.
+• Please send a CV
+
+Scientific aims:
+In this project the aim is to achieve a similar kind of generative design. Methods such as generative adversarial
+networks or variational autoencoders will enable the generation of a representation with the right properties for
+development: the right amount of expressiveness, useful bias, evolvability to enable effective search,
+adaptability and efficiency. This representation combined with methods such as cellular automata or multi
+agent system will enable the generation of different forms, akin to [1] and [2]. Techniques such as genetic
+algorithms or novelty search will enable the exploration of different forms using this representation, e.g. the
+methods in [3]. The result would be a distributed generative design process that generates a complex desired
+form efficiently in the same way that nature does it - using combining learned information with iterative growth
+and interaction from an environment such that it meets new constraints, resulting in a shape massively more
+complex than the 'instructions' needed to define it. It would also be a novel combination of AI techniques that
+expand the capabilities of all.
+[1] Mordvintsev, et al., ""Growing Neural Cellular Automata"", Distill, 2020. https://distill.pub/2020/growing-ca/
+[2] Lomas, A. “Morphogenetic Forms”. Artworks and videos. https://andylomas.com/videos.html
+[3] Kumar, S. and Bentley, P. J. (Contributing Eds.) (2003) On Growth, Form and Computers. Academic Press,
+London.
+
+Overview:
+Generative design is big business today. Automatically creating 3D geometries such that form fits function is
+many orders of magnitude more complex than working with 2D images. Get it right and you can auto generate
+building designs, aerodynamic forms, engine components – vital applications for companies such as Autodesk
+and its customers.
+Current approaches used in industry rely on genetic algorithms to optimize forms. More recent work uses deep
+learning to generate forms based on large datasets of existing designs. These approaches show useful results
+but they are limited in complexity and limited by data – GAs can find novelty but they struggle to find complex
+forms, and deep learning cannot innovate: its solutions are always variants of past designs and it doesn’t adapt
+
+them to new environments. We need a method that combines ideas from both.
+Nature teaches us some amazing lessons when it comes to intelligence and has inspired many fields of AI from
+deep learning to evolutionary computation. But an often-overlooked example of intelligence is development -
+the process of embryogenesis that builds all complex forms of life (including the brain) through interactions
+between genes, cells and environments. Development combines evolution with gene regulatory networks and
+runs a genetic program in parallel across all our cells. It works because the representation (our DNA) contains
+lessons learned from unthinkable numbers of challenges faced. It also works because development is not a
+blueprint, but a way of building morphology in combination with an environment – change the environment and
+the form changes to match.
+
+-----
+Title: Evolving Latent Variables
+
+Supervisor 1 email address: p.bentley@cs.ucl.ac.uk
+
+Supervisor 2 name: TBA
+
+Supervisor 2 email address: TBA
+
+Work Summary:
+Optimization and exploration only works when given an appropriate representation. It is the (genetic)
+representation that defines the searchspace, and we can map to a new representation (phenotype) in order to
+evaluate that quality of the solution. But designing a good representation that defines a smooth, searchable
+space is something of an art form, especially when the problem may naturally be massively multivariate,
+discontinuous, noisy, multiobjective, or constrained. In this project the aim is to use generative ML such as
+GANs or autoencoders such as VAEs to learn the representation from examples of existing solutions to the
+problem (or similar problems). We then use an optimizer such as a genetic algorithm to search in the latent
+space, and use the learned neural model to map from the evolved latent variables to the phenotype so that we
+can evaluate the solutions. This idea is becoming popular and looks to be the future of optimization. But how
+best to learn latent spaces? GANs enable more precise representations, and some level of latent variable
+disentanglement can be achieved; VAEs are more fuzzy but have encoders and decoders enabling us to search
+in latent spaces and original spaces simultaneously and translate between them. How do they compare? Or
+would other generative approaches work better? We have shown this works for constrained optimization but
+will it work for difficult real world problems? Or for multiobjective optimization? For reading material on this
+topic, check out papers such as these:
+https://scholar.google.com/citations?user=Tf8winBIYUsC&hl=en
+https://scholar.google.com/citations?user=GGyARB8AAAAJ&hl=en&oi=sra
+https://doi.org/10.1145/3520304.3533993
+https://doi.org/10.1007/978-3-031-14714-2_26"
+
+s7,Edina Rosta,https://scholar.google.com/citations?user=_YRRIxsAAAAJ&hl=en&oi=ao,,"Title: Design and Development of Autoencoders to Identify Latent Space for Protein Dynamics
+
+Supervisor 1 email address: e.rosta@ucl.ac.uk
+
+Supervisor 2 name: Sam Martino
+
+Supervisor 2 email address: sam.martino.20@ucl.ac.uk
+
+Pre-Requisites:
+Students with background on Data Science, Machine Learning, Biophysics or Computational Chemistry are
+encouraged to apply, but it is not required. Knowledge of Python programming language is also recommended,
+as well as experience in scripting and Linux/bash systems. MATLAB is also a plus, but not needed. TensorFlow
+and Scikit-Learn knowledge is also valued.
+
+Work Summary:
+· Learning to perform and/or visualise MD simulation data on biomolecular systems.
+· Learning to use Python for data analysis and parse MD trajectories.
+· Applying ML architectures e.g., autoencoders for unsupervised classification of MD data.
+· Analysis of trained ML models to understand key collective variables in the latent space.
+· Use of the ML models for further sampling.
+• Students are expected to send their CV along with a bit of information on their background and what experience
+they previously had.
+
+Scientific aims:
+· Generate and/or parse molecular dynamics trajectories for ML input
+· Apply and train ML architectures to perform unsupervised learning for conformational changes taking place in
+the system
+· Analyse trained ML models to extract key dynamical features
+
+Overview:
+Recent AI-based structure prediction of biological systems has shown extraordinary successes, e.g., by
+Google’s AlphaFold. Understanding protein conformational sampling nevertheless is still one of the two main
+development areas for large scale atomistic biomolecular simulations besides force field development. To
+extract relevant collective variables that describe the key features of the protein dynamics is a challenging
+task, due to the high dimensionality data driven by complex interactions. Here we will explore recent machine
+learning (ML) methods to develop tools that characterise the time evolution of protein dynamics and help
+predict structural changes leading to the protein function.
+
+-----
+Title: Combining Machine Learning and Molecular Dynamics Simulations for the Selection of Relevant Collective Variables
+
+Supervisor 1 email address: e.rosta@ucl.ac.uk
+
+Supervisor 2 name: Pedro Buigues
+
+Supervisor 2 email address: pedro.jorro.20@ucl.ac.uk
+
+Pre-Requisites:
+Students with background on Machine Learning, Biophysical systems or Computational Chemistry is useful but
+not required. Experience with Molecular Dynamics (MD) simulations is helpful but not required. Knowledge of
+Python programming language is also recommended, as well as experience in scripting and Linux/bash
+systems. TensorFlow and Scikit-Learn knowledge is also valued.
+
+Work Summary:
+· Understanding protein unbinding processes, including elements of structural biology.
+· Learn to perform MD simulations and use analysis tools to gather relevant data and create datasets
+(Pymol/VMD).
+· Apply data visualization to find relevant reaction coordinates for biological systems.
+
+· Create/Improve code to automate the finding of relevant variables in protein unbinding trajectories.
+· Getting familiar with Machine Learning (ML) models such as Neural Networks (MLP, RNN, LSTM
+architectures) and Gradient Boosting Decision Trees (Scikit-Learn and TensorFlow).
+· Evaluations and limitations of the models and their applicability.
+• Students are expected to send their CV along with a bit of information on their background and what experience
+they previously had.
+
+Scientific aims:
+· Parse through MD data (cartesian coordinates of millions of atoms) for further analysis.
+· Develop and apply ML models to learn protein unbinding classification.
+· Explore and understand the MLTSA results at the high-dimensional space.
+· Implement other methodologies for relevant feature identification.
+
+Overview:
+Ligand unbinding is a vital part of drug design, Molecular Dynamics (MD) simulations allow us to witness these
+events at high resolution, analyse the data and find relevant information that will allow us to tweak small
+molecules to alter their pharmacokinetic properties. This procedure results in large amounts of data to analyse,
+which requires automated methods. This project focuses on applying and developing a Machine Learning
+Transition State Analysis (MLTSA) method for MD simulations to identify the relevant features in large datasets
+of the ligand unbinding events. Extensive analysis of these features can be used to better sample these
+processes, to understand in detail the protein involvement, and to suggest future design for optimizing
+molecules with long residence times.
+
+-----
+Title: Markov models with reinforcement learning for enhanced sampling simulations
+
+Supervisor 1 email address: e.rosta@ucl.ac.uk
+
+Supervisor 2 name: Balint Dudas
+
+Supervisor 2 email address: b.dudas@ucl.ac.uk
+
+Pre-Requisites:
+Essential: Python; basic ML (PyTorch/TF or scikit-learn); numerics; comfort with Linux/CLI.
+Helpful: Any of OpenMM/MD basics or RL (PPO/SAC) concepts.
+Training and starter code will be provided; the project can be steered more toward RL/ML, simulation, or
+statistical validation depending on the student.
+
+Work Summary:
+The student will start from existing PPO/SAC code integrating Gaussian bias potentials with Langevin
+dynamics (OpenMM), where the agent learns to accelerate barrier crossings. We will (i) standardise
+environments (analytical → Langevin → simple MD), (ii) refine agent interfaces (continuous actions,
+entropy/clip tuning), (iii) add baselines (MFPT-driven MD) for apples-to-apples comparisons. Deliverables
+include a reproducible pipeline (envs, agents, baselines, metrics), comparative plots, and a short manuscript-
+style report.
+
+Scientific aims:
+Robust RL biasing on physical simulators
+Stabilise PPO/SAC agents for Langevin/MD environments with continuous actions (bias
+centre/width/height), curriculum difficulty, and safe-exploration constraints to prevent unphysical forces
+and have a more efficient performance.
+Generalise state and reward representations
+Move beyond handcrafted 1D states to richer encodings (local energy/forces, short trajectory snippets,
+MSM-derived slow coordinates), and compare goal-based (distance/progress) vs kinetics-aware
+(MFPT/success-bonus) rewards.
+Prototype scaling beyond 1D
+Demonstrate transfer to a 2D model surface (e.g., double-well + orthogonal coordinate) or a minimal
+biomolecular CV pair, testing multi-Gaussian or adaptive bias fields.
+Enhanced simulation protocol for a biomolecular example, including protein dynamics.
+
+Benchmark against established enhanced sampling
+Head-to-head comparisons with other methods; report MFPT, barrier-crossing rate, state coverage, and
+estimator variance.
+Pathway validation
+Validate the likelihood of obtaining an observed pathway vs unbiased mechanism.
+
+Overview:
+This project advances a reinforcement-learning (RL) framework for autonomous bias placement to
+accelerate rare events in molecular simulations. Building on your prior integration of PPO/SAC/A2C with
+Langevin dynamics and Markov State Models (MSMs)—where the agent optimised Gaussian bias
+parameters and improved sampling efficiency on 1D analytical and Langevin benchmarks—this extension will (i)
+make the method more efficient, (ii) scale it beyond toy models, and (iii) establish baselines for physically
+meaningful observables, such as mechanistic pathways.
+
+-----
+Title: Biasing sampling on networks
+
+Supervisor 1 email address: e.rosta@ucl.ac.uk
+
+Supervisor 2 name: Fahim Faizi
+
+Supervisor 2 email address: f.faizi.14@ucl.ac.uk
+
+Pre-Requisites:
+Good working knowledge of Matlab is required. Interest and knowledge about ML methods, Python
+programming is also desirable.
+
+Work Summary:
+We will explore algorithms to bias the sampling of kinetic networks. We will use stochastic block model and
+other, real data-derived networks as a starting point, and run dynamical trajectories on the network nodes
+using a kinetic Monte Carlo algorithm.
+We will develop measures to assess the efficiency of sampling, which will serve to identify a suitable loss
+function. We will also apply bias on the network, aiming to develop a history-dependent sampling where the
+bias is optimally applied. We will use ML-based optimization to determine the required bias.
+
+Scientific aims:
+Sampling problems are notoriously difficult, especially for high-dimensional systems. Here we will aim to
+develop ML-assisted sampling algorithms that improve sampling by applying bias in high-dimensional
+
+problems such as for complex networks.
+
+-----
+Title: Machine Learning–Driven Functional Classification of NTP-Processing Enzymes
+
+Supervisor 1 email address: e.rosta@ucl.ac.uk
+
+Supervisor 2 name: Balint Dudas
+
+Supervisor 2 email address: b.dudas@ucl.ac.uk
+
+Pre-Requisites:
+Basic Python programming: some familiarity with data handling using libraries such as pandas, numpy,
+and matplotlib.
+Introductory machine learning knowledge: understanding of model training, validation, and
+performance evaluation (e.g., using scikit-learn or PyTorch).
+General understanding of protein structure and enzyme function (e.g., active sites, cofactors,
+catalytic residues) is useful.
+Helpful but not essential:
+Experience with bioinformatics tools or databases (UniProt, PDB, InterPro, or AlphaFold/Protenix).
+Familiarity with sequence embeddings or deep learning models for proteins (e.g., ESM, ProtBERT).
+Interest in structural enzymology or computational biochemistry, particularly mechanisms of
+ATP/GTP hydrolysis.
+Training provided:
+All domain-specific training (e.g., enzyme annotation systems, use of Protenix and DALI, feature extraction
+pipelines, and model interpretation tools) will be provided during the project. The student will develop practical
+skills in data curation, feature engineering, and machine learning applied to biological problems.
+
+Work Summary:
+This project will investigate how information encoded in protein sequences determines three-dimensional
+structure and ultimately biochemical function. The student will use a combination of bioinformatics and
+machine learning approaches to identify sequence and structural patterns that distinguish proteins with
+different catalytic or binding activities. Using curated datasets from UniProt, PDB, and InterPro, the project
+will integrate modern protein language models and structural prediction tools (e.g., AlphaFold or Protenix)
+to derive descriptors that capture functionally relevant features such as active-site geometry, metal-ion
+coordination, or ligand-binding motifs.
+Machine learning models will then be trained to predict the functional class or Enzyme Commission (EC)
+number of proteins from these features, and results will be benchmarked against established bioinformatics
+annotation pipelines. Through this work, the student will gain experience in computational protein science,
+including data curation, feature engineering, and model development, while contributing to the broader
+understanding of how sequence diversity shapes protein function across enzyme families.
+
+Scientific aims:
+Uncover sequence–structure–function relationships in proteins
+Identify how variations in amino acid sequence give rise to distinct structural motifs, active-site
+geometries, and catalytic functions across enzyme families.
+Develop computational models for protein function prediction
+Build and evaluate machine learning models that integrate sequence embeddings and structural features
+to classify proteins by functional category (e.g., EC number or catalytic mechanism).
+Characterise structural determinants of enzymatic specificity
+Determine which sequence or structural features—such as cofactor-binding motifs, metal coordination
+sites, or residue conservation patterns—most strongly influence functional outcomes.
+
+Benchmark and validate predictive approaches
+Compare the performance of data-driven models against existing bioinformatics annotation tools (e.g.,
+SUPFAM, InterPro, DALI) and assess their ability to predict or refine enzyme function assignments.
+Enable functional annotation of uncharacterised proteins
+Apply the trained models to unannotated or poorly characterised protein sequences to propose testable
+hypotheses about their molecular roles, supporting future experimental validation.
+
+Overview:
+Understanding how protein sequence determines structure and function is a central challenge in molecular
+biology. Despite the success of structural prediction tools such as AlphaFold, linking these predicted
+structures to specific biochemical functions remains a major unsolved problem. This project aims to bridge
+that gap by developing computational and machine learning approaches that connect sequence information to
+protein function across diverse enzyme families.
+The student will assemble and analyse large datasets of protein sequences and structures from resources
+such as UniProt, PDB, and InterPro, extracting features that describe active-site geometry, residue
+conservation, and cofactor-binding motifs. These data will be used to train machine learning models capable
+of predicting functional classes (e.g., Enzyme Commission numbers) directly from sequence and structure-
+derived descriptors.
+By integrating methods from bioinformatics, data science, and computational biochemistry, the project will
+provide new insights into the determinants of enzyme specificity and catalysis. The broader goal is to advance
+automated protein annotation and improve our ability to predict function for the growing number of
+uncharacterised proteins emerging from large-scale sequencing efforts.
+
+-----
+Title: Causal Inference and Mechanistic Discovery in Complex Time-Series Data
+
+Supervisor 1 email address: e.rosta@ucl.ac.uk
+
+Supervisor 2 name: Balint Dudas
+
+Supervisor 2 email address: b.dudas@ucl.ac.uk
+
+Pre-Requisites:
+Essential skills:
+Basic proficiency in Python programming and data handling (numpy, pandas, matplotlib).
+
+Familiarity with statistics and time-series concepts (e.g., correlation, regression, or basic signal
+analysis).
+Interest in the principles of causality, mechanistic modeling, or complex system dynamics.
+Desirable (but not essential):
+Experience with machine learning or graph-based models (scikit-learn, networkx, or pytorch).
+Exposure to simulation data analysis (e.g., molecular dynamics, agent-based models, or physical
+simulations).
+Knowledge of basic probability theory or information theory concepts (entropy, mutual information).
+Training provided:
+Students will receive hands-on training in causal inference algorithms, model evaluation, and scientific data
+visualization. The project can be tailored to emphasize data science, physics, or biomolecular applications
+depending on the student’s background and interests.
+
+Work Summary:
+This project will apply causal inference techniques to identify directional relationships within complex
+biological and physical systems. While traditional data analysis methods reveal correlations between variables,
+they cannot determine which processes drive others. The student will explore how causal discovery
+algorithms—such as PC, PCMCI, VAR-LiNGAM, and Transfer Entropy—can be used to extract cause–effect
+networks from diverse time-series data, including analytical models, publicly available datasets, and
+molecular dynamics (MD) simulations.
+The project will begin with controlled synthetic datasets to benchmark and validate different causal algorithms,
+before extending the analysis to more complex biological and physical systems. By comparing methods and
+quantifying their robustness, the student will help establish best practices for applying causal inference to
+time-dependent scientific data.
+Through this work, the student will gain experience in time-series analysis, causal discovery, and
+computational modeling, developing transferable skills that bridge data science, physics, and molecular
+biology. The project will contribute to a growing effort to move beyond correlation-based approaches and
+toward mechanistic understanding of dynamic systems.
+
+Scientific aims:
+Develop and benchmark causal discovery methods for molecular systems
+Evaluate and compare existing causal inference algorithms (e.g., PC, PCMCI, VAR-LiNGAM, Transfer
+Entropy) using synthetic and molecular dynamics (MD) datasets to identify robust approaches for
+detecting directional dependencies in biomolecular trajectories.
+Quantify causal relationships between structural and dynamical variables
+Apply causal inference to MD simulations to determine which molecular coordinates (residues, distances,
+dihedral angles, solvent interactions) act as causal drivers of conformational transitions, binding events,
+or allosteric communication.
+Validate causal insights against physical and biochemical knowledge
+Test the inferred causal networks against known mechanistic models of protein motion or ligand binding
+to assess their physical plausibility and interpretability.
+Establish a general workflow for causal analysis of biomolecular simulations
+Integrate trajectory preprocessing, dimensionality reduction, causal discovery, and visualization into a
+reproducible computational pipeline applicable across protein and nucleic acid systems.
+
+Explore applications to mechanistic and drug discovery problems
+Demonstrate how causal inference can reveal functionally relevant pathways, identify key residues or
+water-mediated couplings, and generate hypotheses for experimental testing or structure-based design.
+
+Overview:
+Traditional molecular dynamics (MD) simulations provide rich time-resolved data on biomolecular motions but
+often rely on correlation-based analyses, which cannot reveal the true direction of molecular influence. This
+project applies causal discovery methods to uncover the underlying cause–effect relationships governing
+protein–ligand interactions and conformational changes.
+Using timeseries from databases and MD simulations, the project will benchmark several causal inference
+algorithms (e.g., PC, PCMCI, Transfer Entropy, and VAR-LiNGAM) to determine their performance on
+synthetic and real molecular datasets. The best-performing approach will then be applied to identify causal
+pathways linking key residues and solvent molecules during ligand binding and unbinding events.
+By integrating computational biophysics with causal inference and time-series analysis, the project aims
+to move beyond correlations to reveal the mechanistic drivers of conformational transitions in proteins. The
+broader goal is to establish general frameworks for applying causal discovery to biomolecular simulations,
+ultimately providing insights relevant to drug design, allosteric regulation, and molecular mechanism
+elucidation."
+
+s8,Kris Thielemans,https://scholar.google.com/citations?user=Y1AdYQEAAAAJ&hl=en&oi=ao,,"Title: Partial Volume Correction in PET Imaging of the Lung
+
+Supervisor 1 email address: k.thielemans@ucl.ac.uk
+
+Supervisor 2 name: Kjell Erlandsso
+
+Pre-Requisites:
+Programming experience essential, ideally Python. Basic knowledge of CNN architectures and training desired
+but not required. Interest of making meaningful contributions to research.
+
+Work Summary:
+The work involved will consist of simulation of realistic PET images for the thorax to evaluate different PVC
+methods. If adaptations of PVC methods are required, the student will need to implement them using the SIRF
+open source software using Python. We will also
+have 3D printed test objects available. The student can participate in scanning the test objects and data
+analysis.
+• Email with brief CV. Short meeting to discuss interests and background
+
+Scientific aims:
+This project will investigate if some these techniques can be adapted to the lung, which has several challenges
+including air content and heterogeneous uptake.
+
+Overview:
+Positron Emission Tomography (PET) imaging is a common technique to image functional processes. By
+injecting a radiotracer, metabolic processes related to that molecule can be measured in vivo. There is
+increasing interest in imaging the diseased lung, with projects at UCL/H including post-COVID-19 scanning
+with multiple radiotracers.
+However, due to the physics processes involved in doing the PET measurement as well limitations on
+(radioactive) dose to the patient, spatial resolution of PET is limited to about 5mm in the thorax. For certain
+radionuclides, positron range degrades the resolution even more, especially in the lung due to its low density.
+This reduced spatial resolution impacts quantification and is called the “partial volume effect” (PVE).
+Several techniques have been developed to correct for PVE, ranging from model-based, deconvolution to
+machine learning using convolutional neural networks [1]. However, these techniques have mostly been
+developed for, and evaluated in, brain application.
+This project will be working within a research framework on standardisation of lung imaging with PET in a
+collaboration between the Institute of Nuclear Medicine at UCL/UCLH and the UK National Physical Laboratory.
+[1] Erlandsson, Kjell, Irène Buvat, P. Hendrik Pretorius, Benjamin A. Thomas, and Brian F. Hutton. ‘A Review of
+Partial Volume Correction Techniques for Emission Tomography and Their Applications in Neurology,
+Cardiology and Oncology’. Physics in Medicine and Biology 57, no. 21 (November 2012): R119–59.
+https://doi.org/10.1088/0031-9155/57/21/r119 .
+
+-----
+Title: Using Deep Learning to estimate average PET sensitivity to correct for motion in PET
+
+Supervisor 1 email address: k.thielemans@ucl.ac.uk
+
+Supervisor 2 name: Sam Porter
+
+Supervisor 2 email address: sam.porter.18@ucl.ac.uk
+
+Pre-Requisites:
+Programming experience essential, ideally Python or MATLAB. Basic knowledge of CNN architectures for
+imaging and training desired but not required. Interest of making meaningful contributions to research.
+
+Work Summary:
+In Positron Emission Tomography (PET) a radiotracer is injected and its distribution is measured, allowing to
+investigate metabolic processes related to that molecule in vivo. In the thorax, patient motion is unavoidable in
+standard clinical scans due to the scan duration (~2 minutes). Several methods have been developed to
+correct the motion by splitting data in different motion states and taking motion into account during
+reconstruction. However, as the measured photons are attenuated, the effective sensitivity varies locally as
+well as with motion. This needs to be taken into account, but the relevant calculation is often the most
+computationally expensive part.
+The aim of this project is to investigate the use of CNNs to compute how the effective sensitivity changes with
+motion. This is a novel approach and could lead to publication.
+
+-----
+Title: Using machine learning techniques to denoise SPECT images for quantitative accuracy
+
+Supervisor 1 email address: k.thielemans@ucl.ac.uk
+
+Supervisor 2 name: Cate Gascoigne
+
+Supervisor 2 email address: cate.cascoigne.23@ucl.ac.uk
+
+Pre-Requisites:
+Programming experience and a basic understanding of machine learning is essential. An interest in medical
+imaging and quantitative analysis is desirable.
+
+Overview:
+Single Photon Emission Computed Tomography (SPECT) is a three-dimensional medical imaging technique. A
+radiopharmaceutical ‘tracer’ is administered to the patient and accumulates in organs or processes under
+investigation. For example, radiopharmaceuticals which bind to proteins found on certain types of tumours can
+be used to detect and evaluate cancer. Gamma photons emitted by the tracer can be detected outside the
+body using a gamma camera. This information is converted into a three-dimensional image representing the
+distribution of the tracer, allowing clinicians to infer functional information. This can help to diagnose the
+patient’s condition, monitor disease progression and assess the effectiveness of any treatments.
+For many years, clinical evaluation of SPECT images has been mainly qualitative, i.e. clinicians report what they
+can see in the images without access to quantitative metrics. Improvements in technology and advances the
+development of cancer treatments have led to increased interest in quantitative SPECT imaging. This allows
+clinicians to estimate absolute quantities of tracer uptake within volumes of interest. This is useful for
+assessing the extent of disease, planning treatments and comparing uptake between timepoints to evaluate
+progression.
+Due to limitations associated with SPECT, image quality can be poor, and quantification is inaccurate. Low
+spatial resolution and low sensitivity (the proportion of gamma photons emitted which contribute to the final
+image) lead to blurry and noisy images. It is difficult to distinguish structures from the background and
+estimate their true size and tracer concentration. Traditionally, image quality has been understood as a
+compromise between spatial resolution and sensitivity. However, machine learning (ML) introduces the
+possibility of overcoming this trade-off.
+This project will focus on using state-of-the-art ML techniques to denoise SPECT images and achieve
+quantitative accuracy, particularly in small volumes of interest. The work will build on two recent projects which
+our group has participated in. The first project compared the denoising performance of three models (a 3D U-
+
+Net, a projection-domain single-step PDPM (Poisson diffusion-based 3D U-Net), and Swin UNETR) on
+simulated and clinical data. The second project trained a 2D U-Net to denoise simulated and clinical data and
+assessed quantitative accuracy in small volumes (tumours). Possible areas to expand the research include:
+· Generating a large, diverse and clinically realistic training dataset, for example using Monte Carlo
+simulation.
+· Investigating model architectures, hyperparameters, loss functions and training strategies to overcome the
+class imbalance that arises because volumes of interest are only a small proportion of the total image volume.
+This project will use open-source image simulation and reconstruction software.
+
+References:
+Hutton, B. F.; Erlandsson, K.; Thielemans, K. Quantification in Emission Tomography. In Handbook of
+Nuclear Medicine and Molecular Imaging for Physicists; CRC Press, 2022; Vol. 1.
+Balaji, V.; Song, T.-A.; Malekzadeh, M.; Heidari, P.; Dutta, J. Artificial Intelligence for PET and SPECT Image
+Enhancement. Journal of Nuclear Medicine 2023. https://doi.org/10.2967/jnumed.122.265000.
+
+-----
+Title: Evaluation of Energy Based Scatter Correction for PET
+
+Supervisor 1 email address: k.thielemans@ucl.ac.uk
+
+Supervisor 2 name: Antonia Reeves
+
+Supervisor 2 email address: antonia.reeves.22@ucl.ac.uk
+
+Overview:
+Summary:
+In Positron Emission Tomography (PET), a radiotracer is injected into the body. As the radiotracer decays, it
+emits positrons. These positrons interact with nearby electrons, resulting in a process called annihilation,
+where two photons are emitted in opposite directions, approximately 180º apart. PET scanners detect these
+photons to create detailed images of structures such as tumours, the heart, and the brain.
+However, sometimes these photons undergo a process known as Compton scattering. As the photons travel
+through the body, they may interact with tissues and other matter, causing their path to change. This
+scattering distorts the spatial information, since the photons no longer travel in straight lines. As a result, both
+image accuracy and quantitative reliability in PET are reduced.
+The main method of scatter estimation is using Single Scatter Simulation (SSS). This uses a density image (or
+attenuation map) of the body to simulate where photons will scatter. However, this only accounts for single
+
+scatter events (photons that scatter once) and can be computationally expensive.
+Recently, alternative methods have been developed that exploit the fact that Compton scatter decreases the
+energy of the photons. [1,2,3] They do this by developing a Probability Density Function (PDF) to estimate the
+probability of the type of interaction that is recorded given the energy of the 2 recorded photons. There have
+been several methods of PDF calculation published.
+This project will evaluate the impact of different PDF calculation methods on scatter estimation using our
+open-source software STIR. [4] We will investigate approaches such as the Method of Moments and Maximum
+Likelihood estimation for fitting PDFs to the energy distribution. Using STIR, we will also compare these scatter
+estimates against current methods such as SSS and assess their effect on reconstructed image quality.
+Depending on the outcomes, this may also open opportunities to develop and evaluate deep learning
+approaches for energy based scatter estimation.
+Prerequisites: Programming experience (python or C++ preferable), basic knowledge of PET would be
+recommended.
+References:
+[1] J. J. Hamill, J. Cabello, S. Surti, and J. S. Karp, ‘Energy-based scatter estimation in clinical PET’, Medical
+Physics, vol. 51, no. 1, pp. 54–69, 2024, doi: 10.1002/mp.16826.
+[2] N. Efthimiou, J. S. Karp, and S. Surti, ‘Data-driven, Energy-based method for estimation of Scattered events
+in Positron Emission Tomography’, Phys Med Biol, vol. 67, no. 9, p. 10.1088/1361-6560/ac62fc, Apr. 2022, doi:
+10.1088/1361-6560/ac62fc.
+[3] L. M. Popescu, R. M. Lewitt, S. Matej, and J. S. Karp, ‘PET energy-based scatter estimation and image
+reconstruction with energy-dependent corrections’, Phys. Med. Biol., vol. 51, no. 11, p. 2919, May 2006, doi:
+10.1088/0031-9155/51/11/016.
+[4] I. Polycarpou, K. Thielemans, et al., Comparative Evaluation of Scatter Correction in 3D PET Using Different
+Scatter-Level Approximations. Annals of Nuclear Medicine 2011, 25 (9), 643–649.
+https://doi.org/10.1007/s12149-011-0514-y."
+s9,Michael Parkes,,https://profiles.ucl.ac.uk/3287-michael-parkes,"Title: Analysing 3D Background Orientated Schlieren Images
+
+Supervisor 1 email address: michael.parkes@ucl.ac.uk
+
+Supervisor 2 name: Dr Dewi Lewis
+
+Supervisor 2 email address: d.w.lewis@ucl.ac.uk
+
+Work Summary:
+Develop a programme that will allow the following analysis:
+Process a given image (i.e png, jpg, tif etc) using the BOS method
+Generate a BOS image and the velocity field
+Take images from a Plenoptic camera and process them so that can be used in the BOS method. This requires
+setting different depths of fields and focal points. Examples of the files and images are here:
+http://code.behnam.es/python-lfp-reader/
+Generate BOS backgrounds using different methods, such as wavlet or Pellin noise
+
+Scientific aims:
+This project is to develop code that can be used to process and range of images (JPEG, TIF, PNG) and frames
+from movies (MPEG, AVI) and apply the BOS method to them to image various chemical and physical changes
+of a material. Further, the code should be able to analyse images from a plenoptic camera. It should create a
+range of computer-generated focused images and apply the BOS method to them. Doing so will produce a 3D
+understanding of these chemical and physical changes.
+For example, recent work has used classic Schlieren to look at mixing of water and alcohol. Demonstrating
+complicated concentration gradients. Imaging this in 3D will be of great interest.
+Figure 2: Water and ethanol mixing
+
+Overview:
+Background Orientated Schlieren (BOS) is a method to examine changes in density in materials, classically
+used to examine gas flows above hot sources or discontinuities in wind tunnels. BOS relies on computational
+processing to look for minute differences between images to generate new images of any density changes.
+When this is coupled with a Plenoptic (or light field, http://www.plenoptic.info/) camera (that both detects the
+intensity of light and its direction) it is possible to create 3D images of the change in density. This involves
+handling a large number of files and performing complicated analysis procedures.
+Figure 1: A BOS image of a plane breaking the sound barrier
+(URLhttps://www.nasa.gov/centers/armstrong/features/shock_and_awesome.html)"
+s10,Gopinathan Sankar,https://scholar.google.com/citations?user=LptHoVcAAAAJ&hl=en&oi=ao,,"Title: Project on the analysis of data from Synchrotron Radiation based X-ray techniques
+
+Supervisor 1 email address: g.sankar@ucl.ac.uk
+
+Supervisor 2 name: TBA
+
+Supervisor 2 email address: TBA"
+s11,Ben Waugh,https://scholar.google.com/citations?user=KDly310AAAAJ&hl=en&oi=ao,,"Title: Improving a Java application to visualise proton collisions at the LHC
+
+Supervisor 1 email address: b.waugh@ucl.ac.uk
+
+Supervisor 2 name: Prof. Nikos Konstantinidis
+
+Supervisor 2 email address: n.konstantinidis@ucl.ac.uk
+
+Pre-Requisites:
+Some knowledge of object-oriented software design is essential, and experience with Java and design
+patterns would be an advantage.
+
+Work Summary:
+Atlantis (https://atlantis.web.cern.ch) is a Java ""event display"" application used by the ATLAS collaboration to
+visualise collisions between protons at the Large Hadron Collider (LHC). It implements a variety of specialised
+""data oriented projections"" that help high-energy physicists understand physics processes and monitor the
+performance of particle detectors. There are many enhancements that could be made to the current version,
+but its flexibility is limited by the structure of the software. The focus of this project is to refactor the code to
+make it easier to test, maintain and extend. Building on this, we hope to add new features to the event display.
+
+-----
+Title: Enhancing Statistical Comparisons in YODA Using Eigen
+
+Supervisor 1 email address: b.waugh@ucl.ac.uk
+
+Supervisor 2 name: Christian Gutschow
+
+Supervisor 2 email address: c.gutschow@ucl.ac.uk
+
+Work Summary:
+YODA is a key software library used in particle physics for comparing
+theoretical predictions with experimental data. At present, it supports
+only a simplified version of the chi-squared (chi2) test, ignoring
+correlations between data points.
+This project will introduce full chi-squared support using the Eigen C++
+library, while keeping it an optional dependency to maintain YODA’s
+lightweight nature. You’ll also modernise YODA’s interface with the
+Contur reinterpretation tool to better handle detailed uncertainty
+information.
+The project is well-suited for students interested in scientific
+software and real-world physics applications. You’ll contribute to a
+widely used open-source codebase and gain practical experience in
+applied statistics and high-performance C++ development.
+
+-----
+Title: Applying machine learning techniques to test new theories in particle physics
+
+Supervisor 1 email address: b.waugh@ucl.ac.uk
+
+Supervisor 2 name: Jon Butterworth
+
+Supervisor 2 email address: j.butterworth@ucl.ac.uk
+
+Work Summary:
+A major area of research in particle physics is testing new BSM (Beyond
+the Standard Model) theories by comparing their predictions with known
+experimental results. This is a computationally expensive task because
+theories generally have a number of parameters whose values are not
+known a priori. Therefore we have to test a large number of variations
+on the theory, generating predictions for many different values of each
+parameter in order to identify which regions in parameter space are
+ruled out and which are still compatible with existing data.
+Contur is a Python toolkit that implements this process, systematically
+testing new physics models for consistency with data from the CERN Large
+Hadron Collider, so that models can be ruled out quickly where they
+
+conflict with existing results. Contur creates ""grids"" of results
+representing the level of discrepancy between a model and the LHC data
+for different values of the model parameters. It does this by comparing
+the data with the predictions of the model being tested, and with the
+predictions of the Standard Model.
+The aim of this project is to investigate how machine learning (ML)
+techniques can enhance and extend this process. For example, active
+learning [Rocamonde et al] can be used instead of simple parameter
+scanning to focus limited computational resources on regions with the
+greatest uncertainty in order to map efficiently the regions that are
+compatible with existing data. Other possibilties include finding
+parameter values that give the best fit between a given effective theory
+and LHC data, and searching for anomalies in existing measurements."
+s12,Frank Smith,,https://profiles.ucl.ac.uk/2282-frank-smith/publications,"Title: Investigate fluid flows through a branching vessel
+
+Supervisor 1 email address: f.smith@ucl.ac.uk
+
+Supervisor 2 name: TBA
+
+Supervisor 2 email address: TBA
+
+Pre-Requisites:
+Fluid flow through a branching vessel is to be investigated by means of a combination of modelling, analysis
+and computation. This is to be for high flow rates and in two spatial dimensions, at least at the outset of the
+project. The aim is to address the question of how much throughput is possible when the number of branches
+is increased. The background motivation is biomedical although there are also several industrial applications.
+
+Work Summary:
+Fluid flow through a branching vessel is to be investigated by means of a combination of modelling, analysis
+and computation. This is to be for high flow rates and in two spatial dimensions, at least at the outset of the
+project. The aim is to address the question of how much throughput is possible when the number of branches
+is increased. The background motivation is biomedical although there are also several industrial applications."
+s13,Anthony Lynas-Gray,,https://profiles.ucl.ac.uk/12770-tony-lynasgray/publications,"Title: Comparative Time-Frequency Analysis by Wavelet Packet and Lo- cal Sine Packet Transforms of an Interrupted Light Curve
+
+Supervisor 1 email address: ucapael@ucl.ac.uk
+
+Supervisor 2 name: TBA
+
+Supervisor 2 email address: TBA
+
+Pre-Requisites:
+Light curves of variable stars are generally analysed using Fourier Trans- forms to generate power-spectra in
+which individual frequencies with which a star’s brightness changes are seen as a series of peaks. Fourier
+transforms work well when frequencies are constant and of low amplitude, allowing a star’s light variation to be
+modelled by a combination of one or more sinusoids; this breaks down, however, when underlying variations
+are not sinusoidal or are time-dependent. The aim of the project is to implement the time-frequency analysis
+method of Jorge et al. (2006) in a computer program and use this to analyse photometry of V2076 Oph by
+Wright et al. (2006).
+References:
+Jorge, P., da Silva, A. R., & Lopes, I. 2006, Astrophysical Journal, 647, 564
+Wright, D. J., Lynas-Gray, A. E., Kilkenny, D., et al. 2006, Monthly Notices of the Royal Astronomical Society,
+369, 2049
+
+-----
+Title: Gravitational Constant from Light Deflections by Solar System Objects?
+
+Supervisor 1 email address: ucapael@ucl.ac.uk
+
+Supervisor 2 name: TBA
+
+Supervisor 2 email address: TBA
+
+Work Summary:
+The Square Kilometre Array (Braun et al., 2019, SKA) is a new high res- olution radio telescope currently under
+construction in the Southern Hemi- sphere. SKA astrometric measurements will need to account for gravita-
+tional light deflection by Solar System objects and for this reason Li et al. (2022) compile a list of maximum
+deflections these are expected to produce. Among the fundamental constants of nature, the Gravitational
+Constant (G) is least well-known (Mohr et al., 2012) and is an important source of uncertainty in the Li et al.
+(2022) predictions. The project involves writing a program to reproduce the Li et al. (2022) predictions for
+maximum gravita- tional deflection, and include properly calculated error bars. An assessment would then be
+made of the prospects for a new G determination, based on comparisons between measured and observed
+gravitational deflections of light from objects outside the Solar System.
+References:
+Braun, R., Bonaldi, A., Bourke, T., Keane, E., & Wagg, J. 2019, ArXiv e-prints, arXiv:1912.12699
+Li, Y., Xu, Y., Bian, S., et al. 2022, ArXiv e-prints, arXiv:2209.08702
+Mohr, P. J., Taylor, B. N., & Newell, D. B. 2012, Reviews of Modern Physics, 84, 1527
+Wright, J. T., & Eastman, J. D. 2014, Publications of the Astronomical Society of the Pacific, 126, 838"
+s14,Gabriel Facini,,https://profiles.ucl.ac.uk/61371-gabriel-facini/about,"Title: Transformers for High Energy Physics
+
+Supervisor 1 email address: g.facini@ucl.ac.uk
+
+Supervisor 2 name: TBA
+
+Supervisor 2 email address: TBA
+
+Work Summary:
+Transformer-based machine learning models are reshaping high-energy physics, providing powerful new ways
+to tackle some of the field’s hardest problems. The UCL ATLAS group has recently deployed a cutting-edge
+tool for identifying b-quarks [1] and calibrating the jets Higgs bosons decay to [2]. similar approaches are
+opening the door to physics beyond the Standard Model (BSM) [3]. This project will focus on applying
+transformer architectures to Higgs boson tagging at the energy frontier, while also addressing the crucial
+question of explainability [4] ensuring that these advanced models are not just accurate, but also interpretable
+to physicists.
+
+Higgs boson tagging at the energy frontier: The Higgs boson is the only known scalar particle, and its
+properties remain central to the LHC programme. Higgs bosons produced with transverse momenta above 1
+TeV could reveal signs of BSM physics [3]. The aim of this project is to develop a transformer-based model,
+building on the methods in [1,2], to identify Higgs bosons decaying into two b-quarks in this extreme kinematic
+regime and calibrate them to the best possible degree. Afterwards, their performance in collision data needs to
+be
+
+Explainability of transformer models: While transformer models are highly effective, their “black-box” nature
+poses challenges for physics applications. Recent work within ATLAS has begun to address this issue through
+explainable AI methods tailored for HEP [4]. A key goal of this project is to adapt and extend these techniques,
+providing insight into what the transformer learns and how its decisions map onto physical features. This will
+help build trust in the model’s outputs and deepen our understanding of both the physics and the machine
+learning.
+
+[1] https://atlas.web.cern.ch/Atlas/GROUPS/PHYSICS/PUBNOTES/ATL-PHYS-PUB-2023-021/
+[2] https://atlas.web.cern.ch/Atlas/GROUPS/PHYSICS/PUBNOTES/ATL-PHYS-PUB-2024-015/
+[3] https://atlas.web.cern.ch/Atlas/GROUPS/PHYSICS/PAPERS/HIGG-2021-08/
+[4] https://atlas.web.cern.ch/Atlas/GROUPS/PHYSICS/PUBNOTES/ATL-PHYS-PUB-2025-029/
+
+Scientific aims:
+The central aim of this project is to deploy transformer-based models in real collision data from the ATLAS
+experiment. This requires understanding not only their performance on simulated samples, but also how well
+they generalise to the complexities of actual data. By benchmarking, validating, and interpreting these models
+on ATLAS Run 3 data, the project will provide critical input for searches at the energy frontier and for improving
+the reliability of AI-based methods in particle physics.
+
+Overview:
+The project will involve hands-on work in Python using ATLAS software frameworks and machine learning
+toolkits. Depending on the student’s background and interests, possible directions include:
+Accessing and evaluating the outputs of existing transformer models in collision data.
+Implementing and testing explainability techniques to understand model behaviour.
+(For advanced students) Training and refining transformer-based models for Higgs tagging.
+
+This project will give experience at the interface of AI and experimental physics, equipping you with
+transferable skills in deep learning, explainable AI, and large-scale data analysis.
+
+-----
+Title: Large Language Models for Physicists
+
+Supervisor 1 email address: g.facini@ucl.ac.uk
+
+Supervisor 2 name: Tim Scanlon
+
+Supervisor 2 email address: timothy.scanlon@ucl.ac.uk
+
+Pre-Requisites:
+No explicit pre-reqs but a willingness to work and discovery independently is paramount.
+
+Work Summary:
+LLMs are sweeping through industry and making a tremendous impact. Within the ATLAS Collaboration at the
+LHC, the UCL group have developed a chatbot based on this technology to pull together a variety of resources
+that are otherwise difficult to navigate. This should accelerate research and facilitate discovery. It will also
+provide you with a very valuable skillset. Possible projects include fine-tuning an LLM and/or embedding
+models, implementing advanced RAG techniques, and exploring GraphRAG. There is plenty to do and ample
+space for your own personal interests and ideas.
+
+Scientific aims:
+Develop a custom chatbot using advanced RAG techniques that can query from multiple sources and is
+supported by an open-source LLM.
+
+Overview:
+This project will explore how large language models can transform the way physicists interact with complex,
+distributed scientific knowledge. The ATLAS experiment at CERN generates vast volumes of documentation,
+software, and analysis resources, which are critical for advancing particle physics but challenging to access
+efficiently. By combining modern LLMs with retrieval-augmented generation (RAG), you will build intelligent
+systems capable of synthesising information from diverse sources, enabling researchers to find, understand,
+and apply relevant knowledge more effectively. Beyond direct scientific impact, the project provides hands-on
+experience at the interface of AI, big data, and fundamental physics—equipping you with transferable expertise
+in machine learning, natural language processing, and large-scale data systems.
+A recent status report can be found here:
+https://indico.cern.ch/event/1543967/contributions/6513969/attachments/3079673/5450844/chATLAS%20-
+%20Bites%20of%20Foundation%20Models.pdf"
+s15,Kjell Erlandsson,,https://profiles.ucl.ac.uk/3767-kjell-erlandsson/publications,"Title: Using Deep Learning to correct parametric images for motion in dynamic PET
+
+Supervisor 1 email address: k.erlandsson@ucl.ac.uk
+
+Supervisor 2 name: Prof. Kris Thielemans
+
+Supervisor 2 email address: k.thielemans@ucl.ac.uk
+
+Pre-Requisites:
+Programming experience essential, ideally Python or MATLAB. Basic knowledge of CNN architectures for
+imaging and training desired but not required. Interest of making meaningful contributions to research.
+
+Work Summary:
+In Positron Emission Tomography (PET) a radiotracer is injected and its distribution is measured, allowing to
+investigate metabolic processes related to that molecule in vivo. In dynamic PET, several images are acquired
+over time, which are then analysed using kinetic modelling to obtain parametric images corresponding to time
+behaviour. However, patient motion is often observed or even unavoidable due to the scan duration (~1 hour).
+This can have dramatic impact on the parametric images.
+The aim of this project is to investigate the use of CNNs to correct the parametric images for motion. This is
+somewhat similar to existing work to remove blurring (“blind deconvolution”), but the impact of motion on
+parametric images is quite different. This is a novel approach and could lead to publication."
+s16,Mark Buitelaar,,https://profiles.ucl.ac.uk/36334-mark-buitelaar,"Title: Tuning quantum dot qubits using machine learning techniques
+
+Supervisor 1 email address: m.buitelaar@ucl.ac.uk
+
+Supervisor 2 name: TBA
+
+Supervisor 2 email address: TBA
+
+Pre-Requisites:
+Strong interest in quantum physics, solid-state physics and computer science. Experience with machine
+learning techniques is essential.
+
+Work Summary:
+The project will involve developing the machine learning algorithm to tune the double quantum dot devices.
+The student will be able to test the algorithm using data acquisition on ultraclean carbon nanotube double
+quantum dot devices measured in a mK dilution refrigerator using radio-frequency reflectometry readout.
+
+Scientific aims:
+The aim of the project is to develop the machine learning algorithm to tune carbon nanotube double quantum
+dot devices. We will be able to generate large data sets as data acquisition has already been optimized for
+video-mode speed and response times. Example code is available [as in Moon et al, Nature Comm. 11, 4161,
+2020] but the use of machine learning techniques is a very new development in our lab, so will likely involve
+quite a bit of trial-and-error.
+
+Overview:
+Quantum dots are important building blocks to host solid-state charge or spin qubits. For example, a double
+quantum dot with a single electron can be used to encode quantum information in the spatial position of the
+electron - on the left or right quantum dot, or indeed in a superposition of the two. In practise, a large number
+of gate electrodes might be needed to tune the quantum dots. This becomes a formidable task for large-scale
+devices. This project intends to use machine learning techniques to help accomplish this."
+s17,Michel Tsamados,https://scholar.google.com/citations?user=wAi8z9gAAAAJ&hl=en&oi=ao,,"Title: Application of Generative Adversarial Networks (GANs) to Arctic Sea Ice Imagery
+
+Supervisor 1 email address: m.tsamados@ucl.ac.uk
+
+Supervisor 2 name: TBA
+
+Supervisor 2 email address: TBA
+
+Work Summary:
+In this project you will build on a recent software developed as part of a previous MSc project called Arctic
+Remote Imagery Synthesis using a Generative Adversarial Network (ARISGAN) (Boehm et al, 2023) that looked
+into the possibility of super-resolving OLCI optical imagery (300m resolution, 21 optical spectral bands)
+onboard the Copernicus Sentinel-3 operational satellite to the resolution of the RGB Sentinel-2 optical images
+(10m resolution, 3 optical bands). This 30x super-resolution approach showed promising results (see Figure 1
+below) when deployed over a test region in the North of Canada where Dr Tsamados is currently working with a
+Inuit Social enterprise based in the locality of Pond Inlet (Figure 2) to provide satellite information used by the
+local population to ensure safe travel on the ice. In this project you will expand on this work and adapt it to
+super-resolve microwave imager from Sentinel-1 (50m resolution, microwave frequencies) to the Sentinel-2
+resolution (i.e. 5x super-resolution). The exciting proposition of this project is that were this to work one could
+synthesise artificial 'daylight' imagery at super-resolution in nighttime conditions (!) and in the presence of
+clouds as the microwave sensor of Sentinel-1 can see the surface under both these conditions."
+s18,Marta Betcke,https://scholar.google.com/citations?user=HJ3z-24AAAAJ&hl=en&oi=ao,,"Title: Learning correction for long steps in pseudo-spectral methods for solution of wave equation
+
+Supervisor 1 email address: m.betcke@ucl.ac.uk
+
+Supervisor 2 name: TBA
+
+Supervisor 2 email address: TBA
+
+Overview:
+Please contact supervisor for more details on the project.
+
+-----
+Title: Learned parallel in time integration of dynamical systems
+
+Supervisor 1 email address: m.betcke@ucl.ac.uk
+
+Supervisor 2 name: TBA
+
+Supervisor 2 email address: TBA
+
+Overview:
+Please contact supervisor for more details on the project
+
+-----
+Title: Neural operators for solution of oscillatory problems e.g. Helmholtz equation, Wave Equation, Westervelt equation.
+
+Supervisor 1 email address: m.betcke@ucl.ac.uk
+
+Supervisor 2 name: TBA
+
+Supervisor 2 email address: TBA
+
+Overview:
+Please contact supervisor for more details regarding the project.
+
+-----
+Title: Weakly convex neural networks for regularisation of inverse problem
+
+Supervisor 1 email address: m.betcke@ucl.ac.uk
+
+Supervisor 2 name: TBA
+
+Supervisor 2 email address: TBA
+
+Overview:
+Please contact supervisor for more details regarding the project.
+
+-----
+Title: Diffusion models as priors for solution of inverse problems
+
+Supervisor 1 email address: m.betcke@ucl.ac.uk
+
+Supervisor 2 name: TBA
+
+Supervisor 2 email address: TBA
+
+Overview:
+Please contact the supervisor for more details on the project.
+
+-----
+Title: Photoacoustic image reconstruction methods for novel high acquisition speed scanner
+
+Supervisor 1 email address: m.betcke@ucl.ac.uk
+
+Supervisor 2 name: TBA
+
+Supervisor 2 email address: TBA
+
+Overview:
+The project could involve e.g. learning optimal acquisition protocols or learning the time dependent
+regularisers. Please contact the supervisor for more details regarding the project.
+
+-----
+Title: Image reconstruction platform for Ultrasound tomography
+
+Supervisor 1 email address: m.betcke@ucl.ac.uk
+
+Supervisor 2 name: TBA
+
+Supervisor 2 email address: TBA
+
+Overview:
+The focus of the project will be on research software engineering, setting up a flexible platform for developing
+image reconstruction methods capable of handling data from different scanners, interfacing to different
+forward solvers and inversion methods.
+Please contact the supervisors for more details on the project."
+s19,Franca Fraternali,https://scholar.google.com/citations?user=HpAXYnsAAAAJ&hl=en&oi=ao,,"Title: Transformer guided in-silico evolution of Proteins
+
+Supervisor 1 email address: f.fraternali@ucl.ac.uk
+
+Supervisor 2 name: TBA
+
+Supervisor 2 email address: TBA
+
+Pre-Requisites:
+Interested students should have strong Python programming skills and some knowledge of Machine Learning.
+
+Overview:
+Protein models based on Transformer architecture are advanced computational tools utilized in bioinformatics
+and protein engineering. These models operate as neural networks that were trained using vast amounts of
+protein sequence data to learn generalized evolutionary constraints. By leveraging their multiple layers of
+neurons and attention mechanisms, transformer-based models can be used to predict a plethora of properties
+with unprecedented accuracy. Additionally, these structures can also be used for generating new sequences
+Insilco that fit desired folds or properties.
+Due to their relatively low cost to run, these models expedite the protein design process by generating
+extensive libraries of candidate sequences, which can then be experimentally validated for their intended
+applications.
+The field of Transformer-based models is in continuous evolution, with ongoing advancements in model
+architectures and training methodologies. However, challenges such as data bias and model interpretability
+must be addressed to ensure the responsible and effective utilization of these powerful computational tools in
+protein engineering.
+We hypothesise that these models may have biases towards certain patterns that are likely to be
+overrepresented on the training data affecting in this way the quality of the predictions.
+Techniques: The student will perform an in-silico sequence evolution using state of the art Transformer on a
+broad set of proteins spanning different families, stabilities and domains. The project will involve light coding to
+run these models and explore the generated sequences. After evolving the sequences, the student will use
+other computational libraries (i.e scipy, numpy, matplotlib) to analyse and visualize the changes in the internal
+representation of the models (embeddings) to spot undesired trends. Finally, the student will analyse the
+presence of those trends in the training data to spot possible sources of the found biases.
+Relevant papers:
+Lin, Zeming, et al. ""Evolutionary-scale prediction of atomic-level protein structure with a language model.""
+Science 379.6637 (2023): 1123-1130.
+
+Hsu, Chloe, et al. ""Learning inverse folding from millions of predicted structures."" International conference on
+machine learning. PMLR, (2022).
+Johnson, Sean R., et al. ""Generating novel protein sequences using Gibbs sampling of masked language
+models."" bioRxiv (2021): 2021-01.
+Johnson, Sean R., et al. ""Computational scoring and experimental evaluation of enzymes generated by neural
+networks."" Nature Biotechnology (2024): 1-10.
+Meier, Joshua, et al. ""Language models enable zero-shot prediction of the effects of mutations on protein
+function."" Advances in neural information processing systems 34 (2021): 29287-29303.
+
+-----
+Title: Hit-to-lead drug discovery via Free Energy calculations and ML
+
+Supervisor 1 email address: f.fraternali@ucl.ac.uk
+
+Supervisor 2 name: TBA
+
+Supervisor 2 email address: TBA
+
+Overview:
+Hit-to-lead (H2L) discovery is a key phase in drug development, where initial ""hit"" compounds from screening
+are refined into optimized ""lead"" candidates. Accurate predictions are crucial in this process. Molecular
+dynamics (MD)-based free energy methods, like Free Energy Perturbation (FEP), offer high accuracy but are
+slower compared to docking approaches. Recent advancements have improved the performance of MD,
+allowing the study of multiple compounds in a single simulation. However, due to the vast chemical space,
+
+manual selection of compounds is still needed. On the other hand, Machine learning (ML) excels at identifying
+patterns in compounds quickly but lacks the predictive accuracy of molecular methods. This project aims to
+integrate MD and ML to optimise chemical structures by efficiently estimating compound affinity. As MD
+simulations progress and more data is gathered, the ML algorithm will suggest compounds that resemble high-
+performing binders while avoiding non-binders.
+The hypothesis is that combining molecular modelling with ML can improve screening efficiency over
+traditional methods. The project involves using MD simulations and ML-based compound selection to estimate
+binding free energies, with some coding required for simulation management and result analysis.
+
+Techniques: The student will perform Molecular Dynamics (MD) simulations and biding free energies
+estimation of compounds of interest selected by ML methods based on embedding similarity. The project will
+involve light coding to run the simulations, selected models and to analyze the results.
+Relevant papers:
+van Gunsteren, Wilfred F., and Chris Oostenbrink. ""Methods for Classical-Mechanical Molecular Simulation in
+Chemistry: Achievements, Limitations, Perspectives."" Journal of Chemical Information and Modeling (2024).
+Gracia Carmona, Oriol, and Chris Oostenbrink. ""Accelerated enveloping distribution sampling (AEDS) allows for
+efficient sampling of orthogonal degrees of freedom."" Journal of Chemical Information and Modeling 63.1
+(2022): 197-207.
+Gim, Mogan, et al. ""MolPLA: a molecular pretraining framework for learning cores, R-groups and their linker
+joints."" Bioinformatics 40. (2024): i369-i380."
+s20,Jamie Dean,https://scholar.google.com/citations?user=eNywNcYAAAAJ&hl=en&oi=ao,,"Title: Machine Learning for Radiotherapy
+
+Supervisor 1 email address: jamie.dean@ucl.ac.uk
+
+Supervisor 2 name: Toby Dixon
+
+Supervisor 2 email address: toby.dixon.23@ucl.ac.uk
+
+Overview:
+Paediatric central nervous system tumours are the second most common childhood malignancy. They are
+frequently treated with radiotherapy and some of these cancers have relatively high survival rates. However,
+patients are often left with debilitating neurocognitive side effects resulting from radiation-induced brain
+damage. The developing brain is particularly sensitive to radiation, with different regions expected to be more
+or less sensitive at different stages of development. Technological advances in the spatial targeting of
+radiotherapy (such as the new UCLH Proton Beam Therapy Centre: https://www.youtube.com/watch?
+v=PD0100l65Qc) provide an opportunity to spare the most radiation sensitive regions of the brain to reduce
+side effects. However, we do not have a good understanding of which brain regions are most sensitive to
+radiotherapy, hampering our ability to exploit these technological advances.
+
+Towards filling this knowledge gap and designing less toxic radiotherapy approaches, we are working on
+understanding differences in the radiotherapy response of different brain regions in mice. Specifically, we are
+analysing a dataset of mice treated with proton beam radiotherapy, consisting of spatial maps of radiotherapy
+dose, digital histology images (cellular resolution microscopy images with different cell types labelled with
+markers) and molecular sequencing data quantifying the gene activity of different cell types in different brain
+regions.
+
+For this project, you will contribute to our analyses by:
+Performing multimodal data integration, mapping the radiotherapy dose maps, digital histology images and
+molecular sequencing data onto the same spatial coordinate system with different brain regions defined by a
+brain atlas.
+Segmenting cells and labelling their identities using state-of-the-art machine learning models.
+Measuring differences in abundances and shapes (shape can relate to the activity of cells) of different cell
+types in different brain regions in response to radiotherapy.
+Performing statistical analyses to identify molecular differences underlying the differential cellular responses to
+radiotherapy of different brain regions.
+
+These analyses will reveal the radiation sensitivity of different cell types in different brain regions and the
+molecular mechanisms underlying these cellular differences.
+
+Through completing this research, you will gain experience in the application of data integration, state-of-the-
+art machine learning and statistical analysis methods while addressing a high priority biomedical problem. No
+prior knowledge of biology or medicine is necessary."
+s21,Nora Yitong Qiu,,https://www.ucl.ac.uk/social-historical-sciences/history/people/academic-staff/dr-nora-yitong-qiu,"Title: Machine Learning and OCR in Historical Handwriting (East Asian Scripts)
+
+Supervisor 1 email address: yitong.qiu@ucl.ac.uk
+
+Supervisor 2 name: TBA
+
+Supervisor 2 email address: TBA
+
+Work Summary:
+This project focuses on the development and application of AI and machine learning techniques to improve
+Optical Character Recognition (OCR) accuracy in premodern East Asian scripts. The primary goal is to address
+the technical and interpretive challenges of reading Manchu documents or Chinese calligraphy, where non-
+standardized scripts, brushwork variability, and archival degradation complicate automated text extraction.
+Students may train models on annotated corpora and explore how enhanced OCR capabilities can unlock new
+
+possibilities for large-scale textual analysis in Qing or late imperial studies. This project is ideal for students
+with technical backgrounds or a strong interest in digital humanities, historical linguistics, or the future of
+archival accessibility.
+
+-----
+Title: Social Network Analysis of Chinese Elite Formation
+
+Supervisor 1 email address: yitong.qiu@ucl.ac.uk
+
+Supervisor 2 name: TBA
+
+Supervisor 2 email address: TBA
+
+Work Summary:
+This project uses the China Biographical Database (CBDB) to examine the structure and evolution of elite
+political networks in imperial China. Students will employ sociological methods, including social network
+analysis, regression modeling, and longue durée historical comparison to analyze how elites constrained or
+enabled imperial power. Possible research questions: How did kinship, patronage, and examination ties shape
+bureaucratic hierarchies? Did social networks function as checks on the emperor’s authority? How did dynastic
+transitions reshape elite structures, oligarchic, meritocratic, or hierarchical? What role did ethnicity play in elite
+composition and alliance-building, especially under regimes like the Tang, Yuan, or Qing?"
+s22,Adam Gibson,https://scholar.google.com/citations?user=CxDN9LMAAAAJ&hl=en&oi=ao,,"Title: Collating variants in early modern printed books
+
+Supervisor 1 email address: adam.gibson@ucl.ac.uk
+
+Supervisor 2 name: Prof. Tim Scanlon
+
+Supervisor 2 email address: timothy.scanlon@ucl.ac.uk
+
+Work Summary:
+Scholars study early modern printed books by collating multiple surviving copies of a single edition and
+identifying differences between the texts. These differences often arise from “stop-press corrections,” where
+errors were corrected mid-print-run, resulting in mixed states across copies. Traditionally, collation is done
+manually, which is slow, error-prone, and limited by human perception.
+This project aims to develop a data-driven, AI-assisted system to automate the collation process. You will
+work with a large dataset of digitized pages from early modern books. The goal is to identify subtle variations
+in the texts between digitised images of pages using image processing and machine learning techniques.
+Challenges include:
+Handling page curvature, warping, and bleed-through
+Aligning images taken under different digitisation systems
+Distinguishing printed text from annotations and artefacts
+Exploring alternatives to OCR, such as pixel-based comparison on a coordinate grid
+You will develop algorithms for preprocessing the digitised images, registration, detecting variants, and
+classifying the variants into types. It will also be important to think about the user interface, and how you can
+display your results to a scholar. The project may involve supervised learning using labelled examples, or
+unsupervised clustering of page states. A successful proof-of-concept could significantly improve the speed
+and accuracy of textual collation in digital humanities.
+This open-ended project will suit student with an interest in problem-solving and applying AI to historical or
+cultural data. Supervisors: Adam Gibson, Tim Scanlon and Chris Stamtakis"
+s23,Jon Butterworth,https://scholar.google.com/citations?user=XV9gsdYAAAAJ&hl=en,,"Title: Optimising the Contur toolkit for testing new theories in particle physics
+
+Supervisor 1 email address: J.Butterworth@ucl.ac.uk
+
+Supervisor 2 name: Dr. Ben Waugh
+
+Supervisor 2 email address: B.Waugh@ucl.ac.uk
+
+Pre-Requisites:
+Familiarity with some (but not necessarily all, as you can learn some during the project) of the following:
+UNIX shell, python, SQL and database technologies, git.
+
+Work Summary:
+A major area of research in particle physics is testing new BSM (Beyond
+the Standard Model) theories by comparing their predictions with known
+experimental results. This is a computationally expensive task because
+theories generally have a number of parameters whose values are not
+known a priori. Therefore we have to test a large number of variations
+on the theory, generating predictions for many different values of each
+parameter in order to identify which regions in parameter space are
+ruled out and which are still compatible with existing data.
+Contur is a Python toolkit that implements this process, systematically
+testing new physics models for consistency with data from the CERN Large
+Hadron Collider, so that models can be ruled out quickly where they
+conflict with existing results. Contur creates ""grids"" of results
+representing the level of discrepancy between a model and the LHC data
+for different values of the model parameters. It does this by comparing
+the data with the predictions of the model being tested, and with the
+predictions of the Standard Model.
+The predictions are expressed as a set of histograms for each point in
+the grid. From previous projects, a database design has been created and
+implemented, in which the relational information between models, grids,
+parameters, exclusions and histograms can be stored. A basic interactive
+interface has also been developed. However, given the large numbers of
+results that need to be handled when varying multiple parameters,
+analysis using Contur is time consuming and requires significant
+computational resources.
+
+The aim of this project is to optimise the code and the database so that
+results can be obtained more quickly and explored more effectively. This
+might involve benchmarking and profiling the Python code, analysing
+database queries, and implementing and testing techniques to improve the
+performance of Contur."
+s24,Maxim Molodsov,https://scholar.google.com/citations?user=F0-TG8cAAAAJ&hl=en&oi=ao,,"Title: How do cells compact and reorganize DNA?
+
+Supervisor 1 email address: maxim.molodtsov@crick.ac.uk
+
+Supervisor 2 name: TBA
+
+Supervisor 2 email address: TBA
+
+Work Summary:
+DNA is a very long linear molecule that encodes genetic information in a sequence of chemicals frequently
+denoted as A, T, G and C. Each cell in the human body contains one complete set of the whole body’s genome
+and therefore DNA needs to be extremely compact inside each cell. If all DNA just from one single cell could be
+stretched into a line, it would be almost 2 meters long (and 2 nanometres thick)!
+How cells achieve this extreme compaction and yet keep the ability to have access to the genetic information,
+read, copy and repair genes is still poorly understood.
+Recently two distinct mechanisms have been identified that play crucial roles in the DNA organization. One is
+based on multiple weak multivalent interactions between nucleosomes – tiny building blocks of the genome –
+that due to multiple attractive interactions form liquid-like condensates. The second mechanism called loop
+extrusion uses unusual activity of a molecular machine called condensin, which can actively move along DNA
+and make DNA loops. However, how these mechanisms work together is still largely unknown.
+This project will use LAMMPS molecular dynamics simulator (www.lammps.org) to test how these molecular
+mechanisms integrate mechanistically. It is aimed for a student with a strong interest in biology and good
+modelling experience."
+s25,Jonathan Tennyson,https://scholar.google.com/citations?user=J2kD9yMAAAAJ&hl=en&oi=ao,,"Title: Creating a database of cooling functions
+
+Supervisor 1 email address: j.tennyson@ucl.ac.uk
+
+Supervisor 2 name: TBA
+
+Supervisor 2 email address: TBA
+
+Work Summary:
+Cooling functions determine how fast a molecule cools by the emission of radiation at a given temperature.
+They are important for modelling processes from ones in the early universe to how the atmospheres of planets
+cool. A set of cooling functions
+have been computed as an MSc project that just finished using data from the ExoMol database
+(www.exomol.com). The new project
+will takes these data and construct a new cooling functions database as part of the ExoMol website.
+
+-----
+Title: Adding highly charged atomic line lists to the ExoMol database
+
+Supervisor 1 email address: j.tennyson@ucl.ac.uk
+
+Supervisor 2 name: TBA
+
+Supervisor 2 email address: TBA
+
+Work Summary:
+The ExoMol database (www.exomol.com) contains very extensive data on how molecules absorb and
+emit light. Recently a new
+atomic database was created on the basis of the projects performed by two former MSc students.
+However, this database
+only contains information on neutral and singly charged atoms. Data on highly charged atoms are
+important for many applications.
+These data already exists elsewhere and the project will involve capturing these external data and
+formatting them in standard
+ExoMol format before adding them to our ExoAtoms database. Students doing this project will find it
+helpful to take the course
+Information Retrieval and Data Mining (COMP0084). This project can be taken by two students each of
+which will work on retreiving data from a separate database.
+
+-----
+Title: Ages of the exoplanets
+
+Supervisor 1 email address: j.tennyson@ucl.ac.uk
+
+Supervisor 2 name: TBA
+
+Supervisor 2 email address: TBA
+
+Work Summary:
+Planets orbiting stars other than the Sun (exoplanets) were first discovered in the 1990s. About 6000 have
+since been
+discovered. It would interesting to determine the approximate age of these exoplanets. At present it is not
+possible to
+determine its age from the planet directly, but it can be done using the age of the host star using the (generally
+made) assumption that a star its planet form at the same time. The project will involve matching planets from a
+know exoplanet catalogue with data (particularly ages) of individual stars which should be available elsewhere.
+
+-----
+Title: Designing a workflow for running MARVEL using data provided by large language models
+
+Supervisor 1 email address: j.tennyson@ucl.ac.uk
+
+Supervisor 2 name: TBA
+
+Supervisor 2 email address: TBA
+
+Work Summary:
+MARVEL (measured active vibration rotation energy levels) is procedure used to determine highly
+accurate molecular energy levels
+on the basis of measure transition frequencies available in the literature. This project will bulid on a
+successful MSc project
+which showed how LLMs could be used to provide input data suitable for use in MARVEL. The aim of
+
+project will be to build a
+complete workflow allowing MARVEL projects to become much more automated, quicker and less
+labour intensive."
+s26,Nikos Konstantinidis,,https://profiles.ucl.ac.uk/2315-nikolaos-konstantinidis,"Title: Investigating the use of large language models in assessing coursework
+
+Supervisor 1 email address: n.konstantinidis@ucl.ac.uk
+
+Supervisor 2 name: TBA
+
+Supervisor 2 email address: TBA
+
+Work Summary:
+The project will investigate whether large language models (LLMs) can reliably assess MSci/MSc project
+reports when given an explicit marking rubric and assessment criteria. Using a corpus of previously graded
+reports, we will compare grades and criterion-level judgments from several publicly accessible LLMs to those
+assigned by academic markers. We will quantify agreement, identify which models align most closely with
+human judgments, and test whether LLM outputs can improve inter-marker consistency through rubric-based
+calibration or serve as a third “cross-check” when human markers disagree."
+s27,William Woof,https://scholar.google.com/citations?user=WyYFEpUAAAAJ&hl=en&oi=ao,,"Title: Vision-language fusion for rare eye diseases
+
+Supervisor 1 email address: w.woof@ucl.ac.uk
+
+Supervisor 2 name: Nikolas Pontikos
+
+Supervisor 2 email address: n.pontikos@ucl.ac.uk
+
+Overview:
+Deep learning models have huge promise for the diagnosis and study of rare eye diseases, however a key
+limitation is lack of large well-structured datasets, particularly for rarer imaging devices and modalities. This
+project will be a pilot project looking at how foundation language models (and vision language) models can
+
+help bootstrap small datasets through enabling direction via natural language instructions from expert
+opthalmologists. Multiple strategies will be considered, but the focus will be on using off-the-shelf models with
+small scale fine-tuning steps, rather than wholescale trainign of new models.
+
+-----
+Title: EyeNomaly
+
+Supervisor 1 email address: w.woof@ucl.ac.uk
+
+Supervisor 2 name: Nikolas Pontikos
+
+Supervisor 2 email address: n.pontikos@ucl.ac.uk
+
+Overview:
+Eye2Gene is a deep-learning based AI algorithm for identification of Inherited Retinal Dystrophies (IRDs) using
+retinal imaging. In conjunction with the Eye2Gene classifier we have trained a Generative Adversarial Network
+(GAN) to generate images of retinal scans for patients with various IRDs. Prior works suggests that trained
+GANs can be adapted to perform anomaly detection In addition to identifying invalid data, anomaly detection
+algorithms trained on patients without any disease/dystrophies could be a good way of flagging up patients
+with a potential eye disorder for further investigation. This project is a great opportunity for any student
+interested in deep unsupervised learning."
+s28,Tony Lynas-Gray,,https://profiles.ucl.ac.uk/12770-tony-lynasgray/publications,"Title: Molecular Opacities Computed at University College London Formatted for the NEMESISPY Planetary Spectrum Retrieval Code
+
+Supervisor 1 email address: ucapael@ucl.ac.uk
+
+Supervisor 2 name: Jonathan Tennyson
+
+Supervisor 2 email address: j.tennyson@ucl.ac.uk
+
+Pre-Requisites:
+Reading: Yang et al. 2024 Journal of Open Source Software 9 (101), 6874
+Recommended Module: High Performance Computing (PHAS0102)
+
+Overview:
+The project would involve downloading NEMESISPY and getting it working on the student's laptop. A second
+step would then involve writing a program to generate a NEMESISPY opacity table for a selected molecule
+using data from the ExoMol database. Comparison with published results using other extraction programs
+could then follow.
+
+-----
+Title: An Opacity Distribution Function Representation for Molecular Opacities Computed at University College London
+
+Supervisor 1 email address: ucapael@ucl.ac.uk
+
+Supervisor 2 name: Jonathan Tennyson
+
+Supervisor 2 email address: j.tennyson@ucl.ac.uk
+
+Pre-Requisites:
+Reading: Cernetic et al. 2019 Astronomy and Astrophysics 627, A157
+Recommended Module: High Performance Computing (PHAS0102)
+
+Overview:
+Starting with monochromatic opacities already calculated for a selected molecule (water for
+instance), the student would write a program to calculate opacity distribution functions (odf)
+for the temperature-pressure grid provided. Testing would involve writing a further program to
+do one-dimensional radiative transfer through a single layer of the appropriate temperature and
+pressure. Comparing with results obtained using original monochromatic opacities should allow
+bin-size optimisation.
+
+-----
+Title: Clock-Rates on the Surface of the Moon
+
+Supervisor 1 email address: ucapael@ucl.ac.uk
+
+Supervisor 2 name: Jonathan Tennyson
+
+Supervisor 2 email address: j.tennyson@ucl.ac.uk
+
+Pre-Requisites:
+Reading: Ashby N & Patla B, 2024 Astronomical Journal 168, 112
+Recommended Module: High Performance Computing (PHAS0102)
+
+Overview:
+A result of General Relativity is that clock-rates depend on the gravitational field in which
+the clock is located. In particular, a clock near the Moon's selenoid ticks faster than one
+near the Earth's geoid by roughly 56 microseconds per day. Astronomical observations made on
+the lunar surface, timed with clocks on the Moon's surface, need those times to be corrected to
+the time that would have been recorded had those observations been made at the Solar System
+Barycentre. The project objective is to write a computer program to make the time correction
+that would be required."
+s29,Sergey Yurchenko,https://scholar.google.com/citations?user=PepGS5wAAAAJ&hl=en&oi=ao,,"Title: Building the ExoMol Opacity App: Web Interface for HPC-Driven Exoplanetary Spectroscopy
+
+Supervisor 1 email address: s.yurchenko@ucl.ac.uk
+
+Supervisor 2 name: TBA
+
+Supervisor 2 email address: TBA
+
+Overview:
+The ExoMol project is the world’s leading provider of high-temperature molecular data for modelling exoplanet
+atmospheres. These data are crucial for interpreting observations from the James Webb Space Telescope and
+the upcoming ESA Ariel mission. However, current opacity tables are usually pre-computed for standard cases
+and cannot capture the extraordinary diversity of exoplanets that astronomers are now discovering.
+
+This project will design and implement the ExoMol Opacity App, a web interface that allows atmospheric
+modellers to configure custom opacity requests (choosing spectral range, resolution, temperature, pressure,
+and composition), submit them to high-performance computing (HPC) resources, and retrieve the tailored
+results. The work combines web development, HPC job scheduling, and large-scale data handling, and will
+directly empower the global astronomy community by removing a major computational bottleneck in
+atmospheric retrievals."
+s30,Federico Galvanin,https://scholar.google.com/citations?user=ZvXSVFAAAAAJ&hl=en&oi=ao,,"Title: Application of model-based design of experiments to develop a digital twin for liquid-liquid extraction systems for precious metals recovery
+
+Supervisor 1 email address: f.galvanin@ucl.ac.uk
+
+Supervisor 2 name: Dr. Arun Pankajakshan
+
+Supervisor 2 email address: arun.pankajakshan.16@ucl.ac.uk
+
+Pre-Requisites:
+Digital technologies are at the forefront of accelerated chemical process development. The core of such
+technologies is a digital twin, which in simple terms is a mathematical model of the physical system, which
+continuously interacts with the system and makes best decisions to meet specified goals related to product
+and process quality. In this project, we will be applying model-based design of experiments (MBDoE) methods
+[1] to develop a digital twin for the recovery of precious metals in continuous flow small channels using liquid-
+liquid extraction (LLE). LLE in small channels often leads to segmented flow in which two immiscible liquids
+move in a repeating pattern of slugs and plugs [2]. The geometry of this flow pattern and the derived
+
+hydrodynamic properties based on it determine the rate of mass transfer between the liquid phases. A
+mathematical model for the segmented flow thus involves modelling hydrodynamics followed by mass transfer.
+While data-driven modelling approaches are commonly used to model hydrodynamics, the mass transfer
+model can be developed using first principles. As a result, we propose a joint system identification framework
+that leverages MBDoE methods and its machine learning counterpart – active learning [3], for the joint
+identification of the data-driven and physics-based parts of a hybrid segmented flow model, thereby
+developing the digital twin for the LLE system. The identified digital twin model will then be used for LLE
+process simulation and for scenario-based optimization.
+The student will be jointly supervised by Prof. Federico Galvanin, Prof. Panagiota Angeli and Dr. Arun
+Pankajakshan.
+References
+[1] G. Franceschini and S. Macchietto, “Model-based design of experiments for parameter precision: State
+of the art,” Chem Eng Sci, vol. 63, no. 19, 2008, doi: 10.1016/j.ces.2007.11.034.
+[2] E. Garciadiego-Ortega, D. Tsaoulidis, M. Pineda, E. S. Fraga, and P. Angeli, “Hydrodynamics and mass
+transfer in segmented flow small channel contactors for uranium extraction,” Chemical Engineering and
+Processing - Process Intensification, vol. 153, 2020, doi: 10.1016/j.cep.2020.107921.
+[3] D. D. Lewis and J. Catlett, “Heterogeneous Uncertainty Sampling for Supervised Learning,” in
+Proceedings of the 11th International Conference on Machine Learning, ICML 1994, 1994. doi: 10.1016/B978-1-
+55860-335-6.50026-X."
+s31,Siyin Liu,https://scholar.google.com/citations?user=YAkzGtIAAAAJ&hl=en&oi=ao,,"Title: AI-Powered Discovery of Digital Biomarkers in Common Corneal Disease
+
+Supervisor 1 email address: siyin.liu@ucl.ac.uk
+
+Supervisor 2 name: Will Woof
+
+Supervisor 2 email address: w.woof@ucl.ac.uk
+
+Overview:
+A Brief Introduction/Background
+Corneal diseases are a major cause of blindness worldwide, and many patients ultimately require corneal
+transplantation. At Moorfields Eye Hospital, advanced imaging plays a vital role in diagnosis and monitoring.
+One of the most powerful tools is In-Vivo Confocal Microscopy (IVCM), which provides real-time, cellular-level
+views of the living human cornea.
+IVCM produces high-resolution, information-rich datasets that can reveal how corneal diseases progress over
+time. However, the sheer volume and complexity of these images make manual analysis time-consuming,
+subjective, and a bottleneck for both clinical care and research.
+This MSc project will focus on using Fuchs Endothelial Corneal Dystrophy (FECD) as the primary disease
+model. FECD is a common, sight-threatening genetic disorder affecting up to 5% of people over 40 and is the
+leading reason for corneal transplantation in high-income countries . A hallmark of FECD is its long, silent
+preclinical phase, in which subtle cellular changes occur decades before symptoms arise. This period
+represents a critical opportunity for intervention with future gene-based therapies.
+A key barrier to such treatments is the lack of sensitive, quantitative imaging endpoints suitable for clinical
+trials in early disease. This project aims to address this gap by developing and validating a state-of-the-art
+deep learning pipeline for automated, quantitative IVCM image analysis, enabling the discovery of novel,
+unbiased digital biomarkers of FECD progression .
+
+Methodology
+This project will leverage a unique dataset of IVCM images from the FECD-TRACE cohort, a longitudinal study
+that is one of the first to include the full spectrum of disease, from preclinical genetic carriers to late-stage
+patients.
+The core task will be to design, train, and validate an end-to-end deep learning pipeline for the automated
+analysis of these images. While the project's specific focus can be tailored to the student's interests, it will
+involve tackling key computer vision challenges. This could range from developing robust classifiers for image
+quality control, to building sophisticated segmentation models for the quantification of cellular pathology, or to
+explore self-supervised learning with Vision Transformers (e.g., DINO) to perform representation learning and
+discover novel, unbiased 'digital biomarkers', with the potential to link these features to our curated clinical and
+genetic data. The student will be responsible for data pre-processing, model training and tuning, and rigorous
+validation of their results.
+
+References
+1. Liu S, Sadan AN, Bhattacharyya N, et al. Genetic and demographic determinants of Fuchs endothelial
+corneal dystrophy risk and severity. JAMA Ophthalmol. Published online March 13, 2025.
+doi:10.1001/jamaophthalmol.2025.0109
+2. Liu S, Kandakji L, Stupnicki A, et al. Current applications of artificial intelligence for Fuchs endothelial
+corneal dystrophy: A systematic review. Transl Vis Sci Technol. 2025;14(6):12.
+Images
+1
+2
+
+Figure 1. In vivo confocal microscopy of the human cornea in health and disease. (A) Schematic representation
+of different corneal layers visualised by IVCM, including epithelium, sub-basal nerve plexus, stroma, and
+endothelium. (B) High-magnification IVCM image of the corneal endothelium from a patient with Fuchs’
+Endothelial Corneal Dystrophy (FECD), showing characteristic excrescences of Descemet’s membrane
+(guttata) and associated endothelial cell changes.
+Previous activity
+site traﬃc, and serve personalised content.
+Accept all cookies
+Accept necessary cookies
+Settings"

@@ -1,0 +1,13 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "StudentProfile",
+  "type": "object",
+  "properties": {
+    "cv_path": {"type": "string"},
+    "cv_text": {"type": "string"},
+    "cv_keywords": {"type": "array", "items": {"type": "string"}},
+    "interest_text": {"type": "string"},
+    "preference_text": {"type": "string"}
+  },
+  "required": ["cv_text"]
+}

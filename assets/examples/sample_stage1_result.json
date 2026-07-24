@@ -1,0 +1,14 @@
+{
+  "student_summary": "The student appears interested in practical machine learning work, especially projects with coding and experimental evaluation. They seem to prefer data-driven topics and want a project that is concrete rather than overly theoretical.",
+  "recommendations": [
+    {
+      "name": "Example Supervisor A",
+      "reason": "This looks like a strong fit because the student's coding-heavy background matches the supervisor's data-driven and experimental projects. The topic area also overlaps with the student's stated interest in machine learning applications."
+    },
+    {
+      "name": "Example Supervisor B",
+      "reason": "This is a reasonable second option because the student's profile suggests they could handle the technical requirements, although the topic fit appears slightly broader and less direct than the first recommendation."
+    }
+  ],
+  "next_action": "Choose one supervisor to explore in more detail, and I will help you assess the fit more deeply."
+}

@@ -1,0 +1,153 @@
+[
+  {
+    "supervisor_id": "s1",
+    "name": "Kaan Aksit",
+    "title": "",
+    "department": "",
+    "homepage": "https://www.kaanaksit.com",
+    "research_areas": [
+      "AI",
+      "physics",
+      "immersive displays",
+      "VR"
+    ],
+    "summary": "Kaan Aksit supervises projects at the intersection of AI and physical principles, specifically focused on developing physically informed AI algorithms for immersive displays in VR/AR environments. Students will utilize machine learning, high-performance computing, and Python to create realistic rendering, haptic feedback, and motion tracking solutions. This interdisciplinary project is heavily coding-heavy and data-driven, targeting UCL Master's students with a background in machine learning. The research aims to contribute to cutting-edge advancements in immersive display technology through innovative optimization techniques.",
+    "project_titles": [
+      "Physically Informed Artificial Intelligence for Immersive Displays"
+    ],
+    "project_style": [
+      "ML-heavy",
+      "interdisciplinary",
+      "coding-heavy",
+      "data-heavy"
+    ],
+    "preferred_background": [
+      "machine learning",
+      "Python"
+    ],
+    "keywords": [
+      "AI",
+      "physics",
+      "immersive displays",
+      "VR",
+      "AR",
+      "machine learning",
+      "optimization",
+      "high-performance computing",
+      "immersive",
+      "displays",
+      "physically",
+      "informed",
+      "project",
+      "computing",
+      "artificial",
+      "intelligence",
+      "physical",
+      "principles",
+      "realistic",
+      "students"
+    ],
+    "summary_source": "supervisor_project_summaries.json"
+  },
+  {
+    "supervisor_id": "s2",
+    "name": "Timo Betcke",
+    "title": "",
+    "department": "",
+    "homepage": "https://timobetcke.me/bucket/A+bucket+full+of+stuff",
+    "research_areas": [
+      "Rust",
+      "GPU computing",
+      "benchmarking",
+      "scientific computing"
+    ],
+    "summary": "Timo Betcke supervises projects focused on GPU computing within the Rust programming language, a growing area for scientific computing and systems programming. Students will engage in coding-heavy, experimental work, primarily involving benchmarking and contributing to the development of Rust's GPU ecosystem. The projects will require a strong understanding of Rust and potentially systems programming concepts. Expect a significant time commitment throughout the academic year as you investigate performance and explore potential improvements within this emerging field.",
+    "project_titles": [
+      "GPU computing in Rust"
+    ],
+    "project_style": [
+      "coding-heavy",
+      "experimental",
+      "software-engineering"
+    ],
+    "preferred_background": [
+      "Rust",
+      "systems programming"
+    ],
+    "keywords": [
+      "Rust",
+      "GPU computing",
+      "benchmarking",
+      "scientific computing",
+      "ecosystem development",
+      "gpu",
+      "computing",
+      "programming",
+      "project",
+      "investigate",
+      "please",
+      "title",
+      "systems",
+      "work",
+      "language",
+      "growing",
+      "scientific",
+      "ecosystem."
+    ],
+    "summary_source": "supervisor_project_summaries.json"
+  },
+  {
+    "supervisor_id": "s3",
+    "name": "Nikos Nikolaou",
+    "title": "",
+    "department": "",
+    "homepage": "https://profiles.ucl.ac.uk/66936-nikos-nikolaou/about",
+    "research_areas": [
+      "medical imaging",
+      "uncertainty quantification",
+      "model interpretability",
+      "CNNs"
+    ],
+    "summary": "Nikos Nikolaou's research focuses on advancing deep learning techniques and understanding model trustworthiness. Students can explore uncertainty estimation and interpretability in medical imaging using CNNs and ViTs, handling real-world data and investigating model biases. Alternatively, projects delve into alternative training methods beyond backpropagation, including local learning rules, feedback alignment, and the NoProp approach, alongside exploring network sparsity and connections to the Lottery Ticket Hypothesis. Both approaches are heavily reliant on Python and machine learning expertise, with a strong emphasis on coding and experimental design.",
+    "project_titles": [
+      "Uncertainty estimation & interpretability of machine learning models for medical imaging",
+      "Beyond backpropagation: exploring alternative ways of training deep learning models"
+    ],
+    "project_style": [
+      "ML-heavy",
+      "data-heavy",
+      "experimental",
+      "coding-heavy",
+      "theory-heavy"
+    ],
+    "preferred_background": [
+      "Python",
+      "machine learning",
+      "deep learning frameworks"
+    ],
+    "keywords": [
+      "medical imaging",
+      "uncertainty quantification",
+      "model interpretability",
+      "CNNs",
+      "ViTs",
+      "backpropagation",
+      "local learning rules",
+      "network sparsity",
+      "Lottery Ticket Hypothesis",
+      "learning",
+      "models",
+      "model",
+      "deep",
+      "uncertainty",
+      "training",
+      "interpretability",
+      "medical",
+      "imaging",
+      "machine",
+      "student",
+      "project"
+    ],
+    "summary_source": "supervisor_project_summaries.json"
+  }
+]

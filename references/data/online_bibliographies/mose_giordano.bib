@@ -1,0 +1,86 @@
+@article{giordano2026dj4earth,
+  title={DJ4Earth: Differentiable, and Performance-Portable Earth System Modeling via Program Transformations},
+  author={Giordano, Mosè and others},
+  journal={Journal of Advances in Modeling Earth Systems},
+  volume={18},
+  number={5},
+  pages={29},
+  year={2026},
+  publisher={American Geophysical Union},
+  abstract={Differentiable Earth system models (ESMs) enable powerful applications such as sensitivity analysis, gradient-based calibration, state estimation, boundary flux inversforations, uncertainty quantification, and online machine learning. Reverse-mode automatic differentiation (AD) efficiently provides gradients for such tasks, yet models have rarely included this capability because of complex, bespoke numerical algorithms. As part of the Differentiable programming in Julia for Earth system modeling (DJ4Earth) initiative, we present improved capabilities of the AD tool Enzyme.jl and the new compiler transpilation tool Reactant.jl, augmented by sophisticated checkpointing algorithms, which, together make general-purpose AD tractable and efficient for full-fledged ESM components written in Julia. Operating at the low-level virtual machine intermediate representation or multi-level intermediate representation compiler levels, these frameworks support mutable memory, custom kernels, and compiler optimizations before and after differentiation. Julia-specific challenges related to just-in-time compilation and garbage collection are handled efficiently. Reactant further enables automatic performance portability across central processing units, graphics processing units, and tensor processing units, facilitating use of emerging AI-customized high-performance computing architectures. We demonstrate these frameworks on four Julia-based ESM components featuring diverse spatial discretizations and numerical algorithms: the rotating-sphere shallow water model ShallowWaters.jl, the finite-volume ocean model Oceananigans.jl, the finite-element ice sheet model DJUICE.jl, and the spectral atmospheric model SpeedyWeather.jl. Across these ESM components, our tools compute efficient and correct gradients. These results establish a foundation for differentiable, high-performance and performance-portable ESMs that can integrate neural networks for unresolved processes, trained online, enabling next-generation hybrid physics–machine learning ESMs constrained by physical dynamics and observations.}
+}
+
+@article{giordano2025maternity,
+  title={An individual-based modelling study estimating the impact of maternity service delivery on health in Malawi},
+  author={Giordano, Mosè and others},
+  journal={Nature Communications},
+  volume={16},
+  year={2025},
+  abstract={Maternal and perinatal morbidity and mortality remain high in Malawi, partially due to gaps in the coverage and quality of health services. We developed an individual-based model of maternal and perinatal health and healthcare in Malawi, situated in a ‘whole-health system, all-disease’ framework (Thanzi La Onse). We modelled sixteen scenarios estimating the impact of current and improved coverage and quality of antenatal, intrapartum, and postnatal services from 2023 to 2030. Whilst current service delivery is inferred to avert morbidity and mortality, the largest reductions in the stillbirth, maternal and neonatal mortality rates were observed when the use and quality of all services was maximised concurrently (a 10%, 52% and 57% reduction respectively). When services were considered in isolation, generally, increased coverage without quality improvement did not impact mortality or DALYs. In only three scenarios was a sufficient reduction in neonatal mortality observed to achieve target 3.2 of the United Nation’s Sustainable Development Goals (SDG), and in no scenarios was a reduction in maternal mortality sufficient to achieve SDG target 3.1 observed, reaffirming that system wide investments are essential to achieve these goals.}
+}
+
+@article{giordano2025extrae,
+  title={Extrae.jl: Julia bindings for the Extrae HPC Profiler},
+  author={Giordano, Mosè and others},
+  year={2025},
+  abstract={The Julia programming language has gained acceptance within the High-Performance Computing (HPC) community due to its ability to tackle two-language problem: Julia code feels as high-level as Python but allows developers to even tune it to C-level performance. But to squeeze every drop of performance, Julia needs to integrate with advanced performance analysis tools, also known as profilers. In this work, we present Extrae.jl, a Julia package to interface with the Extrae profiler.}
+}
+
+@article{giordano2024particleda,
+  title={ParticleDA.jl v.1.0: A distributed particle-filtering data assimilation package},
+  author={Giordano, Mosè and others},
+  journal={Geoscientific Model Development Discussions},
+  publisher={Copernicus Publications},
+  year={2024},
+  abstract={Digital twins of physical and human systems informed by real-time data are becoming ubiquitous across weather forecasting, disaster preparedness, and urban planning, but researchers lack the tools to run these models effectively and efficiently, limiting progress. One of the current challenges is to assimilate observations in highly non-linear dynamical systems, as the practical need is often to detect abrupt changes. We have developed a software platform to improve the use of real-time data in non-linear system representations where non-Gaussianity limits the applicability of data assimilation algorithms such as the ensemble Kalman filter and variational methods. Particle-filter-based data assimilation algorithms have been implemented within a user-friendly open-source software platform in Julia – ParticleDA.jl. To ensure the applicability of the developed platform in realistic scenarios, emphasis has been placed on numerical efficiency and scalability on high-performance computing systems. Furthermore, the platform has been developed to be forward-model agnostic, ensuring that it is applicable to a wide range of modelling settings, for instance unstructured and non-uniform meshes in the spatial domain or even state spaces that are not spatially organized. Applications to tsunami and numerical weather prediction demonstrate the computational benefits and ease of using the high-level Julia interface with the package to perform filtering in a variety of complex models.}
+}
+
+@article{giordano2024thanzi,
+  title={Estimates of resource use in the public-scale health-care system and the effect of strengthening health-care services in Malawi during 2015–19: a modelling study (Thanzi La Onse)},
+  author={Giordano, Mosè and others},
+  journal={The Lancet Global Health},
+  publisher={Elsevier BV},
+  year={2024},
+  abstract={In all health-care systems, decisions need to be highly made regarding allocation of available resources. Evidence is needed for these decisions, especially in low-income countries. We aimed to estimate how health-care resources provided by the public sector were used in Malawi during 2015–19 and to estimate the effects of strengthening health-care services. We estimated that the public-sector health-care system in Malawi averted 41·2 million DALYs (95% UI 38·6–43·8) during 2015–19, approximately half of the 84·3 million DALYs (81·5–86·9) that the population would otherwise have incurred. DALYs averted were heavily skewed to children aged 0–4 years due to services averting DALYs that would be caused by acute lower respiratory tract infection, HIV or AIDS, malaria, or neonatal disorders. DALYs averted among adults were mostly attributed to HIV or AIDS and tuberculosis. Under a scenario whereby each appointment took the time expected and health-care workers did not work for longer than contracted, the health care system in Malawi during 2015–19 would have averted only 19·1 million DALYs (95% UI 17·1–22·4), suggesting that approximately 21·3 million DALYS (20·0–23·6) of total effect were derived through overwork of health-care workers. If people becoming ill immediately accessed care, all referrals were successfully completed, diagnostic accuracy of health-care workers was as good as possible, and consumables (ie, medicines) were always available, 28·2% (95% UI 25·7–30·9) more DALYs (ie, 12·2 million DALYs [95% UI 10·9–13·8]) could be averted.}
+}
+
+@article{giordano2024healthcare,
+  title={A Healthcare Service Delivery and Epidemiological Model for Investigating Resource Allocation for Health: The Thanzi La Onse Model},
+  author={Giordano, Mosè and others},
+  journal={medRxiv},
+  year={2024},
+  abstract={We developed an individual-based model of maternal and perinatal health and healthcare in Malawi, situated in a ‘whole-health system, all-disease’ framework (Thanzi La Onse). We modelled sixteen scenarios estimating the impact of current and improved coverage and quality of antenatal, intrapartum, and postnatal services from 2023 to 2030. Whilst current service delivery is inferred to avert morbidity and mortality, the largest reductions in the stillbirth, maternal and neonatal mortality rates were observed when the use and quality of all services was maximised concurrently (a 10%, 52% and 57% reduction respectively). When services were considered in isolation, generally, increased coverage without quality improvement did not impact mortality or DALYs. In only three scenarios was a sufficient reduction in neonatal mortality observed to achieve target 3.2 of the United Nation’s Sustainable Development Goals (SDG), and in no scenarios was a reduction in maternal mortality sufficient to achieve SDG target 3.1 observed, reaffirming that system wide investments are essential to achieve these goals.}
+}
+
+@article{giordano2023octofitter,
+  title={Octofitter: Fast, Flexible, and Accurate Orbit Modeling to Detect Exoplanets},
+  author={Giordano, Mosè and others},
+  journal={The Astronomical Journal},
+  volume={166},
+  number={4},
+  pages={20},
+  year={202             3},
+  publisher={IOP Publishing Ltd},
+  abstract={As next-generation imaging instruments and interferometers search for planets closer to their stars, they must contend with increasing orbital motion and longer integration times. These compounding effects make it difficult to detect faint planets but also present an opportunity. Increased orbital motion makes it possible to move the search for planets into the orbital domain, where direct images can be freely combined with the radial velocity and proper motion anomaly, even without a confirmed detection in any single epoch. In this paper, we present a fast and differentiable multimethod orbit-modeling and planet detection code called Octofitter. This code is designed to be highly modular and allows users to easily adjust priors, change parameterizations, and specify arbitrary function relations between the parameters of one or more planets. Octofitter further supplies tools for examining model outputs including prior and posterior predictive checks and simulation-based calibration. We demonstrate the capabilities of Octofitter on real and simulated data from different instruments and methods, including HD 91312, simulated JWST/NIRISS aperture masking interferometry observations, radial velocity curves, and grids of images from the Gemini Planet Imager. We show that Octofitter can reliably recover faint planets in long sequences of images with arbitrary orbital motion. This publicly available tool will enable the broad application of multiepoch and multimethod exoplanet detection, which could improve how future targeted ground- and space-based surveys are performed. Finally, its rapid convergence makes it a useful addition to the existing ecosystem of tools for modeling the orbits of directly imaged planets.}
+}
+
+@article{giordano2023julia_hep,
+  title={Potential of the Julia Programming Language for High Energy Physics Computing},
+  author={Giordano, Mosè and others},
+  journal={Computing and Software for Big Science},
+  volume={7},
+  year={2023},
+  publisher={Springer Science and Primed Business Media LLC},
+  abstract={The Julia programming language has gained acceptance within the High-Performance Computing (HPC) community due to its ability to tackle two-language problem: Julia code feels as high-level as Python but allows developers to tune it to C-level performance. But to squeeze every drop of performance, Julia needs to integrate with advanced performance analysis tools, also known as profilers.}
+}
+
+@inproceedings{giordano2023principles,
+  title={Principles for Automated and Reproducible Benchmarking},
+  author={Giordano, Mosè and others},
+  booktitle={SC-W 2023: Workshops of The International Conference on High Performance Computing, Network, Software and Applications},
+  pages={609--618},
+  year={2023},
+    abstract={The diversity in processor technology used by High Performance Computing (HPC) facilities is growing, and so applications must be written in such a way that they can attain high levels of performance across a range of different CPUs, GPUs, and other accelerators. Measuring application performance across this wide range of platforms becomes crucial, but there are significant challenges to do this rigorously, in a time efficient way, whilst assuring results are scientifically meaningful, reproducible, and actionable. This paper presents a methodology for measuring and analysing the performance portability of a parallel application and shares a software framework which combines and extends adopted technologies to provide a usable benchmarking tool. We demonstrate the flexibility and effectiveness of the methodology and benchmarking framework by showcasing a variety of benchmarking case studies which utilise a stable of supercomputing resources at a national scale.}
+,
+  abstract={We present principles for automated and reproducible benchmarking in high-performance computing. This includes techniques for managing complex workloads and ensuring consistent results across different hardware platforms.}
+}

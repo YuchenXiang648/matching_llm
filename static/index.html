@@ -1,0 +1,1163 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Supervisor Match — UCL</title>
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;1,400&family=JetBrains+Mono:wght@300;400&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet" />
+
+<style>
+/* ── Reset & base ─────────────────────────────────────────────────────── */
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+:root {
+  --bg:        #0f0f0e;
+  --surface:   #181816;
+  --surface2:  #222220;
+  --border:    #2e2e2b;
+  --amber:     #d4933a;
+  --amber-dim: #9b6b28;
+  --amber-glow:#d4933a22;
+  --cream:     #e8e0d0;
+  --muted:     #7a7570;
+  --danger:    #c0392b;
+  --serif:     'Playfair Display', Georgia, serif;
+  --mono:      'JetBrains Mono', monospace;
+  --sans:      'DM Sans', sans-serif;
+  --radius:    10px;
+  --transition: 0.25s ease;
+}
+
+html { font-size: 16px; scroll-behavior: smooth; }
+
+body {
+  background: var(--bg);
+  color: var(--cream);
+  font-family: var(--sans);
+  font-weight: 300;
+  min-height: 100vh;
+  overflow-x: hidden;
+}
+
+/* ── Noise texture overlay ────────────────────────────────────────────── */
+body::before {
+  content: '';
+  position: fixed;
+  inset: 0;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.04'/%3E%3C/svg%3E");
+  pointer-events: none;
+  z-index: 0;
+  opacity: 0.6;
+}
+
+/* ── Pages ────────────────────────────────────────────────────────────── */
+.page {
+  display: none;
+  min-height: 100vh;
+  position: relative;
+  z-index: 1;
+}
+.page.active { display: flex; flex-direction: column; }
+
+/* ── Ambient glow ─────────────────────────────────────────────────────── */
+.ambient {
+  position: fixed;
+  border-radius: 50%;
+  filter: blur(120px);
+  pointer-events: none;
+  z-index: 0;
+}
+.ambient-1 {
+  width: 600px; height: 600px;
+  background: radial-gradient(circle, #d4933a18 0%, transparent 70%);
+  top: -200px; right: -200px;
+}
+.ambient-2 {
+  width: 400px; height: 400px;
+  background: radial-gradient(circle, #d4933a0c 0%, transparent 70%);
+  bottom: -100px; left: -100px;
+}
+
+/* ── Typography ───────────────────────────────────────────────────────── */
+h1 { font-family: var(--serif); font-size: clamp(2.4rem, 5vw, 4rem); font-weight: 400; line-height: 1.1; letter-spacing: -0.02em; }
+h2 { font-family: var(--serif); font-size: clamp(1.5rem, 3vw, 2.2rem); font-weight: 400; letter-spacing: -0.01em; }
+h3 { font-family: var(--serif); font-size: 1.2rem; font-weight: 600; }
+.mono { font-family: var(--mono); font-size: 0.8rem; }
+.muted { color: var(--muted); }
+.amber { color: var(--amber); }
+
+/* ── Buttons ──────────────────────────────────────────────────────────── */
+.btn {
+  display: inline-flex; align-items: center; gap: 8px;
+  padding: 14px 28px;
+  background: transparent;
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  color: var(--cream);
+  font-family: var(--sans);
+  font-size: 0.9rem;
+  font-weight: 400;
+  letter-spacing: 0.02em;
+  cursor: pointer;
+  transition: var(--transition);
+  text-decoration: none;
+  white-space: nowrap;
+}
+.btn:hover { border-color: var(--amber); color: var(--amber); }
+.btn:active { transform: translateY(1px); }
+.btn:disabled { opacity: 0.4; cursor: not-allowed; pointer-events: none; }
+
+.btn-primary {
+  background: var(--amber);
+  border-color: var(--amber);
+  color: #0f0f0e;
+  font-weight: 500;
+}
+.btn-primary:hover { background: #c4832a; border-color: #c4832a; color: #0f0f0e; }
+
+.btn-ghost {
+  border-color: transparent;
+  color: var(--muted);
+  padding: 10px 16px;
+  font-size: 0.8rem;
+}
+.btn-ghost:hover { color: var(--cream); border-color: transparent; background: var(--surface2); }
+
+.btn-sm { padding: 8px 16px; font-size: 0.82rem; }
+
+/* ── Layout helpers ───────────────────────────────────────────────────── */
+.container { max-width: 780px; margin: 0 auto; padding: 0 24px; width: 100%; }
+.container-wide { max-width: 1000px; margin: 0 auto; padding: 0 24px; width: 100%; }
+.flex { display: flex; }
+.flex-col { flex-direction: column; }
+.items-center { align-items: center; }
+.justify-center { justify-content: center; }
+.justify-between { justify-content: space-between; }
+.gap-4 { gap: 16px; }
+.gap-2 { gap: 8px; }
+.mt-4 { margin-top: 16px; }
+.mt-8 { margin-top: 32px; }
+.mt-12 { margin-top: 48px; }
+.mb-2 { margin-bottom: 8px; }
+.mb-4 { margin-bottom: 16px; }
+.text-center { text-align: center; }
+
+/* ── Card ─────────────────────────────────────────────────────────────── */
+.card {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 14px;
+  padding: 28px;
+}
+
+/* ── Nav bar ──────────────────────────────────────────────────────────── */
+.nav {
+  padding: 20px 24px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border-bottom: 1px solid var(--border);
+  position: sticky;
+  top: 0;
+  background: var(--bg);
+  z-index: 100;
+  backdrop-filter: blur(12px);
+}
+.nav-logo {
+  font-family: var(--serif);
+  font-size: 1rem;
+  color: var(--cream);
+  opacity: 0.7;
+}
+.nav-logo span { color: var(--amber); }
+.back-btn {
+  display: flex; align-items: center; gap: 6px;
+  color: var(--muted); font-size: 0.82rem; font-family: var(--sans);
+  background: none; border: none; cursor: pointer; transition: var(--transition);
+}
+.back-btn:hover { color: var(--cream); }
+.back-btn svg { width: 14px; height: 14px; }
+
+.next-btn {
+  display: flex; align-items: center; gap: 6px;
+  color: var(--muted); font-size: 0.82rem; font-family: var(--sans);
+  background: none; border: none; cursor: pointer; transition: var(--transition);
+}
+.next-btn:hover { color: var(--cream); }
+.next-btn svg { width: 14px; height: 14px; }
+.next-btn:disabled, .back-btn:disabled {
+  opacity: 0; pointer-events: none;
+}
+
+/* ── Step indicator ───────────────────────────────────────────────────── */
+.steps {
+  display: flex; align-items: center; gap: 8px;
+  font-family: var(--mono);
+  font-size: 0.72rem;
+  color: var(--muted);
+}
+.step { display: flex; align-items: center; gap: 8px; }
+.step-dot {
+  width: 6px; height: 6px; border-radius: 50%;
+  background: var(--border);
+  transition: var(--transition);
+}
+.step-dot.done { background: var(--amber-dim); }
+.step-dot.active { background: var(--amber); box-shadow: 0 0 8px var(--amber); }
+.step-line { width: 24px; height: 1px; background: var(--border); }
+
+/* ── Chat bubbles ─────────────────────────────────────────────────────── */
+.chat-log {
+  display: flex; flex-direction: column; gap: 16px;
+  padding: 24px 0;
+  min-height: 200px;
+}
+.bubble-wrap { display: flex; gap: 12px; align-items: flex-start; }
+.bubble-wrap.user { flex-direction: row-reverse; }
+
+.avatar {
+  width: 32px; height: 32px; border-radius: 50%;
+  flex-shrink: 0;
+  display: flex; align-items: center; justify-content: center;
+  font-family: var(--mono); font-size: 0.65rem;
+}
+.avatar-agent {
+  background: var(--amber-glow);
+  border: 1px solid var(--amber-dim);
+  color: var(--amber);
+}
+.avatar-user {
+  background: var(--surface2);
+  border: 1px solid var(--border);
+  color: var(--muted);
+}
+
+.bubble {
+  max-width: 76%;
+  padding: 14px 18px;
+  border-radius: 14px;
+  font-size: 0.92rem;
+  line-height: 1.65;
+  white-space: pre-wrap;
+  word-break: break-word;
+}
+.bubble-agent {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  color: var(--cream);
+  border-top-left-radius: 4px;
+}
+.bubble-user {
+  background: var(--surface2);
+  border: 1px solid var(--border);
+  color: var(--cream);
+  border-top-right-radius: 4px;
+}
+
+/* Bold text inside bubbles */
+.bubble strong { color: var(--amber); font-weight: 500; }
+
+/* ── Input bar ────────────────────────────────────────────────────────── */
+.input-bar {
+  display: flex; gap: 10px;
+  padding: 16px 0;
+  border-top: 1px solid var(--border);
+  position: sticky;
+  bottom: 0;
+  background: var(--bg);
+  backdrop-filter: blur(12px);
+}
+.input-bar textarea {
+  flex: 1;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  color: var(--cream);
+  font-family: var(--sans);
+  font-size: 0.92rem;
+  font-weight: 300;
+  padding: 12px 16px;
+  resize: none;
+  min-height: 48px;
+  max-height: 120px;
+  transition: border-color var(--transition);
+  outline: none;
+}
+.input-bar textarea:focus { border-color: var(--amber-dim); }
+.input-bar textarea::placeholder { color: var(--muted); }
+
+/* ── Keyword chips ────────────────────────────────────────────────────── */
+.chip-list { display: flex; flex-wrap: wrap; gap: 8px; }
+.chip {
+  padding: 4px 12px;
+  background: var(--surface2);
+  border: 1px solid var(--border);
+  border-radius: 20px;
+  font-family: var(--mono);
+  font-size: 0.72rem;
+  color: var(--muted);
+}
+
+/* ── Supervisor buttons ───────────────────────────────────────────────── */
+.sup-grid { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 16px; }
+.sup-btn {
+  padding: 12px 20px;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  color: var(--cream);
+  font-family: var(--sans);
+  font-size: 0.88rem;
+  cursor: pointer;
+  transition: var(--transition);
+  text-align: left;
+}
+.sup-btn:hover { border-color: var(--amber); background: var(--amber-glow); }
+.sup-btn .sup-name { font-weight: 500; display: block; }
+.sup-btn .sup-reason { color: var(--muted); font-size: 0.78rem; margin-top: 4px; display: block; max-width: 260px; }
+
+/* ── Typing indicator ─────────────────────────────────────────────────── */
+.typing {
+  display: flex; align-items: center; gap: 4px;
+  padding: 14px 18px;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 14px; border-top-left-radius: 4px;
+}
+.typing span {
+  width: 6px; height: 6px; border-radius: 50%;
+  background: var(--amber-dim);
+  animation: bounce 1.2s infinite ease-in-out;
+}
+.typing span:nth-child(2) { animation-delay: 0.2s; }
+.typing span:nth-child(3) { animation-delay: 0.4s; }
+@keyframes bounce { 0%,80%,100%{transform:translateY(0)} 40%{transform:translateY(-6px)} }
+
+/* ── Email display ────────────────────────────────────────────────────── */
+.email-box {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 14px;
+  overflow: hidden;
+}
+.email-header {
+  padding: 16px 24px;
+  border-bottom: 1px solid var(--border);
+  background: var(--surface2);
+  display: flex; align-items: center; gap: 10px;
+}
+.email-dot { width: 10px; height: 10px; border-radius: 50%; }
+.email-body {
+  padding: 28px;
+  font-family: var(--mono);
+  font-size: 0.82rem;
+  line-height: 1.8;
+  color: var(--cream);
+  white-space: pre-wrap;
+  word-break: break-word;
+}
+
+/* ── Divider ──────────────────────────────────────────────────────────── */
+.divider {
+  border: none;
+  border-top: 1px solid var(--border);
+  margin: 24px 0;
+}
+
+/* ── Upload area ──────────────────────────────────────────────────────── */
+.upload-zone {
+  border: 2px dashed var(--border);
+  border-radius: 14px;
+  padding: 48px 28px;
+  text-align: center;
+  cursor: pointer;
+  transition: var(--transition);
+  position: relative;
+}
+.upload-zone:hover, .upload-zone.drag-over {
+  border-color: var(--amber-dim);
+  background: var(--amber-glow);
+}
+.upload-zone input[type="file"] {
+  position: absolute; inset: 0; opacity: 0; cursor: pointer; width: 100%; height: 100%;
+}
+.upload-icon {
+  font-size: 2.4rem; margin-bottom: 12px; opacity: 0.5;
+  display: block;
+}
+.upload-zone p { color: var(--muted); font-size: 0.88rem; line-height: 1.6; }
+.upload-zone strong { color: var(--cream); font-weight: 500; }
+
+/* ── Success state ────────────────────────────────────────────────────── */
+.success-badge {
+  display: inline-flex; align-items: center; gap: 6px;
+  padding: 6px 14px;
+  background: #1a2e1a;
+  border: 1px solid #2d5a2d;
+  border-radius: 20px;
+  color: #5cb85c;
+  font-size: 0.8rem;
+  font-family: var(--mono);
+}
+
+/* ── Fade-in animation ────────────────────────────────────────────────── */
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(16px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+.fade-up { animation: fadeUp 0.4s ease forwards; }
+
+/* ── Page-specific ────────────────────────────────────────────────────── */
+
+/* Landing */
+#page-landing {
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  min-height: 100vh;
+}
+.landing-inner { max-width: 580px; padding: 40px 24px; }
+.landing-badge {
+  display: inline-flex; align-items: center; gap: 8px;
+  padding: 5px 14px;
+  border: 1px solid var(--border);
+  border-radius: 20px;
+  font-family: var(--mono);
+  font-size: 0.72rem;
+  color: var(--muted);
+  margin-bottom: 32px;
+}
+.landing-badge .dot {
+  width: 6px; height: 6px; border-radius: 50%; background: var(--amber);
+  animation: pulse 2s infinite;
+}
+@keyframes pulse { 0%,100%{opacity:1} 50%{opacity:0.3} }
+.landing-sub {
+  font-size: 1rem; color: var(--muted); line-height: 1.7;
+  margin: 20px 0 40px;
+}
+
+/* Upload page */
+#page-upload { flex-direction: column; }
+.upload-main { flex: 1; padding: 40px 0 80px; }
+
+/* Stage pages */
+.stage-main { flex: 1; overflow-y: auto; padding-bottom: 120px; }
+.stage-footer { background: var(--bg); }
+
+/* Action panel after Stage 2 */
+.action-panel {
+  border-top: 1px solid var(--border);
+  padding: 20px 0;
+  display: flex; gap: 12px; flex-wrap: wrap;
+}
+
+/* Email page */
+#page-email { flex-direction: column; }
+.email-main { flex: 1; padding: 40px 0 60px; overflow-y: auto; }
+
+/* Scrollbar */
+::-webkit-scrollbar { width: 6px; }
+::-webkit-scrollbar-track { background: transparent; }
+::-webkit-scrollbar-thumb { background: var(--border); border-radius: 3px; }
+::-webkit-scrollbar-thumb:hover { background: var(--muted); }
+
+/* ── Responsive ───────────────────────────────────────────────────────── */
+@media (max-width: 600px) {
+  .bubble { max-width: 90%; }
+  .sup-btn .sup-reason { max-width: 100%; }
+}
+</style>
+</head>
+
+<body>
+
+<!-- Ambient glows -->
+<div class="ambient ambient-1"></div>
+<div class="ambient ambient-2"></div>
+
+<!-- ══════════════════════════════════════════════════════════════════════
+     PAGE 0 — Landing
+══════════════════════════════════════════════════════════════════════ -->
+<div id="page-landing" class="page active">
+  <div class="landing-inner fade-up">
+    <div class="landing-badge">
+      <span class="dot"></span>
+      UCL Supervisor Matching · AI-Powered
+    </div>
+
+    <h1>Find the right<br /><em style="color:var(--amber)">supervisor</em><br />for your thesis.</h1>
+
+    <p class="landing-sub">
+      Upload your CV, have a short conversation, and discover which UCL supervisors align with your research interests — then get a personalised first-contact email drafted for you.
+    </p>
+
+    <div style="display:flex;gap:14px;justify-content:center;flex-wrap:wrap;">
+      <button class="btn btn-primary" onclick="goTo('upload')">
+        Start exploring
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+      </button>
+    </div>
+
+    <p class="mono muted mt-12" style="font-size:0.68rem;letter-spacing:0.08em;">THREE STAGES · COARSE MATCH → DEEP EXPLORE → EMAIL DRAFT</p>
+  </div>
+</div>
+
+
+<!-- ══════════════════════════════════════════════════════════════════════
+     PAGE 1 — Upload CV
+══════════════════════════════════════════════════════════════════════ -->
+<div id="page-upload" class="page">
+  <nav class="nav">
+    <button class="back-btn" onclick="navBack()">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M19 12H5M12 19l-7-7 7-7"/></svg>
+      Back
+    </button>
+    <div class="nav-logo">Supervisor<span>Match</span></div>
+    <div class="steps">
+      <div class="step"><div class="step-dot active"></div><span>CV</span></div>
+      <div class="step-line"></div>
+      <div class="step"><div class="step-dot" id="dot-s1"></div><span>Match</span></div>
+      <div class="step-line"></div>
+      <div class="step"><div class="step-dot" id="dot-s2"></div><span>Explore</span></div>
+      <div class="step-line"></div>
+      <div class="step"><div class="step-dot" id="dot-s3"></div><span>Email</span></div>
+    </div>
+    <button class="next-btn" id="next-btn-upload" onclick="navNext()" disabled>
+      Next
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+    </button>
+  </nav>
+
+  <div class="upload-main">
+    <div class="container">
+      <div class="mt-12 mb-4">
+        <h2>Upload your CV</h2>
+        <p class="muted mt-4" style="font-size:0.9rem;line-height:1.6;">
+          We'll extract your background and interests to guide the matching conversation. Supported formats: PDF, DOCX, TXT.
+        </p>
+      </div>
+
+      <div class="upload-zone mt-8" id="upload-zone">
+        <input type="file" id="cv-file-input" accept=".pdf,.docx,.txt" onchange="handleFileSelect(this)" />
+        <span class="upload-icon">📄</span>
+        <p><strong>Drag & drop your CV here</strong><br />or click to browse</p>
+        <p class="mono muted" style="margin-top:8px;font-size:0.7rem;">PDF · DOCX · TXT</p>
+      </div>
+
+      <!-- Status area -->
+      <div id="upload-status" style="margin-top:20px;display:none;">
+        <div class="flex items-center justify-between mb-4">
+          <span class="success-badge">✓ CV uploaded successfully</span>
+          <span id="cv-filename" class="mono muted" style="font-size:0.72rem;"></span>
+        </div>
+        <p class="muted mb-2" style="font-size:0.82rem;">Keywords extracted from your CV:</p>
+        <div class="chip-list" id="keyword-chips"></div>
+      </div>
+
+      <div id="upload-error" class="muted mt-4" style="display:none;color:#e05050;font-size:0.85rem;"></div>
+
+      <div id="start-btn-wrap" style="margin-top:40px;display:none;">
+        <button class="btn btn-primary" onclick="startStage1()">
+          Begin your exploration journey
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+        </button>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<!-- ══════════════════════════════════════════════════════════════════════
+     PAGE 2 — Stage 1 Chat
+══════════════════════════════════════════════════════════════════════ -->
+<div id="page-stage1" class="page" style="flex-direction:column;">
+  <nav class="nav">
+    <button class="back-btn" onclick="navBack()">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M19 12H5M12 19l-7-7 7-7"/></svg>
+      Back
+    </button>
+    <div class="nav-logo">Supervisor<span>Match</span></div>
+    <div class="steps">
+      <div class="step"><div class="step-dot done"></div><span>CV</span></div>
+      <div class="step-line"></div>
+      <div class="step"><div class="step-dot active"></div><span>Match</span></div>
+      <div class="step-line"></div>
+      <div class="step"><div class="step-dot"></div><span>Explore</span></div>
+      <div class="step-line"></div>
+      <div class="step"><div class="step-dot"></div><span>Email</span></div>
+    </div>
+    <button class="next-btn" id="next-btn-stage1" onclick="navNext()" disabled>
+      Next
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+    </button>
+  </nav>
+
+  <div class="stage-main" id="stage1-scroll">
+    <div class="container" style="padding-top:12px;">
+      <div class="chat-log" id="chat-log-s1"></div>
+
+      <!-- Recommendation section (shown after stage 1 ends) -->
+      <div id="rec-section" style="display:none;" class="fade-up">
+        <hr class="divider" />
+        <h3 class="amber mb-4">Recommended supervisors</h3>
+        <p class="muted mb-4" style="font-size:0.85rem;">Select a supervisor to explore in depth:</p>
+        <div class="sup-grid" id="sup-grid"></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Input bar -->
+  <div class="container stage-footer">
+    <div class="input-bar" id="s1-input-bar">
+      <textarea
+        id="s1-input"
+        placeholder="Type your reply…"
+        rows="1"
+        onkeydown="handleS1Key(event)"
+        oninput="autoResize(this)"
+      ></textarea>
+      <button class="btn btn-primary btn-sm" onclick="sendS1()">Send</button>
+    </div>
+  </div>
+</div>
+
+
+<!-- ══════════════════════════════════════════════════════════════════════
+     PAGE 3 — Stage 2 Explore
+══════════════════════════════════════════════════════════════════════ -->
+<div id="page-stage2" class="page" style="flex-direction:column;">
+  <nav class="nav">
+    <button class="back-btn" onclick="navBack()">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M19 12H5M12 19l-7-7 7-7"/></svg>
+      Back
+    </button>
+    <div class="nav-logo">Supervisor<span>Match</span></div>
+    <div class="steps">
+      <div class="step"><div class="step-dot done"></div><span>CV</span></div>
+      <div class="step-line"></div>
+      <div class="step"><div class="step-dot done"></div><span>Match</span></div>
+      <div class="step-line"></div>
+      <div class="step"><div class="step-dot active"></div><span>Explore</span></div>
+      <div class="step-line"></div>
+      <div class="step"><div class="step-dot"></div><span>Email</span></div>
+    </div>
+    <button class="next-btn" id="next-btn-stage2" onclick="navNext()" disabled>
+      Next
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+    </button>
+  </nav>
+
+  <div class="stage-main" id="stage2-scroll">
+    <div class="container" style="padding-top:12px;">
+      <div class="flex items-center gap-2 mb-4" style="padding-top:8px;">
+        <span class="mono muted" style="font-size:0.72rem;letter-spacing:0.06em;">EXPLORING</span>
+        <span class="amber" id="s2-sup-name" style="font-family:var(--serif);font-size:1rem;"></span>
+      </div>
+
+      <div class="chat-log" id="chat-log-s2"></div>
+
+      <!-- Action panel after enough turns -->
+      <div id="s2-action-panel" style="display:none;" class="fade-up">
+        <div class="action-panel">
+          <button class="btn btn-primary" onclick="goToEmail()">
+            Draft contact email
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0 1.1.9-2 2-2z"/><polyline points="22,6 12,12 2,6"/></svg>
+          </button>
+          <button class="btn" onclick="exploreOther()">
+            Explore another supervisor
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="container stage-footer">
+    <div class="input-bar" id="s2-input-bar">
+      <textarea
+        id="s2-input"
+        placeholder="Ask anything about this supervisor…"
+        rows="1"
+        onkeydown="handleS2Key(event)"
+        oninput="autoResize(this)"
+      ></textarea>
+      <button class="btn btn-primary btn-sm" onclick="sendS2()">Send</button>
+    </div>
+  </div>
+</div>
+
+
+<!-- ══════════════════════════════════════════════════════════════════════
+     PAGE 4 — Email Draft
+══════════════════════════════════════════════════════════════════════ -->
+<div id="page-email" class="page">
+  <nav class="nav">
+    <button class="back-btn" onclick="navBack()">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M19 12H5M12 19l-7-7 7-7"/></svg>
+      Back
+    </button>
+    <div class="nav-logo">Supervisor<span>Match</span></div>
+    <div class="steps">
+      <div class="step"><div class="step-dot done"></div><span>CV</span></div>
+      <div class="step-line"></div>
+      <div class="step"><div class="step-dot done"></div><span>Match</span></div>
+      <div class="step-line"></div>
+      <div class="step"><div class="step-dot done"></div><span>Explore</span></div>
+      <div class="step-line"></div>
+      <div class="step"><div class="step-dot active"></div><span>Email</span></div>
+    </div>
+    <!-- Email is the last page, no Next -->
+    <div style="width:60px;"></div>
+  </nav>
+
+  <div class="email-main">
+    <div class="container">
+      <div class="mt-8 mb-4">
+        <h2>Your draft email</h2>
+        <p class="muted mt-4" style="font-size:0.88rem;line-height:1.6;">
+          Review, personalise, and send via your email client. Replace any <code style="color:var(--amber);font-size:0.82em;">[placeholder]</code> with your real details.
+        </p>
+      </div>
+
+      <div id="email-loading" class="flex items-center gap-2 mt-8 muted" style="font-size:0.85rem;">
+        <div class="typing"><span></span><span></span><span></span></div>
+        <span style="margin-left:8px;">Generating your email…</span>
+      </div>
+
+      <div id="email-content" style="display:none;" class="mt-8 fade-up">
+        <div class="flex items-center justify-between mb-4">
+          <span class="mono muted" style="font-size:0.72rem;">DRAFT · TO <span id="email-sup-name" class="amber"></span></span>
+          <button class="btn btn-ghost btn-sm" onclick="copyEmail()">Copy email</button>
+        </div>
+
+        <div class="email-box">
+          <div class="email-header">
+            <div class="email-dot" style="background:#e05050;"></div>
+            <div class="email-dot" style="background:#d4933a;"></div>
+            <div class="email-dot" style="background:#5cb85c;"></div>
+            <span class="mono muted" style="margin-left:8px;font-size:0.72rem;">first-contact-email.txt</span>
+          </div>
+          <div class="email-body" id="email-text"></div>
+        </div>
+
+        <div class="flex gap-4 mt-8 flex-wrap">
+          <button class="btn" onclick="exploreOther()">Explore another supervisor</button>
+          <button class="btn btn-ghost" onclick="goTo('landing')" style="color:var(--muted);">Start over</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<!-- ══════════════════════════════════════════════════════════════════════
+     JAVASCRIPT
+══════════════════════════════════════════════════════════════════════ -->
+<script>
+const API = ''; // same origin
+
+// ── State ────────────────────────────────────────────────────────────────
+let sessionId = null;
+let s1Done = false;
+let s1Recs = [];
+let s2TurnsWithHint = false;
+let currentEmail = '';
+
+// Page history stack — tracks the ordered sequence of pages visited
+// so Back/Next can move through them without re-triggering API calls.
+const PAGE_ORDER = ['landing', 'upload', 'stage1', 'stage2', 'email'];
+let pageHistory = ['landing']; // starts on landing
+let historyIndex = 0;          // pointer into pageHistory
+
+// Map each page key to its Next button element id (null = no next btn)
+const NEXT_BTN_IDS = {
+  upload: 'next-btn-upload',
+  stage1: 'next-btn-stage1',
+  stage2: 'next-btn-stage2',
+  email:  null,
+};
+
+function rawGoTo(pageKey) {
+  // Pure display switch — no API calls, no state reset
+  document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
+  document.getElementById('page-' + pageKey).classList.add('active');
+  window.scrollTo(0, 0);
+  updateNextButtons();
+}
+
+function updateNextButtons() {
+  // Enable/disable each page's Next button based on whether there is
+  // a forward history entry to go to
+  Object.entries(NEXT_BTN_IDS).forEach(([page, btnId]) => {
+    if (!btnId) return;
+    const btn = document.getElementById(btnId);
+    if (!btn) return;
+    const pageIdx = pageHistory.indexOf(page);
+    // Next is available if this page is in history AND there is a page after it
+    const canGoNext = pageIdx !== -1 && pageIdx < pageHistory.length - 1;
+    btn.disabled = !canGoNext;
+  });
+}
+
+function pushPage(pageKey) {
+  // Called when the user navigates *forward* via an action (not Back/Next).
+  // Truncates any forward history beyond current index, then pushes new page.
+  pageHistory = pageHistory.slice(0, historyIndex + 1);
+  if (pageHistory[historyIndex] !== pageKey) {
+    pageHistory.push(pageKey);
+    historyIndex = pageHistory.length - 1;
+  }
+  rawGoTo(pageKey);
+}
+
+function navBack() {
+  if (historyIndex > 0) {
+    historyIndex--;
+    rawGoTo(pageHistory[historyIndex]);
+  }
+}
+
+function navNext() {
+  if (historyIndex < pageHistory.length - 1) {
+    historyIndex++;
+    rawGoTo(pageHistory[historyIndex]);
+  }
+}
+
+// Keep the old goTo for internal use — now it pushes to history
+function goTo(pageKey) {
+  pushPage(pageKey);
+}
+
+// ── Navigation ───────────────────────────────────────────────────────────
+function goTo(pageKey) {
+  document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
+  document.getElementById('page-' + pageKey).classList.add('active');
+  window.scrollTo(0, 0);
+}
+
+function backToS1Recs() {
+  rawGoTo('stage1'); 
+  setTimeout(() => {
+    const rec = document.getElementById('rec-section');
+    if (rec) rec.scrollIntoView({ behavior: 'smooth' });
+  }, 100);
+}
+
+// ── CV Upload ─────────────────────────────────────────────────────────────
+const uploadZone = document.getElementById('upload-zone');
+uploadZone.addEventListener('dragover', e => { e.preventDefault(); uploadZone.classList.add('drag-over'); });
+uploadZone.addEventListener('dragleave', () => uploadZone.classList.remove('drag-over'));
+uploadZone.addEventListener('drop', e => {
+  e.preventDefault();
+  uploadZone.classList.remove('drag-over');
+  const file = e.dataTransfer.files[0];
+  if (file) uploadCV(file);
+});
+
+function handleFileSelect(input) {
+  if (input.files[0]) uploadCV(input.files[0]);
+}
+
+async function uploadCV(file) {
+  const errorEl = document.getElementById('upload-error');
+  const statusEl = document.getElementById('upload-status');
+  errorEl.style.display = 'none';
+  statusEl.style.display = 'none';
+  document.getElementById('start-btn-wrap').style.display = 'none';
+
+  // Optimistic UI
+  uploadZone.querySelector('.upload-icon').textContent = '⏳';
+  uploadZone.querySelector('p').innerHTML = '<strong>Uploading…</strong>';
+
+  const fd = new FormData();
+  fd.append('file', file);
+
+  try {
+    const res = await fetch(`${API}/api/upload_cv`, { method: 'POST', body: fd });
+    const data = await res.json();
+    if (!res.ok) throw new Error(data.detail || 'Upload failed');
+
+    // Success
+    uploadZone.querySelector('.upload-icon').textContent = '✅';
+    uploadZone.querySelector('p').innerHTML = '<strong>CV loaded</strong>';
+
+    document.getElementById('cv-filename').textContent = file.name;
+    const chips = document.getElementById('keyword-chips');
+    chips.innerHTML = '';
+    (data.keywords || []).forEach(kw => {
+      const c = document.createElement('div');
+      c.className = 'chip';
+      c.textContent = kw;
+      chips.appendChild(c);
+    });
+    statusEl.style.display = 'block';
+    document.getElementById('start-btn-wrap').style.display = 'block';
+  } catch (err) {
+    uploadZone.querySelector('.upload-icon').textContent = '📄';
+    uploadZone.querySelector('p').innerHTML = '<strong>Drag & drop your CV here</strong><br/>or click to browse';
+    errorEl.textContent = '⚠ ' + (err.message || 'Upload failed. Please try again.');
+    errorEl.style.display = 'block';
+  }
+}
+
+// ── Stage 1 ───────────────────────────────────────────────────────────────
+async function startStage1() {
+  pushPage('stage1');
+  const log = document.getElementById('chat-log-s1');
+  log.innerHTML = '';
+  s1Done = false; s1Recs = [];
+  document.getElementById('rec-section').style.display = 'none';
+  document.getElementById('s1-input-bar').style.display = 'flex';
+  document.getElementById('s1-input').disabled = false;
+
+  addTypingIndicator('s1');
+  try {
+    const res = await fetch(`${API}/api/stage1/start`, { method: 'POST' });
+    const data = await res.json();
+    if (!res.ok) throw new Error(data.detail || 'Failed to start');
+    sessionId = data.session_id;
+    removeTypingIndicator('s1');
+    appendBubble('s1', 'agent', data.message);
+    scrollChat('stage1-scroll');
+  } catch (err) {
+    removeTypingIndicator('s1');
+    appendBubble('s1', 'agent', '⚠ Could not connect to the model: ' + err.message);
+  }
+}
+
+async function sendS1() {
+  if (s1Done) return;
+  const input = document.getElementById('s1-input');
+  const msg = input.value.trim();
+  if (!msg) return;
+  input.value = '';
+  autoResize(input);
+
+  appendBubble('s1', 'user', msg);
+  scrollChat('stage1-scroll');
+
+  // Determine if we should trigger recommendations now
+  const s1Turns = document.querySelectorAll('#chat-log-s1 .bubble-user').length;
+  const forceRec = s1Turns >= 4 || /^(recommend|show rec)/i.test(msg);
+
+  addTypingIndicator('s1');
+  try {
+    const res = await fetch(`${API}/api/stage1/chat`, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ session_id: sessionId, message: msg, recommend_now: forceRec }),
+    });
+    const data = await res.json();
+    if (!res.ok) throw new Error(data.detail || 'Error');
+    removeTypingIndicator('s1');
+    appendBubble('s1', 'agent', data.message);
+    scrollChat('stage1-scroll');
+
+    if (data.stage1_done && data.recommendations?.length) {
+      s1Done = true;
+      s1Recs = data.recommendations;
+      document.getElementById('s1-input-bar').style.display = 'none';
+      showRecommendations(s1Recs);
+    }
+  } catch (err) {
+    removeTypingIndicator('s1');
+    appendBubble('s1', 'agent', '⚠ ' + err.message);
+  }
+}
+
+function handleS1Key(e) {
+  if (e.key === 'Enter' && !e.shiftKey) { e.preventDefault(); sendS1(); }
+}
+
+function showRecommendations(recs) {
+  const grid = document.getElementById('sup-grid');
+  grid.innerHTML = '';
+  recs.forEach(rec => {
+    const btn = document.createElement('button');
+    btn.className = 'sup-btn';
+    btn.innerHTML = `<span class="sup-name">${esc(rec.name)}</span><span class="sup-reason">${esc(rec.reason || '')}</span>`;
+    btn.onclick = () => pickSupervisor(rec.name);
+    grid.appendChild(btn);
+  });
+  document.getElementById('rec-section').style.display = 'block';
+  setTimeout(() => document.getElementById('rec-section').scrollIntoView({ behavior: 'smooth' }), 100);
+}
+
+// ── Stage 2 ───────────────────────────────────────────────────────────────
+async function pickSupervisor(name) {
+  pushPage('stage2');
+  document.getElementById('s2-sup-name').textContent = name;
+  document.getElementById('chat-log-s2').innerHTML = '';
+  document.getElementById('s2-action-panel').style.display = 'none';
+  s2TurnsWithHint = false;
+
+  addTypingIndicator('s2');
+  try {
+    const res = await fetch(`${API}/api/stage2/start`, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ session_id: sessionId, supervisor_name: name }),
+    });
+    const data = await res.json();
+    if (!res.ok) throw new Error(data.detail || 'Error');
+    removeTypingIndicator('s2');
+    appendBubble('s2', 'agent', data.message);
+    scrollChat('stage2-scroll');
+  } catch (err) {
+    removeTypingIndicator('s2');
+    appendBubble('s2', 'agent', '⚠ ' + err.message);
+  }
+}
+
+async function sendS2() {
+  const input = document.getElementById('s2-input');
+  const msg = input.value.trim();
+  if (!msg) return;
+  input.value = '';
+  autoResize(input);
+
+  appendBubble('s2', 'user', msg);
+  scrollChat('stage2-scroll');
+
+  addTypingIndicator('s2');
+  try {
+    const res = await fetch(`${API}/api/stage2/chat`, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ session_id: sessionId, message: msg }),
+    });
+    const data = await res.json();
+    if (!res.ok) throw new Error(data.detail || 'Error');
+    removeTypingIndicator('s2');
+    appendBubble('s2', 'agent', data.message);
+    scrollChat('stage2-scroll');
+
+    if (data.show_email_hint && !s2TurnsWithHint) {
+      s2TurnsWithHint = true;
+      document.getElementById('s2-action-panel').style.display = 'block';
+      setTimeout(() => document.getElementById('s2-action-panel').scrollIntoView({ behavior: 'smooth' }), 100);
+    }
+  } catch (err) {
+    removeTypingIndicator('s2');
+    appendBubble('s2', 'agent', '⚠ ' + err.message);
+  }
+}
+
+function handleS2Key(e) {
+  if (e.key === 'Enter' && !e.shiftKey) { e.preventDefault(); sendS2(); }
+}
+
+function exploreOther() {
+  backToS1Recs();
+}
+
+// ── Stage 3 ───────────────────────────────────────────────────────────────
+async function goToEmail() {
+  pushPage('email');
+  document.getElementById('email-loading').style.display = 'flex';
+  document.getElementById('email-content').style.display = 'none';
+  document.getElementById('email-sup-name').textContent = document.getElementById('s2-sup-name').textContent;
+
+  try {
+    const res = await fetch(`${API}/api/stage3/email`, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ session_id: sessionId }),
+    });
+    const data = await res.json();
+    if (!res.ok) throw new Error(data.detail || 'Error');
+    currentEmail = data.email;
+    document.getElementById('email-text').textContent = data.email;
+    document.getElementById('email-loading').style.display = 'none';
+    document.getElementById('email-content').style.display = 'block';
+  } catch (err) {
+    document.getElementById('email-loading').style.display = 'none';
+    document.getElementById('email-content').style.display = 'block';
+    document.getElementById('email-text').textContent = '⚠ Could not generate email: ' + err.message;
+  }
+}
+
+function copyEmail() {
+  if (!currentEmail) return;
+  navigator.clipboard.writeText(currentEmail).then(() => {
+    const btn = document.querySelector('[onclick="copyEmail()"]');
+    const orig = btn.textContent;
+    btn.textContent = 'Copied ✓';
+    setTimeout(() => btn.textContent = orig, 2000);
+  });
+}
+
+// ── Chat helpers ──────────────────────────────────────────────────────────
+function appendBubble(stage, who, text) {
+  const log = document.getElementById(`chat-log-s${stage === 's1' ? '1' : '2'}`);
+  const wrap = document.createElement('div');
+  wrap.className = `bubble-wrap ${who === 'user' ? 'user' : ''} fade-up`;
+
+  const avatar = document.createElement('div');
+  avatar.className = `avatar avatar-${who === 'user' ? 'user' : 'agent'}`;
+  avatar.textContent = who === 'user' ? 'you' : 'ai';
+
+  const bubble = document.createElement('div');
+  bubble.className = `bubble bubble-${who === 'user' ? 'user' : 'agent'}`;
+  // Render **bold** markdown
+  bubble.innerHTML = renderMarkdown(text);
+
+  wrap.appendChild(avatar);
+  wrap.appendChild(bubble);
+  log.appendChild(wrap);
+}
+
+function renderMarkdown(text) {
+  // Very lightweight: bold **text** and newlines only
+  return esc(text)
+    .replace(/\*\*(.+?)\*\*/g, '<strong>$1</strong>')
+    .replace(/\n/g, '<br/>');
+}
+
+function esc(str) {
+  return (str || '').replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;');
+}
+
+let typingEl = { s1: null, s2: null };
+
+function addTypingIndicator(stage) {
+  const logId = stage === 's1' ? 'chat-log-s1' : 'chat-log-s2';
+  const log = document.getElementById(logId);
+  const wrap = document.createElement('div');
+  wrap.className = 'bubble-wrap';
+  const avatar = document.createElement('div');
+  avatar.className = 'avatar avatar-agent';
+  avatar.textContent = 'ai';
+  const ind = document.createElement('div');
+  ind.className = 'typing';
+  ind.innerHTML = '<span></span><span></span><span></span>';
+  wrap.appendChild(avatar);
+  wrap.appendChild(ind);
+  log.appendChild(wrap);
+  typingEl[stage] = wrap;
+  scrollChat(stage === 's1' ? 'stage1-scroll' : 'stage2-scroll');
+}
+
+function removeTypingIndicator(stage) {
+  if (typingEl[stage]) {
+    typingEl[stage].remove();
+    typingEl[stage] = null;
+  }
+}
+
+function scrollChat(containerId) {
+  const el = document.getElementById(containerId);
+  if (el) setTimeout(() => el.scrollTo({ top: el.scrollHeight, behavior: 'smooth' }), 50);
+}
+
+function autoResize(el) {
+  el.style.height = 'auto';
+  el.style.height = Math.min(el.scrollHeight, 120) + 'px';
+}
+</script>
+
+</body>
+</html>

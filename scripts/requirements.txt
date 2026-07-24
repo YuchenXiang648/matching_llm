@@ -1,0 +1,15 @@
+# HTTP and networking
+requests==2.32.3
+
+# Data processing
+pandas==2.2.2
+numpy==1.26.4
+
+# Document parsing (CV reading)
+docx2txt==0.8
+pdfminer.six==20240706
+
+# Google Scholar fetching (for data preparation scripts)
+scholarly==1.7.11
+beautifulsoup4==4.12.3
+lxml==5.3.0
