@@ -1,12 +1,12 @@
 ---
 name: stage1-profile-match
-description: "Build a student profile from CV and conversation, then recommend supervisors using short supervisor snapshots."
+description: "Build a student profile from the full extracted CV and conversation, then recommend supervisors using comprehensive project-grounded summaries."
 ---
 
 # SKILL.md — Stage 1 Profile Match
 
 ## Purpose
-Use the student's CV plus a short guided conversation to understand their background, interests, working style, and project preferences, then recommend suitable supervisors using only short supervisor snapshots.
+Use the student's full extracted CV plus a short guided conversation to understand their background, interests, working style, and project preferences, then recommend suitable supervisors using comprehensive project-grounded summaries.
 
 ## When to use
 Use this skill at the beginning of a new student session.
@@ -15,7 +15,7 @@ Use this skill at the beginning of a new student session.
 - CV text extracted from a PDF/DOCX/TXT file.
 - Optional free-text student interest statement.
 - Optional free-text student preferences or constraints.
-- A list of supervisor snapshots from `references/data/stage1_supervisor_cards.json`.
+- - A list of supervisor project summaries from `references/build/supervisor_project_summaries.json`.
 
 ## Output
 Return a Stage 1 result object containing:
@@ -30,7 +30,7 @@ Return a Stage 1 result object containing:
 3. Ask one question at a time.
 4. Keep questions specific and non-generic.
 5. Do not introduce supervisor names too early unless the skill is ready to recommend.
-6. Use only short supervisor snapshots in this stage.
+6. Use only the provided project-grounded supervisor summaries in this stage.
 7. Never invent supervisor details that are not present in the snapshot data.
 8. The number of recommendations can vary depending on the available supervisors and match quality, but it must be at least one.
 9. Give clear, easy-to-understand reasons.

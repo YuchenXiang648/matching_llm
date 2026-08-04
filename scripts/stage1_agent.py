@@ -16,6 +16,8 @@ from profile_loader import load_stage1_cards
 ROOT = Path(__file__).resolve().parents[1]
 SKILL_PATH = ROOT / "skills" / "stage1-profile-match" / "SKILL.md"
 
+STAGE1_NUM_CTX = 32768
+
 
 def load_skill_text() -> str:
     return SKILL_PATH.read_text(encoding="utf-8")
@@ -51,57 +53,43 @@ def clean_stage1_output(text: str) -> str:
 
     return text.strip()
 
-def build_stage1_snapshots(cards: List[Dict[str, Any]]) -> List[Dict[str, Any]]:
+def build_stage1_snapshots(
+    cards: List[Dict[str, Any]],
+) -> List[Dict[str, str]]:
     """
-    Keep compact but useful fields for Stage 1 matching.
+    Keep only the supervisor name and the comprehensive project-grounded
+    summary prepared by summarize_project_texts.py.
     """
-    snapshots = []
-    for c in cards:
-        name = (c.get("name") or "").strip()
-        summary = clean_summary_text(c.get("summary") or "")
-        if name and summary:
-            snapshots.append({
-                "name": name,
-                "summary": summary,
-                "project_titles": c.get("project_titles", [])[:5],
-                "keywords": c.get("keywords", [])[:12],
-                "project_style": c.get("project_style", [])[:6],
-                "preferred_background": c.get("preferred_background", [])[:6],
-            })
-    print(f"[debug] Stage 1 snapshots built: {len(snapshots)}")
-    return snapshots
+    snapshots: List[Dict[str, str]] = []
 
-#def build_stage1_snapshots(cards: List[Dict[str, Any]]) -> List[Dict[str, str]]:
-    """
-    Keep only the fields we actually trust for Stage 1:
-    - supervisor name
-    - cleaned short summary
-    """
-    snapshots = []
-    for c in cards:
-        name = (c.get("name") or "").strip()
-        summary = clean_summary_text(c.get("summary") or "")
+    for card in cards:
+        name = str(card.get("name") or "").strip()
+        summary = str(card.get("summary") or "").strip()
+
         if name and summary:
-            snapshots.append({
-                "name": name,
-                "summary": summary
-            })
+            snapshots.append(
+                {
+                    "name": name,
+                    "summary": summary,
+                }
+            )
+
     return snapshots
 
 
 def compress_student_profile(student_profile: Dict[str, Any]) -> Dict[str, Any]:
     """
-    Do NOT pass the full raw CV everywhere.
-    Keep a compact student representation for Stage 1 prompts.
+    Build the Stage 1 student input.
+    The complete extracted CV is passed to Stage 1 without a character limit.
     """
     cv_text = (student_profile.get("cv_text", "") or "").strip()
-    compact = {
+
+    return {
         "cv_keywords": student_profile.get("cv_keywords", []),
         "interest_text": student_profile.get("interest_text", ""),
         "preference_text": student_profile.get("preference_text", ""),
-        "cv_excerpt": cv_text[:12000],
+        "cv_text": cv_text,
     }
-    return compact
 
 
 def build_stage1_system(snapshots: List[Dict[str, str]]) -> str:
@@ -154,7 +142,7 @@ def opening_message(model: RemoteChatModel, student_profile: Dict[str, Any]) -> 
         "but do not mention supervisor names too early unless clearly necessary. "
         "Do not mention internal workflow labels."
     )
-    text = model.chat([{"role": "user", "content": prompt}], system=system)
+    text = model.chat([{"role": "user", "content": prompt}], system=system, num_ctx=STAGE1_NUM_CTX)
     return clean_stage1_output(text)
 
 
@@ -179,7 +167,7 @@ def generate_student_summary(
         f"Conversation so far:\n{convo_text}\n\n"
         "Write one concise summary for matching."
     )
-    text = model.chat([{"role": "user", "content": prompt}], system=system)
+    text = model.chat([{"role": "user", "content": prompt}], system=system, num_ctx=STAGE1_NUM_CTX)
     return clean_stage1_output(text)
 
 
@@ -225,7 +213,7 @@ def select_recommended_names(
         "- If only one match is very strong, still provide two additional reasonable alternatives from the allowed list.\n"
     )
 
-    raw = model.chat([{"role": "user", "content": prompt}], system=system)
+    raw = model.chat([{"role": "user", "content": prompt}], system=system, num_ctx=STAGE1_NUM_CTX)
 
     try:
         data = extract_json(raw)
@@ -278,7 +266,7 @@ def generate_recommendation_reasons(
         "- Keep reasons concise and grounded.\n"
     )
 
-    raw = model.chat([{"role": "user", "content": prompt}], system=system)
+    raw = model.chat([{"role": "user", "content": prompt}], system=system, num_ctx=STAGE1_NUM_CTX)
 
     try:
         data = extract_json(raw)
@@ -377,5 +365,5 @@ def continue_stage1(
         "Use the available supervisor summaries to guide what is most useful to ask next. "
         "Do not mention internal workflow labels."
     )
-    text = model.chat([{"role": "user", "content": prompt}], system=system)
+    text = model.chat([{"role": "user", "content": prompt}], system=system, num_ctx=STAGE1_NUM_CTX)
     return {"message": clean_stage1_output(text)}
