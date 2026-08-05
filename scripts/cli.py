@@ -58,23 +58,39 @@ def init_student_profile(cv_path: str | None = None) -> Dict[str, Any]:
 
 def print_recommendations(data: Dict[str, Any]) -> None:
     print("\n=== Stage 1 Recommendations ===")
-    print(data.get("student_summary", ""))
+
+    summary = str(data.get("student_summary") or "").strip()
+    if summary:
+        print(summary)
+
     recs = data.get("recommendations", []) or []
-    for idx, rec in enumerate(recs, start=1):
-        print(f"{idx}. {rec.get('name','')} — {rec.get('reason','')}")
-    print(data.get("next_action", ""))
+    excluded = data.get("excluded_supervisors", []) or []
+    considered_count = int(data.get("considered_count") or (len(recs) + len(excluded)))
+
+    print(f"\nAll {considered_count} available supervisor project profiles were considered.")
+
+    if recs:
+        print("\nRecommended supervisors:")
+        for idx, rec in enumerate(recs, start=1):
+            print(f"{idx}. {rec.get('name', '')} — {rec.get('reason', '')}")
+    else:
+        print("\nNo sufficiently reliable supervisor match was identified under the stated constraints.")
+
+    if excluded:
+        print("\nSupervisors not shortlisted:")
+        for idx, item in enumerate(excluded, start=1):
+            print(f"{idx}. {item.get('name', '')} — {item.get('reason', '')}")
+
+    next_action = str(data.get("next_action") or "").strip()
+    if next_action:
+        print(f"\n{next_action}")
 
 
-def choose_supervisor(stage1_result: Dict[str, Any]) -> str:
+def choose_supervisor(stage1_result: Dict[str, Any]) -> str | None:
     recs = stage1_result.get("recommendations", []) or []
     if not recs:
-        cards = load_stage1_cards()
-        names = [x.get("name", "") for x in cards if x.get("name")]
-        print("No structured recommendations were returned, so you can choose from the available supervisors:")
-        for idx, name in enumerate(names, start=1):
-            print(f"{idx}. {name}")
-        raw = ask_nonempty("Enter the supervisor name you want to explore: ")
-        return raw
+        print("There is no validated recommendation to explore in Stage 2.")
+        return None
 
     while True:
         raw = ask_nonempty("Type the name of the supervisor you want to explore: ")
@@ -105,25 +121,52 @@ def run(cv_path: str | None = None) -> None:
     print("I have loaded your CV and will now begin Stage 1.\n")
     opening = stage1_opening(model, student_profile)
     print(f"Agent: {opening}")
+    state["stage1_history"].append({"user": "", "assistant": opening})
 
     turns = 0
     while True:
         user = ask_nonempty("You: ")
         turns += 1
-        recommend_now = turns >= 4 or user.lower() in {"recommend", "recommend now", "show recommendations"}
-        result = continue_stage1(model, student_profile, state["stage1_history"], user, recommend_now=recommend_now)
-        if recommend_now:
-            state["stage1_result"] = result if isinstance(result, dict) else {}
-            print_recommendations(state["stage1_result"])
+        force_recommend = user.strip().lower() in {
+            "recommend",
+            "recommend now",
+            "show recommendations",
+            "generate recommendations",
+        }
+
+        result = continue_stage1(
+            model,
+            student_profile,
+            state["stage1_history"],
+            user,
+            turn_count=turns,
+            force_recommend=force_recommend,
+        )
+
+        stage1_done = bool(result.get("stage1_done")) if isinstance(result, dict) else False
+        if stage1_done:
+            state["stage1_result"] = result
+            print_recommendations(result)
             break
-        else:
-            msg = result.get("message", "") if isinstance(result, dict) else str(result)
-            if msg:
-                state["stage1_history"].append({"user": user, "assistant": msg})
-                print(f"Agent: {msg}")
+
+        matching_error = str(result.get("matching_error") or "").strip() if isinstance(result, dict) else ""
+        if matching_error:
+            state["stage1_history"].append({"user": user, "assistant": matching_error})
+            print(f"Agent: {matching_error}")
+            continue
+
+        msg = result.get("message", "") if isinstance(result, dict) else str(result)
+        if msg:
+            state["stage1_history"].append({"user": user, "assistant": msg})
+            print(f"Agent: {msg}")
 
     stage1_summary = state["stage1_result"].get("student_summary", "")
     selected = choose_supervisor(state["stage1_result"])
+    if not selected:
+        save_session(state)
+        print(f"\nSession state saved to: {SESSION_JSON}")
+        return
+
     state["selected_supervisor"] = selected
 
     print("\n=== Stage 2 Supervisor Exploration ===")

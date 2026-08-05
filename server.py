@@ -138,11 +138,17 @@ def stage1_start():
     import uuid
     session_id = str(uuid.uuid4())
     
-    opening = stage1_opening(model, profile)
+    try:
+        opening = stage1_opening(model, profile)
+    except Exception as exc:
+        raise HTTPException(
+            status_code=502,
+            detail=f"The Stage 1 model request failed: {exc}",
+        ) from exc
     
     sessions[session_id] = {
         "student_profile": profile,
-        "stage1_history": [],
+        "stage1_history": [{"user": "", "assistant": opening}],
         "stage1_result": {},
         "stage1_turns": 0,
         "selected_supervisor": None,
@@ -161,47 +167,90 @@ def stage1_chat(req: Stage1ChatRequest):
     sess = sessions.get(req.session_id)
     if not sess:
         raise HTTPException(status_code=404, detail="Session not found.")
-    
+
     model = get_model()
     profile = sess["student_profile"]
     history = sess["stage1_history"]
-    
+
     sess["stage1_turns"] += 1
-    recommend_now = req.recommend_now or sess["stage1_turns"] >= 4
-    
-    result = continue_stage1(
-        model, profile, history, req.message, recommend_now=recommend_now
-    )
-    
-    if recommend_now:
-        sess["stage1_result"] = result if isinstance(result, dict) else {}
-        recs = sess["stage1_result"].get("recommendations", [])
-        summary = sess["stage1_result"].get("student_summary", "")
-        next_action = sess["stage1_result"].get("next_action", "")
-        # Build a readable message for display
-        lines = []
-        if summary:
-            lines.append(summary)
-        lines.append("")
-        lines.append("Based on our conversation, here are my recommendations:")
-        for i, r in enumerate(recs, 1):
-            lines.append(f"{i}. **{r.get('name','')}** — {r.get('reason','')}")
-        if next_action:
-            lines.append("")
-            lines.append(next_action)
-        message = "\n".join(lines)
-        # Add to history so stage2 can read it
-        history.append({"user": req.message, "assistant": message})
-        return {
-            "message": message,
-            "stage1_done": True,
-            "recommendations": recs,
-            "student_summary": summary,
-        }
-    else:
-        msg = result.get("message", "") if isinstance(result, dict) else str(result)
+    turn_count = sess["stage1_turns"]
+
+    try:
+        result = continue_stage1(
+            model,
+            profile,
+            history,
+            req.message,
+            turn_count=turn_count,
+            force_recommend=req.recommend_now,
+        )
+    except Exception as exc:
+        raise HTTPException(
+            status_code=502,
+            detail=f"The Stage 1 model request failed: {exc}",
+        ) from exc
+
+    stage1_done = bool(result.get("stage1_done")) if isinstance(result, dict) else False
+
+    if not stage1_done:
+        matching_error = str(result.get("matching_error") or "").strip() if isinstance(result, dict) else ""
+        if matching_error:
+            history.append({"user": req.message, "assistant": matching_error})
+            return {
+                "message": matching_error,
+                "stage1_done": False,
+                "recommendations": [],
+                "excluded_supervisors": [],
+                "considered_count": result.get("considered_count", 0),
+            }
+
+        msg = str(result.get("message") or "").strip() if isinstance(result, dict) else str(result)
         history.append({"user": req.message, "assistant": msg})
-        return {"message": msg, "stage1_done": False, "recommendations": []}
+        return {
+            "message": msg,
+            "stage1_done": False,
+            "recommendations": [],
+            "turn_count": turn_count,
+        }
+
+    stage1_result = result if isinstance(result, dict) else {}
+    sess["stage1_result"] = stage1_result
+
+    recs = stage1_result.get("recommendations", []) or []
+    excluded = stage1_result.get("excluded_supervisors", []) or []
+    summary = str(stage1_result.get("student_summary") or "").strip()
+    next_action = str(stage1_result.get("next_action") or "").strip()
+    considered_count = int(stage1_result.get("considered_count") or (len(recs) + len(excluded)))
+
+    lines = []
+    if summary:
+        lines.append(summary)
+    lines.append("")
+    lines.append(f"All {considered_count} available supervisor project profiles were considered.")
+    lines.append("")
+    lines.append("Based on the full evidence, here are my recommendations:")
+    for i, rec in enumerate(recs, 1):
+        lines.append(f"{i}. **{rec.get('name', '')}** — {rec.get('reason', '')}")
+
+    if excluded:
+        lines.append("")
+        lines.append("The closest alternatives and the full exclusion list are shown below the conversation.")
+
+    if next_action:
+        lines.append("")
+        lines.append(next_action)
+
+    message = "\n".join(lines)
+    history.append({"user": req.message, "assistant": message})
+
+    return {
+        "message": message,
+        "stage1_done": True,
+        "recommendations": recs,
+        "excluded_supervisors": excluded,
+        "considered_count": considered_count,
+        "student_summary": summary,
+    }
 
 # ── Stage 2: start ─────────────────────────────────────────────────────────
 @app.post("/api/stage2/start")

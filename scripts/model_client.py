@@ -59,7 +59,17 @@ class RemoteChatModel:
             payload["options"]["stop"] = stop
 
         resp = requests.post(self.chat_url, json=payload, timeout=self.timeout)
-        resp.raise_for_status()
+        if not resp.ok:
+            detail = resp.text.strip()
+            try:
+                body = resp.json()
+                detail = str(body.get("error") or body.get("detail") or body)
+            except Exception:
+                pass
+            raise RuntimeError(
+                f"Ollama API returned HTTP {resp.status_code}: "
+                f"{detail or resp.reason}"
+            )
         data = resp.json()
         return (data.get("message", {}) or {}).get("content", "").strip()
 

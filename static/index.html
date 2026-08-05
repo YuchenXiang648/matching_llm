@@ -318,6 +318,66 @@ h3 { font-family: var(--serif); font-size: 1.2rem; font-weight: 600; }
 .sup-btn .sup-name { font-weight: 500; display: block; }
 .sup-btn .sup-reason { color: var(--muted); font-size: 0.78rem; margin-top: 4px; display: block; max-width: 260px; }
 
+.considered-note {
+  padding: 12px 16px;
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  background: var(--surface);
+  color: var(--muted);
+  font-size: 0.82rem;
+  line-height: 1.55;
+}
+.no-rec-message {
+  padding: 16px 18px;
+  border: 1px solid var(--amber-dim);
+  border-radius: var(--radius);
+  background: var(--amber-glow);
+  color: var(--cream);
+  font-size: 0.88rem;
+  line-height: 1.6;
+}
+.excluded-list {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  margin-top: 12px;
+}
+.excluded-item {
+  padding: 14px 16px;
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  background: var(--surface);
+}
+.excluded-name {
+  display: block;
+  font-weight: 500;
+  font-size: 0.88rem;
+  color: var(--cream);
+}
+.excluded-reason {
+  display: block;
+  margin-top: 4px;
+  color: var(--muted);
+  font-size: 0.78rem;
+  line-height: 1.55;
+}
+.excluded-details {
+  margin-top: 14px;
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  background: var(--surface);
+  overflow: hidden;
+}
+.excluded-details summary {
+  padding: 13px 16px;
+  cursor: pointer;
+  color: var(--amber);
+  font-size: 0.82rem;
+  user-select: none;
+}
+.excluded-details[open] summary { border-bottom: 1px solid var(--border); }
+.excluded-details .excluded-list { margin: 0; padding: 14px; }
+
 /* ── Typing indicator ─────────────────────────────────────────────────── */
 .typing {
   display: flex; align-items: center; gap: 4px;
@@ -602,9 +662,24 @@ h3 { font-family: var(--serif); font-size: 1.2rem; font-weight: 600; }
       <!-- Recommendation section (shown after stage 1 ends) -->
       <div id="rec-section" style="display:none;" class="fade-up">
         <hr class="divider" />
+        <div id="considered-note" class="considered-note mb-4"></div>
+
         <h3 class="amber mb-4">Recommended supervisors</h3>
-        <p class="muted mb-4" style="font-size:0.85rem;">Select a supervisor to explore in depth:</p>
+        <p id="rec-instruction" class="muted mb-4" style="font-size:0.85rem;">Select a supervisor to explore in depth:</p>
+        <div id="no-rec-message" class="no-rec-message" style="display:none;"></div>
         <div class="sup-grid" id="sup-grid"></div>
+
+        <div id="excluded-section" style="display:none;" class="mt-8">
+          <h3 class="amber mb-2">Closest alternatives not shortlisted</h3>
+          <p class="muted mb-4" style="font-size:0.82rem;line-height:1.55;">
+            These supervisors were considered but were not recommended. The reasons below explain the main mismatch or weaker alignment.
+          </p>
+          <div id="excluded-preview" class="excluded-list"></div>
+          <details id="excluded-details" class="excluded-details" style="display:none;">
+            <summary id="excluded-summary">View remaining supervisors considered</summary>
+            <div id="excluded-all" class="excluded-list"></div>
+          </details>
+        </div>
       </div>
     </div>
   </div>
@@ -762,6 +837,7 @@ const API = ''; // same origin
 let sessionId = null;
 let s1Done = false;
 let s1Recs = [];
+let s1Excluded = [];
 let s2TurnsWithHint = false;
 let currentEmail = '';
 
@@ -908,8 +984,13 @@ async function startStage1() {
   pushPage('stage1');
   const log = document.getElementById('chat-log-s1');
   log.innerHTML = '';
-  s1Done = false; s1Recs = [];
+  s1Done = false; s1Recs = []; s1Excluded = [];
   document.getElementById('rec-section').style.display = 'none';
+  document.getElementById('sup-grid').innerHTML = '';
+  document.getElementById('excluded-preview').innerHTML = '';
+  document.getElementById('excluded-all').innerHTML = '';
+  document.getElementById('excluded-section').style.display = 'none';
+  document.getElementById('no-rec-message').style.display = 'none';
   document.getElementById('s1-input-bar').style.display = 'flex';
   document.getElementById('s1-input').disabled = false;
 
@@ -939,9 +1020,9 @@ async function sendS1() {
   appendBubble('s1', 'user', msg);
   scrollChat('stage1-scroll');
 
-  // Determine if we should trigger recommendations now
-  const s1Turns = document.querySelectorAll('#chat-log-s1 .bubble-user').length;
-  const forceRec = s1Turns >= 4 || /^(recommend|show rec)/i.test(msg);
+  // The agent decides when enough evidence has been collected.
+  // Only an explicit student request forces immediate recommendations.
+  const forceRec = /^(recommend|recommend now|show recommendations|generate recommendations)$/i.test(msg);
 
   addTypingIndicator('s1');
   try {
@@ -956,11 +1037,12 @@ async function sendS1() {
     appendBubble('s1', 'agent', data.message);
     scrollChat('stage1-scroll');
 
-    if (data.stage1_done && data.recommendations?.length) {
+    if (data.stage1_done) {
       s1Done = true;
-      s1Recs = data.recommendations;
+      s1Recs = data.recommendations || [];
+      s1Excluded = data.excluded_supervisors || [];
       document.getElementById('s1-input-bar').style.display = 'none';
-      showRecommendations(s1Recs);
+      showRecommendations(s1Recs, s1Excluded, data.considered_count || 0);
     }
   } catch (err) {
     removeTypingIndicator('s1');
@@ -972,16 +1054,75 @@ function handleS1Key(e) {
   if (e.key === 'Enter' && !e.shiftKey) { e.preventDefault(); sendS1(); }
 }
 
-function showRecommendations(recs) {
+function makeExcludedItem(item) {
+  const row = document.createElement('div');
+  row.className = 'excluded-item';
+
+  const name = document.createElement('span');
+  name.className = 'excluded-name';
+  name.textContent = item.name || '';
+
+  const reason = document.createElement('span');
+  reason.className = 'excluded-reason';
+  reason.textContent = item.reason || '';
+
+  row.appendChild(name);
+  row.appendChild(reason);
+  return row;
+}
+
+function showRecommendations(recs, excluded, consideredCount) {
   const grid = document.getElementById('sup-grid');
+  const noRec = document.getElementById('no-rec-message');
+  const instruction = document.getElementById('rec-instruction');
+  const considered = document.getElementById('considered-note');
+  const excludedSection = document.getElementById('excluded-section');
+  const preview = document.getElementById('excluded-preview');
+  const details = document.getElementById('excluded-details');
+  const remainingList = document.getElementById('excluded-all');
+  const detailsSummary = document.getElementById('excluded-summary');
+
   grid.innerHTML = '';
-  recs.forEach(rec => {
-    const btn = document.createElement('button');
-    btn.className = 'sup-btn';
-    btn.innerHTML = `<span class="sup-name">${esc(rec.name)}</span><span class="sup-reason">${esc(rec.reason || '')}</span>`;
-    btn.onclick = () => pickSupervisor(rec.name);
-    grid.appendChild(btn);
-  });
+  preview.innerHTML = '';
+  remainingList.innerHTML = '';
+
+  const count = consideredCount || recs.length + excluded.length;
+  considered.textContent = `All ${count} available supervisor project profiles were considered before producing this shortlist.`;
+
+  if (recs.length) {
+    instruction.style.display = 'block';
+    noRec.style.display = 'none';
+    recs.forEach(rec => {
+      const btn = document.createElement('button');
+      btn.className = 'sup-btn';
+      btn.innerHTML = `<span class="sup-name">${esc(rec.name)}</span><span class="sup-reason">${esc(rec.reason || '')}</span>`;
+      btn.onclick = () => pickSupervisor(rec.name);
+      grid.appendChild(btn);
+    });
+  } else {
+    instruction.style.display = 'none';
+    noRec.textContent = 'No sufficiently reliable supervisor match was identified under your stated preferences and constraints.';
+    noRec.style.display = 'block';
+  }
+
+  if (excluded.length) {
+    excludedSection.style.display = 'block';
+    excluded.slice(0, 3).forEach(item => preview.appendChild(makeExcludedItem(item)));
+
+    const remaining = excluded.slice(3);
+    if (remaining.length) {
+      details.style.display = 'block';
+      details.open = false;
+      detailsSummary.textContent = `View remaining ${remaining.length} supervisors considered`;
+      remaining.forEach(item => remainingList.appendChild(makeExcludedItem(item)));
+    } else {
+      details.style.display = 'none';
+    }
+  } else {
+    excludedSection.style.display = 'none';
+    details.style.display = 'none';
+  }
+
   document.getElementById('rec-section').style.display = 'block';
   setTimeout(() => document.getElementById('rec-section').scrollIntoView({ behavior: 'smooth' }), 100);
 }
