@@ -24,6 +24,25 @@ FINAL_MATCH_MAX_ATTEMPTS = 3
 EXCLUSION_BATCH_SIZE = 7
 EXCLUSION_MAX_ATTEMPTS = 2
 
+STAGE1_QUESTION_STYLE_GUIDANCE = (
+    "Question-style policy:\n"
+    "- Use a layered question: first ask an open question, then add optional "
+    "examples only when they help the student understand what kind of answer is useful.\n"
+    "- The main question should normally begin with What, Which, How, Describe, "
+    "or Tell me about.\n"
+    "- Do not default to the pattern 'Are you more interested in A or B?'.\n"
+    "- Examples must be non-exhaustive. Prefer three or more brief examples followed "
+    "by 'or another direction' rather than presenting only two opposing choices.\n"
+    "- A choice-assisted question is allowed when the student gives a very brief, "
+    "uncertain, or 'I do not know' answer. Even then, invite the student to explain "
+    "what appeals to them or to describe a different direction.\n"
+    "- Do not use choice-assisted questions in consecutive turns.\n"
+    "- After a short answer, ask for one concrete motivation, desired outcome, "
+    "problem, experience, or example rather than immediately giving another choice.\n"
+    "- Keep the question easy to answer. The student may respond with either a short "
+    "phrase or a longer explanation.\n"
+)
+
 
 def load_skill_text() -> str:
     return SKILL_PATH.read_text(encoding="utf-8")
@@ -106,6 +125,7 @@ def build_stage1_system() -> str:
     return (
         "You are the Stage 1 supervisor matching agent for a student-supervisor matching system.\n\n"
         f"Follow this skill definition strictly:\n{skill}\n\n"
+        f"{STAGE1_QUESTION_STYLE_GUIDANCE}\n"
         "Conversation rules:\n"
         "1. Ask exactly one open-ended, matching-oriented question at a time.\n"
         "2. Invite the student to explain their interests in their own words, including motivations, examples, or kinds of problems they would enjoy.\n"
@@ -127,8 +147,11 @@ def opening_message(model: RemoteChatModel, student_profile: Dict[str, Any]) -> 
         "The student has just started using the system.\n"
         f"Student evidence currently available:\n{json.dumps(student_input, ensure_ascii=False, indent=2)}\n\n"
         "Greet the student briefly and confirm that you have read the CV if one is present. "
-        "Then ask exactly one open-ended question that invites the student to describe the research problems, application areas, or outcomes they would most like to explore now. "
-        "Do not ask them to choose between two predefined options. Do not mention supervisors."
+        "Then ask exactly one easy-to-answer open question about the research "
+        "problems, application areas, users, or outcomes they would most like "
+        "to explore now. Follow the question-style policy in the system message. "
+        "You may give several brief, non-exhaustive examples, but do not turn "
+        "them into two opposing choices. Do not mention supervisors."
     )
     text = model.chat(
         [{"role": "user", "content": prompt}],
@@ -150,11 +173,20 @@ def _readiness_prompt(
         f"Student evidence:\n{json.dumps(student_input, ensure_ascii=False, indent=2)}\n\n"
         f"Complete conversation:\n{conversation_text}\n\n"
         f"Number of student answers so far: {turn_count}\n\n"
-        "The evidence is sufficient when the student's desired topic/problem or application direction is reasonably clear, their preferred project style or outcome is sufficiently understood, and important dislikes or constraints have been elicited. "
+        "The evidence is sufficient when the student's desired topic, problem, "
+        "application direction, or intended outcome is reasonably clear, and "
+        "their preferred project style is sufficiently understood. "
+        "The conversation must also contain either an explicit dislike or "
+        "constraint, or an explicit statement that the student has no important "
+        "areas they wish to avoid. Do not infer that the student has no "
+        "constraints merely because none have been volunteered. "
         "A fixed method preference is not required if the student has explicitly said they are open to methods. Do not demand unnecessary detail.\n\n"
         "If the evidence is sufficient, set ready_to_recommend to true and use an empty question. "
         "If it is not sufficient, set ready_to_recommend to false and ask exactly one open-ended question about the single most important missing dimension. "
-        "The question must invite explanation in the student's own words and must not be a forced A-or-B choice. Examples, if any, must be clearly non-exhaustive.\n\n"
+        "The question must follow the question-style policy below. It should "
+        "invite explanation in the student's own words while remaining easy "
+        "to answer.\n\n"
+        f"{STAGE1_QUESTION_STYLE_GUIDANCE}\n"
         "Return valid JSON only:\n"
         '{"ready_to_recommend": true, "question": ""}\n'
         "or\n"
@@ -204,8 +236,10 @@ def assess_readiness_and_next_question(
             "role": "user",
             "content": (
                 f"Complete conversation:\n{conversation_text}\n\n"
-                "Ask one open-ended question about the most important preference or constraint that is still unclear for supervisor matching. "
-                "Do not ask the student to choose between two options. Return only the question."
+                "Ask one easy-to-answer question about the most important preference "
+                "or constraint that is still unclear for supervisor matching. "
+                "Follow the question-style policy in the system message. "
+                "Return only the question."
             ),
         }],
         system=build_stage1_system(),
@@ -569,9 +603,12 @@ def continue_stage1(
         "Continue the guided matching conversation.\n"
         f"Complete student evidence currently available:\n{json.dumps(student_input, ensure_ascii=False, indent=2)}\n\n"
         f"Complete conversation so far:\n{conversation_text}\n\n"
-        "Ask exactly one open-ended follow-up question about the single most useful preference dimension that is still unclear. "
-        "Invite the student to explain in their own words. Do not ask a forced A-or-B question. "
-        "Do not repeat a question that has already been answered, and do not mention supervisors."
+        "Ask exactly one follow-up question about the single most useful "
+        "preference dimension that is still unclear. Follow the question-style "
+        "policy below, invite the student to explain in their own words. Briefly acknowledge the student's latest answer, then ask "
+        "the question. Do not repeat a dimension that has already been answered "
+        "clearly, and do not mention supervisors.\n\n"
+        f"{STAGE1_QUESTION_STYLE_GUIDANCE}"
     )
     text = model.chat(
         [{"role": "user", "content": prompt}],
