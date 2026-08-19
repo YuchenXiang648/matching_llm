@@ -607,6 +607,12 @@ The current implementation has several important boundaries:
 
 ---
 
+## Demonstration Video
+
+A demonstration of the complete three-stage workflow is available in the final project release:
+
+**[Watch / download the Matching LLM demonstration](https://github.com/YuchenXiang648/matching_llm/releases/tag/v1.0-final)**
+
 ## Academic context
 
 This repository was developed as an MSc dissertation project at **University College London (UCL)**.
