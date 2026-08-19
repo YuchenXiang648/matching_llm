@@ -50,21 +50,21 @@ Student
 ┌──────────────────────────────────────────────────────────────────────────────┐
 │                         Matching LLM Runtime                                 │
 │                                                                              │
-│   ┌──────────────────┐      ┌──────────────────┐      ┌──────────────────┐    │
-│   │     Stage 1      │ ───► │     Stage 2      │ ───► │     Stage 3      │    │
-│   │ Preference +     │      │ Supervisor       │      │ First-contact    │    │
-│   │ Profile Match    │      │ Exploration      │      │ Email Draft      │    │
-│   └──────────────────┘      └──────────────────┘      └──────────────────┘    │
-│            │                         │                         │               │
-│            ▼                         ▼                         ▼               │
-│   stage1-profile-match/     stage2-supervisor-       stage3-email-draft/      │
-│        SKILL.md             explore/SKILL.md              SKILL.md            │
+│   ┌──────────────────┐      ┌──────────────────┐      ┌──────────────────┐   │
+│   │     Stage 1      │ ───► │     Stage 2      │ ───► │     Stage 3      │   │
+│   │ Preference +     │      │ Supervisor       │      │ First-contact    │   │
+│   │ Profile Match    │      │ Exploration      │      │ Email Draft      │   │
+│   └──────────────────┘      └──────────────────┘      └──────────────────┘   │
+│            │                         │                         │             │
+│            ▼                         ▼                         ▼             │
+│   stage1-profile-match/     stage2-supervisor-       stage3-email-draft/     │
+│        SKILL.md             explore/SKILL.md              SKILL.md           │
 └──────────────────────────────────────────────────────────────────────────────┘
              │                         │                         ▲
              ▼                         ▼                         │
- supervisor_project_          supervisor_detail.json           │
- summaries.json               one selected full profile        │
- all 31 short summaries                 │                       │
+ supervisor_project_          supervisor_detail.json             │
+ summaries.json               one selected full profile          │
+ all 31 short summaries                 │                        │
              │                          └──────► Stage 2 conversation ──────────┘
              │
              └───────────────────────────────────────────────────────┐
