@@ -50,54 +50,6 @@ def load_stage1_cards() -> List[Dict[str, Any]]:
         "Please run scripts/summarize_project_texts.py first."
     )
 
-#def load_stage1_cards() -> List[Dict[str, Any]]:
-    if STAGE1_SUPERVISOR_CARDS_JSON.exists():
-        return json.loads(STAGE1_SUPERVISOR_CARDS_JSON.read_text(encoding="utf-8"))
-
-    rows: List[Dict[str, Any]] = []
-    summaries_by_id: Dict[str, Dict[str, Any]] = {}
-    summaries_by_name: Dict[str, Dict[str, Any]] = {}
-
-    if SUPERVISOR_SUMMARIES_JSON.exists():
-        data = json.loads(SUPERVISOR_SUMMARIES_JSON.read_text(encoding="utf-8"))
-        for item in data:
-            sid = str(item.get("supervisor_id") or "").strip()
-            name = str(item.get("name") or "").strip()
-            if sid:
-                summaries_by_id[sid] = item
-            if name:
-                summaries_by_name[name] = item
-
-    if not SUPERVISORS_INPUT_CSV.exists():
-        raise FileNotFoundError(f"Missing {SUPERVISORS_INPUT_CSV}")
-
-    with SUPERVISORS_INPUT_CSV.open("r", encoding="utf-8") as f:
-        reader = csv.DictReader(f)
-        for r in reader:
-            name = (r.get("name") or r.get("supervisor_1_name") or "").strip()
-            sid = (r.get("supervisor_id") or "").strip()
-            if not name:
-                continue
-            summary_item = summaries_by_id.get(sid) or summaries_by_name.get(name) or {}
-            project_text = (r.get("project_text") or "").strip()
-            work_summary = (r.get("work_summary") or "").strip()
-            fallback_summary = " ".join(x for x in [project_text, work_summary] if x).strip()
-            summary = (summary_item.get("summary") or fallback_summary or "(no summary available)").strip()
-            cards = {
-                "supervisor_id": sid,
-                "name": name,
-                "title": (r.get("title") or "").strip(),
-                "department": (r.get("department") or "").strip(),
-                "homepage": (r.get("homepage") or summary_item.get("homepage") or "").strip(),
-                "research_areas": [],
-                "summary": summary,
-                "project_style": [],
-                "preferred_background": [],
-                "keywords": [],
-            }
-            rows.append(cards)
-    return rows
-
 
 def load_supervisor_detail_by_name(name: str, max_papers: int | None = None) -> Dict[str, Any]:
     target = _norm(name)

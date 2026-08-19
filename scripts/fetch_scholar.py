@@ -24,9 +24,8 @@ IN_CSV = DATA_DIR / "supervisors_input_expanded.csv"
 OUT_CSV = DATA_DIR / "supervisor_papers.csv"
 CACHE_JSON = BUILD_DIR / "fetch_scholar_cache.json"
 
-# Keep the same logic as your old working version:
-# - first N publications from the Scholar profile
-# - plus recent-year papers, with best-effort abstract filling
+# first N publications from the Scholar profile
+# plus recent-year papers, with best-effort abstract filling
 MAX_TOP_PAPERS_PER_SUP = 5
 DEFAULT_RECENT_YEARS = 4
 MAX_PAPERS_PER_YEAR = 5

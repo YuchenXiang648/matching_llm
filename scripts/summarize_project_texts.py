@@ -107,75 +107,14 @@ def load_supervisor_rows(path: Path) -> List[Dict[str, str]]:
     return rows
 
 
-def split_project_text(
-    project_text: str,
-    max_chars: int = 5500,
-) -> List[str]:
-    """
-    Most supervisors can be summarised in one call.
-    If one supervisor has many projects and the text is too long, split it
-    while trying to preserve project boundaries marked by a separator.
-    """
-    project_text = norm_text(project_text)
-    if len(project_text) <= max_chars:
-        return [project_text] if project_text else []
 
-    parts = re.split(r"\n\s*-{3,}\s*\n", project_text)
-    parts = [part.strip() for part in parts if part.strip()]
-
-    chunks: List[str] = []
-    current = ""
-    for part in parts:
-        if not current:
-            current = part
-            continue
-
-        if len(current) + len(part) + 8 <= max_chars:
-            current = current + "\n\n-----\n" + part
-        else:
-            chunks.append(current)
-            current = part
-
-    if current:
-        chunks.append(current)
-
-    # If one single project block is still too long, split by paragraphs.
-    final_chunks: List[str] = []
-    for chunk in chunks:
-        if len(chunk) <= max_chars:
-            final_chunks.append(chunk)
-            continue
-
-        paragraphs = [
-            paragraph.strip()
-            for paragraph in chunk.split("\n\n")
-            if paragraph.strip()
-        ]
-        current = ""
-        for paragraph in paragraphs:
-            if not current:
-                current = paragraph
-            elif len(current) + len(paragraph) + 2 <= max_chars:
-                current = current + "\n\n" + paragraph
-            else:
-                final_chunks.append(current)
-                current = paragraph
-
-        if current:
-            final_chunks.append(current)
-
-    return final_chunks
-
-
-def summarize_one_chunk(
+def summarize_project_text(
     model: RemoteChatModel,
     supervisor_id: str,
     name: str,
-    chunk_text: str,
-    chunk_index: int,
-    total_chunks: int,
+    project_text: str,
 ) -> str:
-    """Create one project-grounded summary for one source-text chunk."""
+    """Create one project-grounded summary from the complete project text."""
     system = (
         "You prepare comprehensive but compact supervisor project summaries "
         "for Stage 1 of a student-supervisor matching system.\n"
@@ -187,10 +126,9 @@ def summarize_one_chunk(
 
     prompt = (
         f"Supervisor ID: {supervisor_id}\n"
-        f"Supervisor name: {name}\n"
-        f"Source chunk: {chunk_index + 1} of {total_chunks}\n\n"
-        "Complete project text for this source chunk:\n"
-        f"{chunk_text}\n\n"
+        f"Supervisor name: {name}\n\n"
+        "Complete project text for this supervisor:\n"
+        f"{project_text}\n\n"
         "Write a single coherent project-grounded summary for Stage 1 matching. "
         "The summary must preserve the distinctions that a student needs in "
         "order to judge fit.\n\n"
@@ -216,7 +154,7 @@ def summarize_one_chunk(
         "- approximately 160-190 words;\n"
         "- normally 7-10 complete sentences;\n"
         "- clear natural English, not a keyword list;\n"
-        "- do not mention that this is a summary or a source chunk.\n\n"
+        "- do not mention that this is a summary.\n\n"
         "Return JSON only with exactly this schema:\n"
         "{\n"
         '  "summary": "one complete paragraph"\n'
@@ -236,67 +174,15 @@ def summarize_one_chunk(
     summary = str(data.get("summary") or "").strip()
     if not summary:
         raise ValueError("Model returned an empty summary")
+
     return summary
 
 
-def merge_chunk_summaries(
-    model: RemoteChatModel,
-    supervisor_id: str,
-    name: str,
-    partial_summaries: List[str],
-) -> str:
-    """Merge several chunk summaries without dropping distinct projects."""
-    system = (
-        "You merge project-grounded summaries for Stage 1 of a "
-        "student-supervisor matching system.\n"
-        "Use only the supplied partial summaries. Do not invent facts.\n"
-        "Return valid JSON only."
-    )
-
-    prompt = (
-        f"Supervisor ID: {supervisor_id}\n"
-        f"Supervisor name: {name}\n\n"
-        "Partial project summaries:\n"
-        f"{json.dumps(partial_summaries, ensure_ascii=False, indent=2)}\n\n"
-        "Merge them into one coherent supervisor-level summary. Preserve every "
-        "distinct project option and all important differences in research "
-        "problem, application domain, methods, student tasks, project style, "
-        "prerequisites, suitable interests, and clearly less-suitable interests. "
-        "Remove repetition, but do not collapse different domains into vague "
-        "phrases such as 'AI' or 'machine learning'.\n\n"
-        "Length and style:\n"
-        "- one paragraph;\n"
-        "- approximately 160-190 words;\n"
-        "- normally 7-10 complete sentences;\n"
-        "- clear natural English, not a keyword list;\n"
-        "- no unsupported claims.\n\n"
-        "Return JSON only with exactly this schema:\n"
-        "{\n"
-        '  "summary": "one complete paragraph"\n'
-        "}"
-    )
-
-    raw = model.chat(
-        [{"role": "user", "content": prompt}],
-        system=system,
-        temperature=0.1,
-        num_ctx=8192,
-    )
-    data = extract_json(raw)
-    if not isinstance(data, dict):
-        raise ValueError("Model output was not a JSON object")
-
-    summary = str(data.get("summary") or "").strip()
-    if not summary:
-        raise ValueError("Model returned an empty merged summary")
-    return summary
 
 
 def summarize_supervisor(
     model: RemoteChatModel,
     row: Dict[str, str],
-    max_chars_per_call: int,
-    sleep_seconds: float,
 ) -> Dict[str, str]:
     supervisor_id = row.get("supervisor_id", "")
     name = row.get("name", "")
@@ -312,41 +198,17 @@ def summarize_supervisor(
             ),
         }
 
-    chunks = split_project_text(
-        project_text,
-        max_chars=max_chars_per_call,
+    print(
+        f"  summarising complete project text "
+        f"({len(project_text)} chars)"
     )
-    if not chunks:
-        raise ValueError(f"No usable project text found for {name}")
 
-    partial_summaries: List[str] = []
-    for index, chunk in enumerate(chunks):
-        print(
-            f"  summarising chunk {index + 1}/{len(chunks)} "
-            f"({len(chunk)} chars)"
-        )
-        partial_summary = summarize_one_chunk(
-            model=model,
-            supervisor_id=supervisor_id,
-            name=name,
-            chunk_text=chunk,
-            chunk_index=index,
-            total_chunks=len(chunks),
-        )
-        partial_summaries.append(partial_summary)
-
-        if sleep_seconds > 0 and index < len(chunks) - 1:
-            time.sleep(sleep_seconds)
-
-    if len(partial_summaries) == 1:
-        final_summary = partial_summaries[0]
-    else:
-        final_summary = merge_chunk_summaries(
-            model=model,
-            supervisor_id=supervisor_id,
-            name=name,
-            partial_summaries=partial_summaries,
-        )
+    final_summary = summarize_project_text(
+        model=model,
+        supervisor_id=supervisor_id,
+        name=name,
+        project_text=project_text,
+    )
 
     return {
         "name": name,
@@ -411,12 +273,6 @@ def main() -> None:
         type=int,
         default=0,
         help="Only process the first N supervisors after filtering. 0 means no limit.",
-    )
-    parser.add_argument(
-        "--max-chars-per-call",
-        type=int,
-        default=5500,
-        help="Maximum project_text characters per LLM call before chunking.",
     )
     parser.add_argument(
         "--sleep",
@@ -504,8 +360,6 @@ def main() -> None:
             summary = summarize_supervisor(
                 model=model,
                 row=row,
-                max_chars_per_call=args.max_chars_per_call,
-                sleep_seconds=args.sleep,
             )
             summaries = upsert_summary(
                 summaries=summaries,

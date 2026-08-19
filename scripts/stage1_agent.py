@@ -230,7 +230,6 @@ def assess_readiness_and_next_question(
             return {"ready_to_recommend": ready, "question": question}
         feedback = "\nIf ready_to_recommend is false, question must be non-empty.\n"
 
-    # A final plain-text model call avoids a hard-coded questionnaire fallback.
     raw_question = model.chat(
         [{
             "role": "user",

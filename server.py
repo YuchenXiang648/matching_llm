@@ -1,7 +1,7 @@
 """
-server.py — FastAPI web server for the supervisor matching frontend.
+This is the FastAPI web server for the supervisor matching frontend.
 Place this file at the ROOT of the matching_llm project (same level as scripts/).
-Run with: uvicorn server:app --reload --port 8000
+And run: uvicorn server:app --reload --port 8000
 """
 from __future__ import annotations
 
@@ -9,7 +9,6 @@ import sys
 import os
 from pathlib import Path
 
-# Make scripts/ importable
 ROOT = Path(__file__).resolve().parent
 sys.path.insert(0, str(ROOT / "scripts"))
 
@@ -43,7 +42,7 @@ from stage2_agent import (
 from stage3_agent import draft_email
 from text_utils import extract_keywords, read_file_to_text
 
-# ── App setup ──────────────────────────────────────────────────────────────
+# App setup
 app = FastAPI(title="Supervisor Matching")
 
 app.add_middleware(
@@ -70,7 +69,7 @@ def get_model() -> RemoteChatModel:
 # In-memory session store (one session per server run is fine for a demo)
 sessions: Dict[str, Dict[str, Any]] = {}
 
-# ── Pydantic models ────────────────────────────────────────────────────────
+# Pydantic models
 class Stage1ChatRequest(BaseModel):
     session_id: str
     message: str
@@ -87,13 +86,13 @@ class Stage2ChatRequest(BaseModel):
 class Stage3Request(BaseModel):
     session_id: str
 
-# ── Routes ─────────────────────────────────────────────────────────────────
+# Routes
 
 @app.get("/")
 def index():
     return FileResponse(str(STATIC_DIR / "index.html"))
 
-# ── CV upload ──────────────────────────────────────────────────────────────
+# CV upload
 @app.post("/api/upload_cv")
 async def upload_cv(file: UploadFile = File(...)):
     """Accept a CV file, extract text and keywords, store in student profile."""
@@ -126,7 +125,7 @@ async def upload_cv(file: UploadFile = File(...)):
     
     return {"ok": True, "keywords": keywords, "cv_excerpt": text[:300]}
 
-# ── Stage 1: start ─────────────────────────────────────────────────────────
+# Stage 1: start
 @app.post("/api/stage1/start")
 def stage1_start():
     """Create a new session and get the opening message from the Stage 1 agent."""
@@ -161,7 +160,7 @@ def stage1_start():
         "message": opening,
     }
 
-# ── Stage 1: chat ──────────────────────────────────────────────────────────
+# Stage 1: chat
 @app.post("/api/stage1/chat")
 def stage1_chat(req: Stage1ChatRequest):
     sess = sessions.get(req.session_id)
@@ -252,7 +251,7 @@ def stage1_chat(req: Stage1ChatRequest):
         "student_summary": summary,
     }
 
-# ── Stage 2: start ─────────────────────────────────────────────────────────
+# Stage 2: start
 @app.post("/api/stage2/start")
 def stage2_start(req: Stage2StartRequest):
     sess = sessions.get(req.session_id)
@@ -277,13 +276,16 @@ def stage2_start(req: Stage2StartRequest):
     )
     
     sess["selected_supervisor_detail"] = result["detail"]
-    
+
+    # Keep the Stage 2 opening so Stage 3 can use the complete conversation.
+    sess["stage2_opening"] = result["message"]
+
     return {
         "message": result["message"],
         "supervisor_name": req.supervisor_name,
     }
 
-# ── Stage 2: chat ──────────────────────────────────────────────────────────
+# Stage 2: chat
 @app.post("/api/stage2/chat")
 def stage2_chat(req: Stage2ChatRequest):
     sess = sessions.get(req.session_id)
@@ -317,29 +319,48 @@ def stage2_chat(req: Stage2ChatRequest):
     
     return {"message": msg, "show_email_hint": show_email_hint}
 
-# ── Stage 3: generate email ────────────────────────────────────────────────
+# Stage 3: generate email
 @app.post("/api/stage3/email")
 def stage3_email(req: Stage3Request):
     sess = sessions.get(req.session_id)
+
     if not sess:
         raise HTTPException(status_code=404, detail="Session not found.")
+
     if not sess.get("selected_supervisor_detail"):
         raise HTTPException(status_code=400, detail="No supervisor selected yet.")
-    
+
     model = get_model()
+
     profile = sess["student_profile"]
     stage1_summary = sess["stage1_result"].get("student_summary", "")
+    stage1_history = sess["stage1_history"]
     stage2_history = sess["stage2_history"]
-    detail = sess["selected_supervisor_detail"]
-    
-    email_text = draft_email(model, detail, profile, stage1_summary, stage2_history)
-    
+
+    # Stage 3 needs the complete Stage 2 conversation.
+    # Add the opening here without changing the Stage 2 runtime history.
+    complete_stage2_history = [
+        {
+            "user": "",
+            "assistant": sess.get("stage2_opening", ""),
+        }
+    ] + stage2_history
+
+    email_text = draft_email(
+        model,
+        sess["selected_supervisor"],
+        profile,
+        stage1_summary,
+        stage1_history,
+        complete_stage2_history,
+    )
+
     return {
         "email": email_text,
         "supervisor_name": sess["selected_supervisor"],
     }
 
-# ── Health check ───────────────────────────────────────────────────────────
+# Health check
 @app.get("/api/health")
 def health():
     return {"status": "ok"}

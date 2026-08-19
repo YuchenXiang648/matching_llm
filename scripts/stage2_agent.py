@@ -549,7 +549,7 @@ def continue_stage2(
         "- Do NOT speak as if you are the supervisor.\n"
         "- Do NOT describe the supervisor as working on any area that appears only in the student profile.\n"
         "- Do NOT force a connection between the student's interests and the supervisor project.\n"
-        "- Do NOT mention games, NPCs, VR, finance, medicine, or other student-interest areas unless they are explicitly in the supervisor profile.\n"
+        "- Do NOT introduce any student-interest domain as a supervisor research area unless it is explicitly supported by the selected supervisor profile.\n"
         "- If the selected supervisor profile does not contain publication data, say that the explanation is based on the project description.\n"
         "- Keep the reply natural, direct, and concise.\n"
     )

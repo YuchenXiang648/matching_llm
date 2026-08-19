@@ -145,6 +145,9 @@ def run(cv_path: str | None = None) -> None:
 
         stage1_done = bool(result.get("stage1_done")) if isinstance(result, dict) else False
         if stage1_done:
+            state["stage1_history"].append(
+                {"user": user, "assistant": ""}
+            )
             state["stage1_result"] = result
             print_recommendations(result)
             break
@@ -178,6 +181,8 @@ def run(cv_path: str | None = None) -> None:
         state["stage1_history"],
     )
     state["selected_supervisor_detail"] = opening2["detail"]
+    state["stage2_opening"] = opening2["message"]
+
     print(f"Agent: {opening2['message']}")
 
     stage2_turns = 0
@@ -204,6 +209,7 @@ def run(cv_path: str | None = None) -> None:
                 state["stage1_history"],
             )
             state["selected_supervisor_detail"] = opening2["detail"]
+            state["stage2_opening"] = opening2["message"]
             print(f"Agent: {opening2['message']}")
             continue
         stage2_turns += 1
@@ -223,13 +229,23 @@ def run(cv_path: str | None = None) -> None:
             print("\nTip: if you feel ready, type 'generate email' to move to Stage 3.")
 
     print("\n=== Stage 3 Email Draft ===")
+
+    complete_stage2_history = [
+        {
+            "user": "",
+            "assistant": state.get("stage2_opening", ""),
+        }
+    ] + state["stage2_history"]
+
     email = draft_email(
         model,
-        state["selected_supervisor_detail"],
+        state["selected_supervisor"],
         student_profile,
         stage1_summary,
-        state["stage2_history"],
+        state["stage1_history"],
+        complete_stage2_history,
     )
+
     print(email)
     save_session(state)
     print(f"\nSession state saved to: {SESSION_JSON}")

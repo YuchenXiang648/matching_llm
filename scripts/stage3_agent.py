@@ -2,6 +2,7 @@ from __future__ import annotations
 
 import sys
 from pathlib import Path
+
 sys.path.insert(0, str(Path(__file__).resolve().parent))
 
 import json
@@ -10,7 +11,7 @@ from pathlib import Path
 from typing import Any, Dict, List
 
 from model_client import RemoteChatModel
-from profile_loader import build_profile_text
+
 
 ROOT = Path(__file__).resolve().parents[1]
 SKILL_PATH = ROOT / "skills" / "stage3-email-draft" / "SKILL.md"
@@ -20,9 +21,9 @@ def load_skill_text() -> str:
     return SKILL_PATH.read_text(encoding="utf-8")
 
 
-def build_stage3_system(supervisor_detail: Dict[str, Any]) -> str:
+def build_stage3_system() -> str:
     skill = load_skill_text()
-    profile_text = build_profile_text(supervisor_detail)
+
     return (
         "You are the Stage 3 email drafting agent.\n\n"
         f"Follow this skill definition strictly:\n{skill}\n\n"
@@ -32,9 +33,8 @@ def build_stage3_system(supervisor_detail: Dict[str, Any]) -> str:
         "So the email must NEVER thank the supervisor for previous questions, guidance, discussion, or feedback.\n"
         "Do NOT write as if there has already been contact.\n"
         "Do NOT use placeholders like [Agent Name/System].\n"
-        "Use the supervisor profile below as the factual source for the supervisor/project.\n"
-        "If a factual detail is missing, simply avoid mentioning it rather than inventing it.\n\n"
-        f"Selected supervisor profile:\n{profile_text}\n"
+        "Use the complete Stage 2 conversation below as the factual source for the supervisor/project.\n"
+        "If a factual detail is missing, simply avoid mentioning it rather than inventing it.\n"
     )
 
 
@@ -46,25 +46,51 @@ def compress_student_profile(student_profile: Dict[str, Any]) -> Dict[str, Any]:
         "interest_text": student_profile.get("interest_text", ""),
         "preference_text": student_profile.get("preference_text", ""),
         "cv_keywords": student_profile.get("cv_keywords", []),
-        "cv_text_excerpt": (student_profile.get("cv_text", "") or "")[:2000],
+        "cv_text": student_profile.get("cv_text", "") or "",
     }
 
 
-def build_stage2_student_only_memory(stage2_history: List[Dict[str, str]]) -> str:
+def build_stage1_student_only_memory(
+    stage1_history: List[Dict[str, str]],
+) -> str:
     """
-    IMPORTANT:
-    Keep ONLY what the student said in Stage 2.
-    Do NOT include agent replies, otherwise the model thinks the student
-    has already talked to the supervisor.
+    Keep all of the student's own Stage 1 answers.
     """
-    if not stage2_history:
-        return "(no stage2 student messages available)"
+    if not stage1_history:
+        return "(no stage1 student messages available)"
 
     lines: List[str] = []
-    for turn in stage2_history:
+
+    for turn in stage1_history:
         user = (turn.get("user") or "").strip()
         if user:
             lines.append(f"Student: {user}")
+
+    return "\n".join(lines)
+
+
+def build_complete_stage2_memory(
+    stage2_history: List[Dict[str, str]],
+) -> str:
+    """
+    Keep the complete Stage 2 conversation, including the opening
+    and all later student and agent messages.
+    """
+    if not stage2_history:
+        return "(no stage2 conversation available)"
+
+    lines: List[str] = []
+
+    for turn in stage2_history:
+        user = (turn.get("user") or "").strip()
+        assistant = (turn.get("assistant") or "").strip()
+
+        if user:
+            lines.append(f"Student: {user}")
+
+        if assistant:
+            lines.append(f"Agent: {assistant}")
+
     return "\n".join(lines)
 
 
@@ -84,8 +110,10 @@ def clean_email_output(text: str) -> str:
 
     for ln in lines:
         stripped = ln.strip()
+
         if any(stripped.startswith(p) for p in bad_lines_prefix):
             continue
+
         cleaned.append(ln)
 
     text = "\n".join(cleaned).strip()
@@ -98,28 +126,31 @@ def clean_email_output(text: str) -> str:
         ("Based on our earlier conversation, ", ""),
         ("Following our discussion, ", ""),
     ]
+
     for old, new in replacements:
         text = text.replace(old, new)
 
     # collapse too many blank lines
     text = re.sub(r"\n{3,}", "\n\n", text).strip()
+
     return text
 
 
 def draft_email(
     model: RemoteChatModel,
-    supervisor_detail: Dict[str, Any],
+    supervisor_name: str,
     student_profile: Dict[str, Any],
     stage1_summary: str,
+    stage1_history: List[Dict[str, str]],
     stage2_history: List[Dict[str, str]],
 ) -> str:
-    system = build_stage3_system(supervisor_detail)
+    system = build_stage3_system()
 
     compact_student = compress_student_profile(student_profile)
-    stage2_student_only = build_stage2_student_only_memory(stage2_history)
+    stage1_student_only = build_stage1_student_only_memory(stage1_history)
+    stage2_complete = build_complete_stage2_memory(stage2_history)
 
-    supervisor_name = (supervisor_detail.get("name") or "Professor").strip()
-    supervisor_email = (supervisor_detail.get("email") or "").strip()
+    supervisor_name = (supervisor_name or "Professor").strip()
 
     prompt = (
         "Write a formal first-contact email from the STUDENT to the selected supervisor.\n\n"
@@ -136,22 +167,24 @@ def draft_email(
         "10. Do NOT address the email to an agent or system.\n"
         "11. Do NOT use bullet points.\n"
         "12. Keep it around 180 to 260 words.\n\n"
-
-        f"Selected supervisor name: {supervisor_name}\n"
-        f"Selected supervisor email (if available): {supervisor_email if supervisor_email else '(not available)'}\n\n"
-
+        f"Selected supervisor name: {supervisor_name}\n\n"
         "Student profile information:\n"
         f"{json.dumps(compact_student, ensure_ascii=False, indent=2)}\n\n"
-
-        f"Stage 1 summary:\n{stage1_summary if stage1_summary else '(not available)'}\n\n"
-
-        "What the student said during Stage 2:\n"
-        f"{stage2_student_only}\n\n"
-
+        f"Stage 1 summary:\n"
+        f"{stage1_summary if stage1_summary else '(not available)'}\n\n"
+        "What the student said during Stage 1:\n"
+        f"{stage1_student_only}\n\n"
+        "Complete Stage 2 conversation:\n"
+        f"{stage2_complete}\n\n"
         "Now write the final email draft.\n"
         "Output only the email itself.\n"
     )
 
-    text = model.chat([{"role": "user", "content": prompt}], system=system)
+    text = model.chat(
+        [{"role": "user", "content": prompt}],
+        system=system,
+    )
+
     text = clean_email_output(text)
+
     return text

@@ -154,3 +154,17 @@ Nikos Konstantinidis     12
 William Woof              8
 Tony Lynas-Gray            4
 Federico Galvanin        47
+
+
+
+
+1. Students clearly identify areas of exclusion and hard constraints
+2. Practical research issues of the project
+3. Application domain of the project
+4. Specific research topics
+5. Project working methods and project style
+6. Methods of use
+7. Skills already possessed by students
+
+Stage 1 Opening and Regular Interview: 8192
+Stage 1 final match: 16384

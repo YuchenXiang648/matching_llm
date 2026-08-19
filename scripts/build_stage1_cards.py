@@ -18,14 +18,9 @@ BUILD_DIR = REFERENCES_DIR / "build"
 
 SUPERVISORS_INPUT_CSV = DATA_DIR / "supervisors_input_expanded.csv"
 
-# NEW:
-# This file is generated from supervisors_input.csv project_text.
-# It replaces the old paper-based supervisor_summaries.json for Stage 1 card building.
+
 SUPERVISOR_PROJECT_SUMMARIES_JSON = BUILD_DIR / "supervisor_project_summaries.json"
 
-# OLD:
-# Keep this file untouched. It was generated from paper summaries in the older pipeline.
-# Do not use it for the current project-text-based Stage 1 cards.
 OLD_SUPERVISOR_SUMMARIES_JSON = BUILD_DIR / "supervisor_summaries.json"
 
 OUT_JSON = DATA_DIR / "stage1_supervisor_cards.json"
